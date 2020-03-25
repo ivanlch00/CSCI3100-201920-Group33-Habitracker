@@ -7,7 +7,6 @@ $(document).ready(function() {
 	// get chat records from database
 	setInterval(function() {getData()}, 1000);
 
-
 	$("#submit").click(function() {
 		let msg = $("#msg").val();
 		msg = msg.replace(/\n/g, "<BR>");
@@ -25,7 +24,7 @@ $(document).ready(function() {
 			$new.find("div").addClass("round");
 			$new.find("div").addClass("mb-3");
 			
-			$new.find("h5").html("sda"); // display username
+			$new.find("h5").html(""); // display username
 			
 			$new.find("p").html(msg + "<br>" + date.getDate() + "-" + (date.getMonth() + 1) + "-" + date.getFullYear() + 
 			" " + date.getHours() + ":" + date.getMinutes());		
