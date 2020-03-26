@@ -1,0 +1,24 @@
+<?php
+    require 'header.php';
+    if( !isset( $_SESSION['username']) ){
+        echo "You are not authorized to view this page. Go back <a href= '/'>home</a>";
+        exit();
+    }
+    $goal_id = $_GET['goal_id'];
+    
+    require 'db_key.php';
+    $conn = connect_db();
+    $sql = "Select * from goals Where goal_id = '$goal_id'";
+    $search_result = $conn->query($sql);
+    $row = $search_result->fetch_assoc();
+    if ($row['username'] == $_SESSION['username']) {
+        $_SESSION['goal_id'] = $goal_id;
+        $sql = "Delete from goals Where goal_id = '$goal_id'";
+        $sql = $conn->query($sql);
+        if($sql){
+            echo "Goal delete. You may <a href=mygoals.php>view your goal list</a> now";
+        }
+    } else echo "This is not a goal set up by this account. Please re-try. Click here to go back to ".'<a href="mygoals.php">My Goals List</a>'.".";
+    ?>
+
+
