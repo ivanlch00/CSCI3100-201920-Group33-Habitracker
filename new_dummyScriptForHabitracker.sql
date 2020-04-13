@@ -1,8 +1,3 @@
-
-
--- Creating seven users --
-
-
 INSERT INTO login(username, email, password, image_status, first_name, last_name, welcome_message)
 VALUES(
     "John23",
@@ -67,7 +62,6 @@ VALUES(
     "Let's go catch pikachu!"
 );
 
---Creating goals for users
 
 INSERT INTO goals(
     username,
@@ -75,7 +69,7 @@ INSERT INTO goals(
     goal_description,
     goal_subtask,
     goal_enddate,
-    goal_startime,
+    goal_starttime,
     goal_endtime,
     goal_public,
     goal_completed
@@ -85,8 +79,8 @@ INSERT INTO goals(
     "Spainish netflix everyday",
     "",
     "2020-03-06",
-    "00:03:07",
-    "00:21:23",
+    "20:00:00",
+    "21:00:00",
     "1",
     "0"
 ),(
@@ -95,8 +89,8 @@ INSERT INTO goals(
     "Everyday cook breakfast",
     "",
     "2020-03-07",
-    "",
-    "",
+    NULL,
+    NULL,
     "0",
     "0"
 ),(
@@ -135,8 +129,8 @@ INSERT INTO goals(
     "Everyday go to the Victoria Harbour",
     "Find a girlfriend asap",
     "2020-02-14",
-    "",
-    "",
+    NULL,
+    NULL,
     "0",
     "0"
 ),(
@@ -145,8 +139,8 @@ INSERT INTO goals(
     "Everyday go to gym",
     "Help mama with errands",
     "2020-01-23",
-    "",
-    "",
+    NULL,
+    NULL,
     "1",
     "0"
 ),(
@@ -155,8 +149,8 @@ INSERT INTO goals(
     "Everyday sleep for 4 hours or more",
     "Read Kindle before sleep",
     "2020-02-25",
-    "",
-    "",
+    NULL,
+    NULL,
     "1",
     "0"
 ),(
@@ -165,8 +159,8 @@ INSERT INTO goals(
     "Go to gym",
     "Not eat cakes",
     "2020-01-15",
-    "",
-    "",
+    NULL,
+    NULL,
     "1",
     "0"
 ),(
@@ -175,8 +169,8 @@ INSERT INTO goals(
     "Practise makeup",
     "",
     "2020-02-14",
-    "",
-    "",
+    NULL,
+    NULL,
     "0",
     "0"
 ),(
@@ -211,34 +205,39 @@ INSERT INTO goals(
     "0"
 );
 
---Generate some messages
-
 INSERT INTO chat_message(
     to_user_id,
     from_user_id,
-    chat_message
+    chat_message,
+    status
 )
 VALUES(
     "6",
     "1",
-    "Lets go to gym tgt xd!!!!"
+    "Lets go to gym tgt xd!!!!",
+    "0"
 ),(
     "1",
     "6",
-    "Go!!! Where do you live???"
+    "Go!!! Where do you live???",
+    "0"
 ),(
     "1",
     "6",
-    "I am in MongKok let's go to the public gym!"
+    "I am in MongKok let's go to the public gym!",
+    "0"
 ),(
     "2",
     "7",
-    "Let's learn spanish tgt?!"
+    "Let's learn spanish tgt?!",
+    "0"
 ),(
     "7",
     "2",
-    "Good I need someone to motivate me"
+    "Good I need someone to motivate me",
+    "0"
 ),(
 	"2", 
 	"7", 
-	"I will be on Zoom!");
+	"I will be on Zoom!",
+    "0");
