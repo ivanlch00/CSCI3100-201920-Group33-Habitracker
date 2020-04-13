@@ -5,7 +5,7 @@ if (isset($_POST["reset-request-submit"])) {
 $selector = bin2hex(random_bytes(8));
 $token = random_bytes(32);
 
-$url = "localhost/loginsystem/create-new-password.php?selector=" . $selector . "&validator=" . bin2hex($token);
+$url = "localhost/habitracker/create-new-password.php?selector=" . $selector . "&validator=" . bin2hex($token);
 $expires = date("U") + 1800; //30 min from now
 
 require 'dbh.inc.php'; //my database connection file

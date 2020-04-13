@@ -40,6 +40,8 @@ if (isset($_POST['login-submit'])) {
                     $statement = $connect->prepare($sub_query);
                     $statement->execute();
                     $_SESSION['login_details_id'] = $connect->lastInsertId(); // return the value of last inserted id
+
+
                     header("Location: ../index.php?login=success");
                     exit();
                 }
