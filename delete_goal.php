@@ -16,7 +16,7 @@
         $sql = "Delete from goals Where goal_id = '$goal_id'";
         $sql = $conn->query($sql);
         if($sql){
-            echo "Goal delete. You may <a href=mygoals.php>view your goal list</a> now";
+            header("Location: ../Habitracker/mygoals.php?delete_goal=success");
         }
     } else echo "This is not a goal set up by this account. Please re-try. Click here to go back to ".'<a href="mygoals.php">My Goals List</a>'.".";
     ?>

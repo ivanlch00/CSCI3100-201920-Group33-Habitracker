@@ -4,6 +4,7 @@
         <meta charset="utf-8">
         <title></title>
         <link rel="stylesheet" href="style.css">
+        
 <!--        <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/4.1.0/css/bootstrap.min.css">
         <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
         <script src="https://cdn.bootcss.com/popper.js/1.12.5/umd/popper.min.js"></script>
@@ -90,6 +91,7 @@
             <a href="search_goal.php">Search goals</a>
             <a href="create_goal.php">Create goal</a>
             <a href="mygoals.php">View my goals</a>
+            <a href="goal_progress_today.php">Progress today</a>
         </div>
     </div>
     <a href="chatindex.php">Chat</a>
@@ -98,24 +100,51 @@
             <i class="fa fa-caret-down"></i>
         </button>
         <div class="dropdown-content">
+            <a href="profile_display.php">My profile</a>
             <a href="change-password.php">Change password</a>
         </div>
     </div>
 </div>
 
-<!--
-                <ul>
-                    <li><a href="index.php">Home</a></li>
-                    <li><a href="search_goal.php">Search goals</a></li>
-                    <li><a href="create_goal.php">Create goal</a></li>
-                    <li><a href="mygoals.php">View my goals</a></li>
-                    <li><a href="chatindex.php">Chat</a></li>
-                    <li><a href="change-password.php">Change password</a></li>
-                </ul>
--->
+<?php
+session_start();
+if (!isset($_SESSION['user_id'])){
+    echo '<a href="login.php">Please click here to log in if you have registered an account!</a></br>';
+} else {
+ echo '<form action="includes/logout.inc.php" method="post">
+ <button type="submit" name="logout-submit">Logout</button></br></br>
+ </form>';
+}
+
+?>
+    
+<?php
+/*<div class="loginbox">
+        <img src="img/login_avatar1.png" class="avatar">
+            <h1>Login Here</h1> */?>
+            <?php /*
+                session_start();
+                if (!isset($_SESSION['user_id'])){
+                    echo '<form action="includes/login.inc.php" method="post">
+                    <p>Username</p> 
+                    <input type="text" name ="mailuid" placeholder="Enter Username/E-mail">
+                    <p>Password</p>
+                    <input type="password" name ="pwd" placeholder="Enter Password">
+                    <button type="submit" name="login-submit">Login</button>
+                    <a href="signup.php">Signup</a></br>
+                    <a href="reset-password.php">Forgot your password?</a>
+                    </form>';
+                } else {
+                    echo '<form action="includes/logout.inc.php" method="post">
+                    <button type="submit" name="logout-submit">Logout</button></br></br>
+                    </form>';
+                }     
+    </div>*/?>
+
+
 
 <?php
-    session_start();
+    /*session_start();
     if (isset($_SESSION['user_id'])){
         echo '<form action="includes/logout.inc.php" method="post">
         <button type="submit" name="logout-submit">Logout</button></br></br>
@@ -127,6 +156,6 @@
         <button type="submit" name="login-submit">Login</button>
         </form>
         <a href="signup.php">Signup</a>';
-        }
-        ?>
+        }*/
+?>
 

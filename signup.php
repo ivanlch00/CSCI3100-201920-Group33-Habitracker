@@ -1,11 +1,30 @@
-<?php
-    require "header.php";
-?>
+<html>
+    <head>
+    <link rel="stylesheet" href="signup_style.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: url('img/login_bg3.jpg');
+            background-size: cover;
+            background-position: center;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+    </style>
+</head>
+
+<body>
 
 
     <main>
-        <h1>Signup</h1>
-        <?php
+        
+        
+
+<img src="img/logo.png" alt="Habitracker" height="50">
+<div class="loginbox">
+    <h1>Signup Here</h1>
+    <div class="errormessage">
+    <?php
             if (isset($_GET['error'])){    //use $_GET to check the url
                 if ($_GET['error'] == "emptyfields") {
                     echo '<p> Fill in all fields!</p>';
@@ -28,28 +47,29 @@
             }
             else if (isset($_GET['signup'])) {
                 if ($_GET['signup'] == "success") {
-                echo '<p> Signup successful</p>';
+                echo '<p class="signup_success"> Signup successful</p>';
+                echo '<a href="login.php">Please click here to log in!</a></br>';
                 }
             }
-
         ?>
+        </div>
         <form action="includes/signup.inc.php" method="post">
-            <input type="text" name="uid" placeholder="Username">
-            <input type="text" name="mail" placeholder="E-mail">
-            <input type="password" name="pwd" placeholder="Password">
+            <p>Username</p> 
+            <input type="text" name="uid" placeholder="Enter Username">
+            <p>Email</p> 
+            <input type="text" name="mail" placeholder="Enter E-mail">
+            <p>Password</p> 
+            <input type="password" name="pwd" placeholder="Enter Password">
+            <p>Repeat your password</p> 
             <input type="password" name="pwd-repeat" placeholder="Confirm password">
             <button type="submit" name="signup-submit">Signup</button>
+            <a href="login.php">Please click here to log in if you have registered an account!</a></br>
         </form>
+</div>
 
-        <?php
-        if (isset($_GET["newpwd"])) {
-            if ($_GET["newpwd"] == "passwordupdated") {
-                echo '<p>Your password has been reset!</p>';
-            }
-        }
-        ?>
-        <a href="reset-password.php">Forgot your password?</a>
     </main>
+
+    </body>
 
 <?php
     require "footer.php";

@@ -24,7 +24,7 @@
 <input class = 'form-control w-50' type="text" name="goal_subtask"><br><br>
 
 <label>Duration: </label>
-<input type="number" name="duration" min="1">
+<input type="number" name="duration" min="0">
 <label>day(s) (Recommended: 21 days, until <?php echo date("Y M d", strtotime("+21 days")) ?>)</label><br><br>
 
 <label>Time (Optional) (Please input the time in the form of hh:mm):</label>

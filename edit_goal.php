@@ -12,7 +12,7 @@
     $row = $search_result->fetch_assoc();
     if ($row['username'] == $_SESSION['username']) {
         $_SESSION['goal_id'] = $goal_id;
-    ?>
+        ?>
 
 <body>
 <form action = 'goal_backend.php' method = 'POST'>
@@ -28,7 +28,7 @@
 <input class = 'form-control w-50' type="text" <?php if ($row['goal_subtask'] != NULL) {?> value= "<?php echo $row['goal_subtask']; ?>" <?php } ?> name="goal_subtask">
 
 <label>Number of days left:</label><br>
-<input type="number" name="duration" min="1" value="<?php echo ceil((strtotime($row['goal_enddate'])-time())/60/60/24)?>"><br>
+<input type="number" name="duration" min="0" value="<?php echo ceil((strtotime($row['goal_enddate'])-time())/60/60/24)?>"><br>
 <label>day(s) (Current end date: <?php echo $row['goal_enddate']; ?>, <?php echo ceil((strtotime($row['goal_enddate'])-time())/60/60/24)?> days from today)<br>
 
 <label>Time (Optional) (Please input the time in the form of hh:mm):</label><br>
@@ -53,8 +53,8 @@
 </div>
 </body>
 </html>
-        
-        
+
+
 <?php
     } else echo "This is not a goal set up by this account. Please re-try. Click here to go back to ".'<a href="mygoals.php">My Goals List</a>'.".";
     ?>
