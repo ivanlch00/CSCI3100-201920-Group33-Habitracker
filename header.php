@@ -83,6 +83,7 @@
 <img src="img/logo.png" alt="Habitracker" height="50">
 <div class="navbar">
     <a href="index.php">Home</a>
+
     <div class="dropdown">
         <button class="dropbtn">Goals
             <i class="fa fa-caret-down"></i>
@@ -91,10 +92,25 @@
             <a href="search_goal.php">Search goals</a>
             <a href="create_goal.php">Create goal</a>
             <a href="mygoals.php">View my goals</a>
-            <a href="goal_progress_today.php">Progress today</a>
+            <a href="goal_progress_today.php">My progress today</a>
         </div>
     </div>
+
+    <div class="dropdown">
+        <button class="dropbtn">Activities
+            <i class="fa fa-caret-down"></i>
+        </button>
+        <div class="dropdown-content">
+            <a href="activity_show_all_public_activities.php">Join exisitng activities</a>
+<a href="activity_create_nonrecurring.php">Create a new non-recurring activity</a>
+<a href="activity_create_new_event.php">Create a new recurring activity</a>
+<a href="activity_view_mine.php">View my activities</a>
+<a href="search_goal.php">Search goals</a>
+        </div>
+    </div>
+
     <a href="chatindex.php">Chat</a>
+
     <div class="dropdown">
         <button class="dropbtn">My account
             <i class="fa fa-caret-down"></i>
@@ -104,6 +120,7 @@
             <a href="change-password.php">Change password</a>
         </div>
     </div>
+
 </div>
 
 <?php

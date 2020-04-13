@@ -1,3 +1,7 @@
+<?php
+    require 'header.php';
+    ?>
+
 <html>
     <head>
     <title>Profile Card design</title>
@@ -7,7 +11,6 @@
 <body>
 
 <?php
-    require 'header.php';
 
     $username = $_SESSION['username'];
    
@@ -71,7 +74,7 @@
 
             if (isset($_GET['profile'])){    //use $_GET to check the url
                 if ($_GET['profile'] == "profileupdated") {
-                echo '<p> Your profile is updatecd!</p>';
+                echo '<p> Your profile is updated!</p>';
             }
             }
          ?>

@@ -21,6 +21,7 @@
             $goal_subtask = mysqli_real_escape_string($conn, $goal_subtask);
             
             $sql = "Insert Into goals (username, goal_name, goal_description, goal_subtask, goal_enddate, goal_starttime, goal_endtime, goal_public, goal_completed) VALUES ('$username', '$goal_name', '$goal_description', '$goal_subtask', '$goal_enddate', ".($goal_starttime==NULL ? "NULL" : "'$goal_starttime'").", ".($goal_endtime==NULL ? "NULL" : "'$goal_endtime'").", '$goal_public', 0)";
+            $sql = $conn->query($sql);
             if($sql){
                 header("Location: ../Habitracker/mygoals.php?create_goal=success");
             }
