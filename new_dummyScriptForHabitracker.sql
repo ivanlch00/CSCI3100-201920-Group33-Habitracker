@@ -3,11 +3,12 @@
 -- Creating seven users --
 
 
-INSERT INTO login(username, email, password, first_name, last_name, welcome_message)
+INSERT INTO login(username, email, password, image_status, first_name, last_name, welcome_message)
 VALUES(
     "John23",
     "john234@gmail.com",
     "2347893john",
+    "1",
     "John",
     "Chan",
     "Welcome to my page!"
@@ -16,6 +17,7 @@ VALUES(
     "PeterLol",
     "peterrwong@gmail.com",
     "2n3rfpeter",
+    "1",
     "Peter",
     "Wong",
     "Nice to meet you all!"
@@ -24,13 +26,15 @@ VALUES(
     "Mary223",
     "marychan@gmail.com",
     "h3n4corona",
+    "1",
     "Mary",
     "Lee",
     "Let's reach our goals together!"
 ),(
     "Ivan118",
     "ivan1144@gmail.com",
-  	"135ivan345",
+    "135ivan345",
+    "1",
     "Ivan",
     "Lai",
     "Nice to meet you!"
@@ -38,7 +42,8 @@ VALUES(
 ),(
     "AndyTsang",
     "andy667t4@gmail.com",
-  	"andyyts114",
+    "andyyts114",
+    "1",
     "Andy",
     "Tsang",
     "Keep going!"
@@ -47,14 +52,16 @@ VALUES(
 ),(
     "CaptainAmerica",
     "capa2020@gmail.com",
-  	"tonystark3000"
+    "tonystark3000",
+    "1",
     "Captain",
     "America",
     "Captain Cmerica is the best!"
 ),(
     "PikachuMaster",
     "ashhketchamp@gmail.com",
-  	"iwannacatchtemall23",
+    "iwannacatchtemall23",
+    "1",
     "Pikachu",
     "Master",
     "Let's go catch pikachu!"
@@ -70,7 +77,8 @@ INSERT INTO goals(
     goal_enddate,
     goal_startime,
     goal_endtime,
-    goal_public
+    goal_public,
+    goal_completed
 )VALUES(
     "PikachuMaster",
     "Espanolll",
@@ -79,7 +87,8 @@ INSERT INTO goals(
     "2020-03-06",
     "00:03:07",
     "00:21:23",
-    "1"
+    "1",
+    "0"
 ),(
     "PikachuMaster",
     "Cook",
@@ -88,6 +97,7 @@ INSERT INTO goals(
     "2020-03-07",
     "",
     "",
+    "0",
     "0"
 ),(
     "CaptainAmerica",
@@ -97,7 +107,8 @@ INSERT INTO goals(
     "2020-02-14",
     "00:14:07",
     "00:23:04",
-    "1"
+    "1",
+    "0"
 ),(
     "CaptainAmerica",
     "Biceps plan",
@@ -106,7 +117,8 @@ INSERT INTO goals(
     "2020-02-15",
     "00:00:07",
     "00:12:24",
-    "1"
+    "1",
+    "0"
 ),(
     "CaptainAmerica",
     "Learn to use Swift",
@@ -115,6 +127,7 @@ INSERT INTO goals(
     "2020-02-12",
     "00:00:07",
     "00:27:24",
+    "0",
     "0"
 ),(
     "AndyTsang",
@@ -124,6 +137,7 @@ INSERT INTO goals(
     "2020-02-14",
     "",
     "",
+    "0",
     "0"
 ),(
     "AndyTsang",
@@ -133,7 +147,8 @@ INSERT INTO goals(
     "2020-01-23",
     "",
     "",
-    "1"
+    "1",
+    "0"
 ),(
     "Ivan118",
     "Sleeping plan",
@@ -142,7 +157,8 @@ INSERT INTO goals(
     "2020-02-25",
     "",
     "",
-    "1"
+    "1",
+    "0"
 ),(
     "Mary223",
     "Lose weight",
@@ -151,7 +167,8 @@ INSERT INTO goals(
     "2020-01-15",
     "",
     "",
-    "1"
+    "1",
+    "0"
 ),(
     "Mary223",
     "Get a boyfriend",
@@ -160,6 +177,7 @@ INSERT INTO goals(
     "2020-02-14",
     "",
     "",
+    "0",
     "0"
 ),(
     "PeterLol",
@@ -169,7 +187,8 @@ INSERT INTO goals(
     "2020-03-04",
     "00:00:17",
     "00:22:24",
-    "1"
+    "1",
+    "0"
 ),(
     "PeterLol",
     "Learn spanish",
@@ -178,7 +197,8 @@ INSERT INTO goals(
     "2020-02-19",
     "00:00:47",
     "00:12:34",
-    "1"
+    "1",
+    "0"
 ),(
     "John23",
     "Biceps!!!",
@@ -187,7 +207,8 @@ INSERT INTO goals(
     "2020-02-13",
     "00:00:01",
     "00:04:24",
-    "1"
+    "1",
+    "0"
 );
 
 --Generate some messages
