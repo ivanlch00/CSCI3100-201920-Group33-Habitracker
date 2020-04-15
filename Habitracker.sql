@@ -65,8 +65,8 @@ INSERT INTO `activity_table` (`activity_name`, `activity_repetition`, `activity_
 
 CREATE TABLE `activity_users_list` (
   `entry_id` int(11) NOT NULL,
-  `username` varchar(150) NOT NULL,
-  `activity_name` varchar(256) NOT NULL
+  `user_id` int(11) NOT NULL,
+  `activity_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
