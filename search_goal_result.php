@@ -24,26 +24,38 @@
         ?>
 <table border= 1px solid cellpadding="4">
 <tr>
-<td bgcolor="#CCCCCC"><strong>User</strong></td>
-<td bgcolor="#CCCCCC"><strong>Goal ID</strong></td>
-<td bgcolor="#CCCCCC"><strong>Goal name</strong></td>
-<td bgcolor="#CCCCCC"><strong>Description</strong></td>
-<td bgcolor="#CCCCCC"><strong>Subtask</strong></td>
-<td bgcolor="#CCCCCC"><strong>End date</strong></td>
-<td bgcolor="#CCCCCC"><strong>Start time</strong></td>
-<td bgcolor="#CCCCCC"><strong>End time</strong></td>
+<th bgcolor="#CCCCCC">User</th>
+<th bgcolor="#CCCCCC">Goal ID</th>
+<th bgcolor="#CCCCCC">Goal name</th>
+<th bgcolor="#CCCCCC">Description</th>
+<th bgcolor="#CCCCCC">Subtask</th>
+<th bgcolor="#CCCCCC">End date</th>
+<th bgcolor="#CCCCCC">Start time</th>
+<th bgcolor="#CCCCCC">End time</th>
+<th bgcolor="#CCCCCC">Report this goal to admin</th>
 </tr>
 
 <?php while($row = $search_result->fetch_assoc()) { ?>
 <tr>
 <td><?php echo '<a href="profile_view_others.php?username='.$row['username'].'">'.$row['username'].'</a>'; ?></td>
-<td><? echo $row['goal_id']; ?></td>
-<td><? echo $row['goal_name']; ?></td>
-<td><? echo $row['goal_description']; ?></td>
-<td><? echo $row['goal_subtask']; ?></td>
-<td><? echo $row['goal_enddate']; ?></td>
-<td><? echo (($row['goal_starttime'] != NULL)? date("H:i", strtotime($row['goal_starttime'])) : ''); ?></td>
-<td><? echo (($row['goal_endtime'] != NULL)? date("H:i", strtotime($row['goal_endtime'])) : ''); ?></td>
+<td><?php echo $row['goal_id']; ?></td>
+<td><?php echo $row['goal_name']; ?></td>
+<td><?php echo $row['goal_description']; ?></td>
+<td><?php echo $row['goal_subtask']; ?></td>
+<td><?php echo $row['goal_enddate']; ?></td>
+<td><?php echo (($row['goal_starttime'] != NULL)? date("H:i", strtotime($row['goal_starttime'])) : ''); ?></td>
+<td><?php echo (($row['goal_endtime'] != NULL)? date("H:i", strtotime($row['goal_endtime'])) : ''); ?></td>
+    
+<?php 
+    if ($row['username'] == $_SESSION['username']) {
+        echo '<td>-</td>';
+    }
+    else {
+        echo '<td><a href="report_goal.php?id='.$row['goal_id'].'">Click Here</a></td>';
+    }
+?>
+    
+    
 </tr>
 <?php } ?>
 </table>

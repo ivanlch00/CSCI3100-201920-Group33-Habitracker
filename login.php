@@ -14,9 +14,8 @@
 </head>
 
 <body>
-
-<img src="img/logo.png" alt="Habitracker" height="50">
-<div class="loginbox">
+    <img src="img/logo.png" alt="Habitracker" height="50">
+    <div class="loginbox">
         <img src="img/login_avatar1.png" class="avatar">
             <h1>Login Here</h1> 
             <?php 
@@ -28,14 +27,16 @@
                     <p>Password</p>
                     <input type="password" name ="pwd" placeholder="Enter Password">
                     <button type="submit" name="login-submit">Login</button>
-                    <a href="signup.php">Signup</a></br>
-                    <a href="reset-password.php">Forgot your password?</a>
+                    <a href="signup.php">Signup</a><br>
+                    <a href="reset-password.php">Forgot your password?</a><br>
+                    <a href="admin_login.php">Login as administrator</a>
                     </form>';
                 } else {
                     echo '<form action="includes/logout.inc.php" method="post">
                     <button type="submit" name="logout-submit">Logout</button></br></br>
                     </form>';
-                }  ?>   
+                }  
+            ?>   
     </div>
 
     <?php
@@ -47,6 +48,4 @@
     ?>
 
     </body>
-    </html>
-
-
+</html>
