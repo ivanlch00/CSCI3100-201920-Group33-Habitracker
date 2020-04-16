@@ -1,3 +1,10 @@
+<!doctype html>
+<html lang="en">
+<head>
+
+
+</head>
+
 <?php
     require 'header.php';
     $username = $_SESSION['username'];
@@ -37,13 +44,7 @@
                 
                 echo '<th> <a href = "activity_display_joined_users.php?id='.$id.'">Click Here</a> </th>';
                 
-                if ($row['username'] == $_SESSION['username']) {
-                    echo '<th>-</th>';
-                }
-                else {
-                    echo '<th><a href = "report_activity.php?id='.$id.'">Click Here</a></th>';
-                }                    
-                    
+                
                 // echo '<form action = "activity_display_joined_users.php" method="GET">
                 //         <button type="submit" name="id" value='.$id.'> Member Lists </button> </form></th>';
             }
@@ -104,12 +105,6 @@
                 
                 echo '<th> <a href = "activity_display_joined_users.php?id='.$id.'">Click Here</a> </th>';
                 
-                if ($row['username'] == $_SESSION['username']) {
-                    echo '<th>-</th>';
-                }
-                else {
-                    echo '<th><a href = "report_activity.php?id='.$id.'">Click Here</a></th>';
-                }
                 
                 // echo '<form action = "activity_display_joined_users.php" method="GET">
                 //         <button type="submit" name="id" value='.$id.'> Member Lists </button> </form></th>';
@@ -141,7 +136,7 @@ color: #FFF;
 
 	<br>Recurring<br>
 	<table class="tableizer-table">
-	<thead><tr class="tableizer-firstrow"><th></th><th>Name of activity</th><th>Date and Time</th><th>Location</th><th>Creator</th><th>Details</th><th>Memberlist</th><th>Report this activity to admin</th></tr></thead><tbody>
+	<thead><tr class="tableizer-firstrow"><th></th><th>Name of activity</th><th>Date and Time</th><th>Location</th><th>Creator</th><th>Details</th><th>Memberlist</th></tr></thead><tbody>
 
 	<?php
 	displayOneOff(0,NULL);
@@ -152,7 +147,7 @@ color: #FFF;
 
 <br>Once per week<br>
 <table class="tableizer-table">
-<thead><tr class="tableizer-firstrow"><th></th><th>Name of activity</th><th>Date</th><th>Time</th><th>Location</th><th>Creator</th><th>Details</th><th>Memberlist</th><th>Report this activity to admin</th></tr></thead><tbody>
+<thead><tr class="tableizer-firstrow"><th></th><th>Name of activity</th><th>Date</th><th>Time</th><th>Location</th><th>Creator</th><th>Details</th><th>Memberlist</th></tr></thead><tbody>
 
 <?php displayRecurring(1,NULL); ?>
 </tbody></table>
@@ -161,7 +156,7 @@ color: #FFF;
 
 <br>Twice per week<br>
 <table class="tableizer-table">
-<thead><tr class="tableizer-firstrow"><th></th><th>Name of activity</th><th>Date1</th><th>Time1</th><th>Date2</th><th>Time2</th><th>Location</th><th>Creator</th><th>Details</th><th>Memberlist</th><th>Report this activity to admin</th></tr></thead><tbody>
+<thead><tr class="tableizer-firstrow"><th></th><th>Name of activity</th><th>Date1</th><th>Time1</th><th>Date2</th><th>Time2</th><th>Location</th><th>Creator</th><th>Details</th><th>Memberlist</th></tr></thead><tbody>
 
 <?php displayRecurring(2,NULL); ?>
 </tbody></table>
@@ -169,13 +164,16 @@ color: #FFF;
 
 <br>Three times per week<br>
 <table class="tableizer-table">
-<thead><tr class="tableizer-firstrow"><th></th><th>Name of activity</th><th>Date1</th><th>Time1</th><th>Date2</th><th>Time2</th><th>Date3</th><th>Time3</th><th>Location</th><th>Creator</th><th>Details</th><th>Memberlist</th><th>Report this activity to admin</th></tr></thead><tbody>
+<thead><tr class="tableizer-firstrow"><th></th><th>Name of activity</th><th>Date1</th><th>Time1</th><th>Date2</th><th>Time2</th><th>Date3</th><th>Time3</th><th>Location</th><th>Creator</th><th>Details</th><th>Memberlist</th></tr></thead><tbody>
 
 	<?php displayRecurring(3,NULL); ?>
 
 </tbody></table>
 <br>
 
-<?php
-    require "footer.php";
-?>
+
+</body>
+
+
+
+</html>
