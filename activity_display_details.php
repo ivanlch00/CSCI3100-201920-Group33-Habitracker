@@ -1,7 +1,7 @@
 <?php
 
 require 'header.php';
-    
+
 function getActivityNameFromActivityID($data){
   $conn = mysqli_connect("localhost","root","","Habitracker");
   $sql = "SELECT * FROM activity_table WHERE activity_id = ".$data." ";
