@@ -1,4 +1,5 @@
 <?php
+//this is editted at 1425, testing Github sync function, 1425
 require 'header.php';
 function getActivityNameFromActivityID($data){
   $conn = mysqli_connect("localhost","root","","Habitracker");
