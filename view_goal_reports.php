@@ -43,10 +43,10 @@
                 $table .= '<td class="align-middle">'.$report['reporter'].'</td>';
                 $table .= '<td class="align-middle">'.$report['owner'].'</td>';
                 
-                $sql = "select username, goal_name from goals where goal_id = ?";
+                $sql = "select goal_name from goals where goal_id = ?";
                 $stmt = mysqli_stmt_init($conn);
                 if (!mysqli_stmt_prepare($stmt, $sql)){
-                    header("Location: ../view_report.php?error=sqlerror");
+                    header("Location: ../admin_index.php?error=sqlerror");
                     exit();
                 }
                 else {
