@@ -32,9 +32,9 @@
         <?php 
         echo "<div>";
         if ($row['image_status'] == 0){
-            echo "<img src='upload_image/profile".$id.".jpg' height='150' width ='150'>";
+            echo "<img src='upload_image/profile".$id.".jpg' width ='150'>";
         } else if ($row['image_status'] == 1){
-            echo "<img src='upload_image/profiledefault.jpg' height='150' width ='150'>";
+            echo "<img src='upload_image/profiledefault.jpg' width ='150'>";
         }
         echo "</div>";
         ?>
