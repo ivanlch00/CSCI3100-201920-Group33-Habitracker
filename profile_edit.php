@@ -1,16 +1,18 @@
+<?php
+    require 'header.php';
+    ?>
+
 <html>
-    <head>
-    <title>Profile Card design</title>
-    <link rel="stylesheet" href="profile_display.css">
-        <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-    </head>
+<head>
+<title>Profile Card design</title>
+<link rel="stylesheet" href="profile_display.css">
+<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+</head>
 <body>
 
 
 <?php
-session_start();
-require 'header.php';
-if (isset($_POST['edit-profile-submit'])){
+    if (isset($_POST['edit-profile-submit'])){
 
     $username = $_SESSION['username'];
     //$username = $_SESSION['username'];
