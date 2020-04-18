@@ -119,6 +119,7 @@
         </button>
         <div class="dropdown-content">
             <a href="profile_display.php">My profile</a>
+            <a href="user_setting.php">Settings</a>
             <a href="change-password.php">Change password</a>
         </div>
     </div>
