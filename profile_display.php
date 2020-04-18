@@ -7,7 +7,6 @@
 <body>
 
 <?php
-    session_start();
     require 'header.php';
 
     $username = $_SESSION['username'];
