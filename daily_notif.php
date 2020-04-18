@@ -32,7 +32,7 @@ foreach($result as $row)
     $subject = '[Habitracker] Your daily reminder';
     $message = '<img src="cid:logo" width="200">';
     $message .= '<p>Hello '.$row['username'].',</p>';
-    $message .= '<p>Keep up with your good with with the help of Habitracker!';
+    $message .= '<p>Keep up with your good work with the help of Habitracker!';
     $message .= '<p>Habit is a cable; we weave a thread each day, and at last we cannot break it. -Horace Mann';
     $message .= '<p>Keep up with your goals and track your habits today! </br>';
     $message .= '<p>Your goal(s) today include:</br>';
