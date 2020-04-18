@@ -111,6 +111,8 @@
 
     <a href="chatindex.php">Chat</a>
 
+    <a href="groupchat_index.php">Group chat</a>
+
     <div class="dropdown">
         <button class="dropbtn">My account
             <i class="fa fa-caret-down"></i>
