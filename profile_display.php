@@ -1,3 +1,7 @@
+<?php
+    require 'header.php';
+    ?>
+
 <html>
     <head>
     <title>Profile Card design</title>
@@ -7,8 +11,6 @@
 <body>
 
 <?php
-    require 'header.php';
-
     $username = $_SESSION['username'];
    
     if( !isset( $_SESSION['username']) ){
