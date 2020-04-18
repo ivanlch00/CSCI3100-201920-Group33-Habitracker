@@ -1,5 +1,5 @@
 <?php
-    require 'header.php';
+    session_start();
     if( !isset( $_SESSION['username']) ){
         echo "You are not authorized to view this page. Go back <a href= '/'>home</a>";
         exit();
@@ -15,7 +15,7 @@
             $sql = "Update login Set receive_dailyreminder = '$receive_dailyreminder', receive_weeklyreport = '$receive_weeklyreport' Where user_id = '$user_id'";
             $sql = $conn->query($sql);
             if($sql){
-                header("Location: ../Habitracker/user_setting?edit_setting=success");
+                header("Location: ../Habitracker/user_setting.php?edit_setting=success");
             }
         }
     } else{
