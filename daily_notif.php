@@ -45,8 +45,6 @@ foreach($result as $row)
     
     $message .= '<p>It is never too late to start a habit! Want to equip yourself with a new skill or pick up a new interest?';
     $message .= '<p>Do not hesitate and create your new habit in Habitracker!';
-    $message .= '</br>';
-    $message .= '<a href="' . $url . '">' . $url . '</a></p></br>';
 
     $message .= '<p>Please send an email to noreply-habitracker@gmail.com if you have any queries.';
     $message .= '<p> ';
