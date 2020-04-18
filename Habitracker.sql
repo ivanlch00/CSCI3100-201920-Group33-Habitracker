@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Apr 13, 2020 at 10:32 AM
+-- Generation Time: Apr 18, 2020 at 10:44 AM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.3
 
@@ -21,6 +21,32 @@ SET time_zone = "+00:00";
 --
 -- Database: `Habitracker`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `activity_chat_message`
+--
+
+CREATE TABLE `activity_chat_message` (
+  `chat_message_id` int(11) NOT NULL,
+  `activity_id` int(11) NOT NULL,
+  `from_user_id` int(11) NOT NULL,
+  `chat_message` text NOT NULL,
+  `timestamp` timestamp NOT NULL DEFAULT current_timestamp(),
+  `status` int(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `activity_chat_message`
+--
+
+INSERT INTO `activity_chat_message` (`chat_message_id`, `activity_id`, `from_user_id`, `chat_message`, `timestamp`, `status`) VALUES
+(1, 9, 1, 'hi', '2020-04-17 10:09:23', 0),
+(2, 9, 1, 'hi', '2020-04-17 10:09:28', 0),
+(3, 9, 1, 'hi', '2020-04-17 10:09:47', 0),
+(4, 9, 1, 'hi', '2020-04-17 10:12:08', 0),
+(5, 9, 1, 'hi sinyee', '2020-04-17 10:30:13', 0);
 
 -- --------------------------------------------------------
 
@@ -55,7 +81,8 @@ INSERT INTO `activity_table` (`activity_name`, `activity_repetition`, `activity_
 ('Bike', 1, NULL, 'TUE', '14:25:00', NULL, NULL, NULL, NULL, 'THIS IS RECURRING OFF', 'Sha Tin', 'This is a free event', 1, 2, 'pikachu'),
 ('Bike SECRET', 1, NULL, 'TUE', '14:35:00', NULL, NULL, NULL, NULL, 'THIS IS RECURRING OFF', 'Sha Tin', 'This is a free event', 0, 3, 'pikachu'),
 ('sPANISHH', 2, NULL, 'MON', '14:50:00', 'FRI', '18:00:22', NULL, NULL, 'THIS IS lan', 'Online', 'This is nottt a free event', 1, 4, 'pikachu'),
-('german', 3, NULL, 'MON', '14:50:00', 'FRI', '18:00:22', 'SAT', '18:00:22', 'THIS IS boreing', 'Online', 'This is nottt a free event', 1, 5, 'pikachu');
+('german', 3, NULL, 'MON', '14:50:00', 'FRI', '18:00:22', 'SAT', '18:00:22', 'THIS IS boreing', 'Online', 'This is nottt a free event', 1, 5, 'pikachu'),
+('Runnn', 0, '2020-04-16 12:00:00', NULL, NULL, NULL, NULL, NULL, NULL, '', 'Others', '', 1, 9, 'wck');
 
 -- --------------------------------------------------------
 
@@ -68,6 +95,13 @@ CREATE TABLE `activity_users_list` (
   `user_id` int(11) NOT NULL,
   `activity_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `activity_users_list`
+--
+
+INSERT INTO `activity_users_list` (`entry_id`, `user_id`, `activity_id`) VALUES
+(1, 1, 9);
 
 -- --------------------------------------------------------
 
@@ -131,9 +165,9 @@ INSERT INTO `goals` (`username`, `goal_id`, `goal_name`, `goal_description`, `go
 ('wck', 7, 'I guess this should be correct', 'a description that is not blank', 'a sub-task', '2020-04-29', NULL, NULL, 0, 1),
 ('wck', 8, 'Public goal', '', '', '0000-00-00', NULL, NULL, 0, 0),
 ('wck', 9, 'public goal', '', '', '0000-00-00', NULL, NULL, 1, 0),
-('wck', 13, 'breakfast', '', '', '2020-04-29', '08:00:00', '09:30:00', 0, 0),
+('wck', 13, 'breakfast', '', '', '2020-04-29', '08:00:00', '09:30:00', 0, 1),
 ('wck', 14, '3100', '3100', '', '2020-04-23', '22:00:00', '23:00:00', 0, 1),
-('wck', 16, '3100', '', '', '2020-04-14', '05:00:00', '06:00:00', 0, 1),
+('wck', 16, '3100', '', '', '2020-04-14', '05:00:00', '06:00:00', 0, 0),
 ('wck', 17, '3100', '', '', '2020-04-14', '10:00:00', '20:20:00', 1, 0),
 ('PikachuMaster', 46, 'Espanolll', 'Spainish netflix everyday', '', '2020-03-06', '20:00:00', '21:00:00', 1, 0),
 ('PikachuMaster', 47, 'Cook', 'Everyday cook breakfast', '', '2020-03-07', NULL, NULL, 0, 0),
@@ -147,7 +181,8 @@ INSERT INTO `goals` (`username`, `goal_id`, `goal_name`, `goal_description`, `go
 ('Mary223', 55, 'Get a boyfriend', 'Practise makeup', '', '2020-02-14', NULL, NULL, 0, 0),
 ('PeterLol', 56, 'Write a novel', 'ONe week 6 pages', '', '2020-03-04', '00:00:17', '00:22:24', 1, 0),
 ('PeterLol', 57, 'Learn spanish', 'Go to duolinguo', '', '2020-02-19', '00:00:47', '00:12:34', 1, 0),
-('John23', 58, 'Biceps!!!', 'Everyday go to gym', 'You need a gf next year', '2020-02-13', '00:00:01', '00:04:24', 1, 0);
+('John23', 58, 'Biceps!!!', 'Everyday go to gym', 'You need a gf next year', '2020-02-13', '00:00:01', '00:04:24', 1, 0),
+('wck', 72, 'Running', '', '', '2020-04-18', NULL, NULL, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -163,25 +198,27 @@ CREATE TABLE `login` (
   `image_status` int(11) NOT NULL DEFAULT 1,
   `first_name` text DEFAULT NULL,
   `last_name` text DEFAULT NULL,
-  `welcome_message` longtext DEFAULT NULL
+  `welcome_message` longtext DEFAULT NULL,
+  `receive_dailyreminder` tinyint(1) NOT NULL DEFAULT 0,
+  `receive_weeklyreport` tinyint(1) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `login`
 --
 
-INSERT INTO `login` (`user_id`, `username`, `email`, `password`, `image_status`, `first_name`, `last_name`, `welcome_message`) VALUES
-(1, 'wck', 'wongchika@ymail.com', '$2y$10$UOyrRT.86mhGtI9wqqJL.OhZeD/uFiz2Lfnv.eyRd9XuKOFIsYaw.', 1, 'Chi Ka', 'Wong', 'Hello!!!'),
-(2, 'phoebe', 'phoebechan0209@gmail.com', '$2y$10$sT2rf8RkA663a6TkLnYfiOr8JLybofKP4rQ0tojMXrjNgAuJYD.la', 1, NULL, NULL, NULL),
-(3, 'chika', 'wongchika26@gmail.com', '$2y$10$FlFTxLUMIl2LtTSPMqzVbe/5nM1ynVQrqoOm/M9v2XXCMJto8Xlyq', 1, NULL, NULL, NULL),
-(4, 'cst', 'phoebe@gmail.com', '$2y$10$1s/oPYE2nNcjBTtCRXGX3.r35S.ui6dymZ4L2/Oh1gAiiwnuiqIGu', 1, NULL, NULL, NULL),
-(5, 'John23', 'john234@gmail.com', '2347893john', 1, 'John', 'Chan', 'Welcome to my page!'),
-(6, 'PeterLol', 'peterrwong@gmail.com', '2n3rfpeter', 1, 'Peter', 'Wong', 'Nice to meet you all!'),
-(7, 'Mary223', 'marychan@gmail.com', 'h3n4corona', 1, 'Mary', 'Lee', 'Let\'s reach our goals together!'),
-(8, 'Ivan118', 'ivan1144@gmail.com', '135ivan345', 1, 'Ivan', 'Lai', 'Nice to meet you!'),
-(9, 'AndyTsang', 'andy667t4@gmail.com', 'andyyts114', 1, 'Andy', 'Tsang', 'Keep going!'),
-(10, 'CaptainAmerica', 'capa2020@gmail.com', 'tonystark3000', 1, 'Captain', 'America', 'Captain Cmerica is the best!'),
-(11, 'PikachuMaster', 'ashhketchamp@gmail.com', 'iwannacatchtemall23', 1, 'Pikachu', 'Master', 'Let\'s go catch pikachu!');
+INSERT INTO `login` (`user_id`, `username`, `email`, `password`, `image_status`, `first_name`, `last_name`, `welcome_message`, `receive_dailyreminder`, `receive_weeklyreport`) VALUES
+(1, 'wck', 'wongchika@ymail.com', '$2y$10$UOyrRT.86mhGtI9wqqJL.OhZeD/uFiz2Lfnv.eyRd9XuKOFIsYaw.', 0, 'Chi Ka', 'Wong', 'Hello!!!', 1, 0),
+(2, 'phoebe', 'phoebechan0209@gmail.com', '$2y$10$sT2rf8RkA663a6TkLnYfiOr8JLybofKP4rQ0tojMXrjNgAuJYD.la', 1, '', '', '', 0, 0),
+(3, 'chika', 'wongchika26@gmail.com', '$2y$10$FlFTxLUMIl2LtTSPMqzVbe/5nM1ynVQrqoOm/M9v2XXCMJto8Xlyq', 1, NULL, NULL, NULL, 0, 0),
+(4, 'cst', 'phoebe@gmail.com', '$2y$10$1s/oPYE2nNcjBTtCRXGX3.r35S.ui6dymZ4L2/Oh1gAiiwnuiqIGu', 1, NULL, NULL, NULL, 0, 0),
+(5, 'John23', 'john234@gmail.com', '2347893john', 1, 'John', 'Chan', 'Welcome to my page!', 0, 0),
+(6, 'PeterLol', 'peterrwong@gmail.com', '2n3rfpeter', 1, 'Peter', 'Wong', 'Nice to meet you all!', 0, 0),
+(7, 'Mary223', 'marychan@gmail.com', 'h3n4corona', 1, 'Mary', 'Lee', 'Let\'s reach our goals together!', 0, 0),
+(8, 'Ivan118', 'ivan1144@gmail.com', '135ivan345', 1, 'Ivan', 'Lai', 'Nice to meet you!', 0, 0),
+(9, 'AndyTsang', 'andy667t4@gmail.com', 'andyyts114', 1, 'Andy', 'Tsang', 'Keep going!', 0, 0),
+(10, 'CaptainAmerica', 'capa2020@gmail.com', 'tonystark3000', 1, 'Captain', 'America', 'Captain Cmerica is the best!', 0, 0),
+(11, 'PikachuMaster', 'ashhketchamp@gmail.com', 'iwannacatchtemall23', 1, 'Pikachu', 'Master', 'Let\'s go catch pikachu!', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -224,7 +261,17 @@ INSERT INTO `login_details` (`login_details_id`, `user_id`, `last_activity`, `is
 (21, 1, '2020-04-13 07:18:42', 'no'),
 (22, 1, '2020-04-13 07:38:45', 'no'),
 (23, 1, '2020-04-13 07:39:06', 'no'),
-(24, 1, '2020-04-13 07:41:26', 'no');
+(24, 1, '2020-04-13 17:06:38', 'no'),
+(25, 1, '2020-04-13 17:06:58', 'no'),
+(26, 4, '2020-04-13 17:07:05', 'no'),
+(27, 1, '2020-04-13 17:07:32', 'no'),
+(28, 2, '2020-04-13 17:09:25', 'no'),
+(29, 1, '2020-04-13 17:09:50', 'no'),
+(30, 2, '2020-04-13 17:10:41', 'no'),
+(31, 1, '2020-04-13 17:10:47', 'no'),
+(32, 1, '2020-04-16 07:41:13', 'no'),
+(33, 4, '2020-04-16 07:41:49', 'no'),
+(34, 1, '2020-04-18 05:22:53', 'no');
 
 -- --------------------------------------------------------
 
@@ -240,9 +287,52 @@ CREATE TABLE `pwdreset` (
   `pwdResetExpires` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `reports`
+--
+
+CREATE TABLE `reports` (
+  `report_id` int(11) NOT NULL,
+  `report_type` varchar(8) NOT NULL,
+  `goal_id` int(11) DEFAULT NULL,
+  `activity_id` int(11) DEFAULT NULL,
+  `reason` text NOT NULL,
+  `report_time` datetime NOT NULL DEFAULT current_timestamp(),
+  `resolved` tinyint(1) NOT NULL DEFAULT 0,
+  `goal_name` varchar(255) DEFAULT NULL,
+  `activity_name` varchar(256) DEFAULT NULL,
+  `deleted` tinyint(1) NOT NULL DEFAULT 0,
+  `dismissed` tinyint(1) NOT NULL DEFAULT 0,
+  `reporter` varchar(150) NOT NULL,
+  `owner` varchar(150) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `reports`
+--
+
+INSERT INTO `reports` (`report_id`, `report_type`, `goal_id`, `activity_id`, `reason`, `report_time`, `resolved`, `goal_name`, `activity_name`, `deleted`, `dismissed`, `reporter`, `owner`) VALUES
+(1, 'goal', 14, NULL, 'IDK', '2020-04-14 12:35:25', 0, 'lunch', NULL, 0, 0, 'phoebe', 'wck'),
+(2, 'goal', 17, NULL, 'I just want to delete this goal.', '2020-04-14 14:38:01', 0, '3100', '', 0, 0, 'phoebe', 'wck'),
+(3, 'activity', NULL, 4, 'xxx', '2020-04-14 15:03:42', 0, '', 'sPANISHH', 0, 0, 'wck', 'pikachu'),
+(4, 'activity', NULL, 1, 'test', '2020-04-14 15:04:48', 0, NULL, 'Golf', 0, 0, 'wck', 'pikachu'),
+(5, 'goal', 17, NULL, 'this goal is boring', '2020-04-14 12:35:25', 0, '3100', '', 0, 0, 'cst', 'wck'),
+(6, 'activity', NULL, 0, 'no reason', '2020-04-14 23:07:18', 0, NULL, 'Golf', 0, 0, 'wck', 'pikachu'),
+(7, 'activity', NULL, 5, 'This activity is boring.', '2020-04-15 21:14:51', 0, NULL, 'german', 0, 0, 'lkh', 'pikachu'),
+(8, 'activity', NULL, 6, 'I don\'t like it', '2020-04-15 21:16:07', 0, NULL, 'Hiking', 0, 0, 'lkh', 'wck'),
+(9, 'goal', 48, NULL, 'I like Marvel', '2020-04-15 21:19:21', 0, 'DC plan', NULL, 0, 0, 'lkh', 'CaptainAmerica');
+
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `activity_chat_message`
+--
+ALTER TABLE `activity_chat_message`
+  ADD PRIMARY KEY (`chat_message_id`);
 
 --
 -- Indexes for table `activity_table`
@@ -287,20 +377,32 @@ ALTER TABLE `pwdreset`
   ADD PRIMARY KEY (`pwdResetId`);
 
 --
+-- Indexes for table `reports`
+--
+ALTER TABLE `reports`
+  ADD PRIMARY KEY (`report_id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
+
+--
+-- AUTO_INCREMENT for table `activity_chat_message`
+--
+ALTER TABLE `activity_chat_message`
+  MODIFY `chat_message_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `activity_table`
 --
 ALTER TABLE `activity_table`
-  MODIFY `activity_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `activity_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `activity_users_list`
 --
 ALTER TABLE `activity_users_list`
-  MODIFY `entry_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `entry_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `chat_message`
@@ -312,7 +414,7 @@ ALTER TABLE `chat_message`
 -- AUTO_INCREMENT for table `goals`
 --
 ALTER TABLE `goals`
-  MODIFY `goal_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=72;
+  MODIFY `goal_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=73;
 
 --
 -- AUTO_INCREMENT for table `login`
@@ -324,13 +426,19 @@ ALTER TABLE `login`
 -- AUTO_INCREMENT for table `login_details`
 --
 ALTER TABLE `login_details`
-  MODIFY `login_details_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `login_details_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 
 --
 -- AUTO_INCREMENT for table `pwdreset`
 --
 ALTER TABLE `pwdreset`
   MODIFY `pwdResetId` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `reports`
+--
+ALTER TABLE `reports`
+  MODIFY `report_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
