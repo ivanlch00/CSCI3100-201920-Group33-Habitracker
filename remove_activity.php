@@ -10,7 +10,7 @@
     require 'db_key.php';
     $conn = connect_db();
 
-    $sql = "select activity_id, username, activity_name, activity_location from activity_table";
+    $sql = "select activity_id, username, activity_name, activity_location, activity_remark from activity_table";
     $result = $conn->query($sql);
 ?>
 
@@ -25,8 +25,8 @@
                         <th class="sticky-top">Activity ID</th>
                         <th class="sticky-top">Activity Host</th>
                         <th class="sticky-top">Activity Name</th>
-                        <th class="sticky-top">Description</th>
-                        <th class="sticky-top">Subtask</th>
+                        <th class="sticky-top">Location</th>
+                        <th class="sticky-top">Activity Remark</th>
                         <th class="sticky-top">Delete Activity</th>
                     </tr>
                 </thead>
@@ -38,7 +38,7 @@
             $table .= '<td class="align-middle">'.$activity['username'].'</td>';
             $table .= '<td class="align-middle">'.$activity['activity_name'].'</td>';
             $table .= '<td class="align-middle">'.$activity['activity_location'].'</td>';
-            $table .= '<td class="align-middle">'.$activity['activity_location'].'</td>';
+            $table .= '<td class="align-middle">'.$activity['activity_remark'].'</td>';
             $table .= '<td class="align-middle"><button class="deleteActivity btn btn-link" data-id="'.$activity['activity_id'].'" data-username="'.$activity['username'].'">Delete</button></td>';
             $table .= '</tr>';
         }

@@ -7,9 +7,9 @@
     ?>
 
     <main>
-    <h1>change password</h1>
+    <h1>Change password</h1>
             <form action="includes/change-password.inc.php" method="post">
-            <input type="password" name="exist-pwd" placeholder="Enter your existing password..">
+            <input type="password" name="exist-pwd" placeholder="Enter your existing password">
             <input type="password" name="new-pwd" placeholder="Enter a new password..">
             <input type="password" name="repeat-pwd" placeholder="Repeat new password">
             <button type="submit" name="change-password-submit">change password</button>

@@ -20,8 +20,28 @@
                 mysqli_stmt_bind_param($stmt, "i", $activity_id);
                 mysqli_stmt_execute($stmt);
                 
-                // delete group chat
-                
+                $sql = "delete from activity_users_list where activity_id = ?";
+                $stmt = mysqli_stmt_init($conn);
+                if (!mysqli_stmt_prepare($stmt, $sql)){
+                    header("Location: admin_index.php?error=sqlerror");
+                    exit();
+                }
+                else {
+                    // delete group chat data
+                    mysqli_stmt_bind_param($stmt, "i", $activity_id);
+                    mysqli_stmt_execute($stmt);
+                    
+                    $sql = "delete from activity_chat_message where activity_id = ?";
+                    $stmt = mysqli_stmt_init($conn);
+                    if (!mysqli_stmt_prepare($stmt, $sql)){
+                        header("Location: admin_index.php?error=sqlerror");
+                        exit();
+                    }
+                    else {
+                        mysqli_stmt_bind_param($stmt, "i", $activity_id);
+                        mysqli_stmt_execute($stmt);
+                    }
+                }
             }
         } 
     }

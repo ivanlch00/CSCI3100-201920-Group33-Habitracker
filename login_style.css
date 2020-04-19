@@ -71,3 +71,7 @@ h1{
 .loginbox a:hover{
     color: #00b3b3;
 }
+
+p.wrong{
+    color: red;
+}
