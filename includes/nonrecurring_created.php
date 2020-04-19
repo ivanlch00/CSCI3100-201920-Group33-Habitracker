@@ -1,5 +1,4 @@
 <?php
-//please delete line 28,29 later
 $successMarker = 0;
 session_start();
 if(isset($_POST['submitNonRecur'])){
@@ -10,23 +9,17 @@ if(isset($_POST['submitNonRecur'])){
   $activity_one_off_datetime=$_POST['date'];
   $activity_one_off_datetime.=" ";
 
-
+  
   $activity_name = mysqli_real_escape_string($conn, $_POST['activityName']);
   $activity_repetition = 0;
   $activity_one_off_datetime.=$time;
   $activity_time_remark = mysqli_real_escape_string($conn, $_POST['timeRemark']);
   $activity_location = mysqli_real_escape_string($conn, $_POST['Locationnumber']);
   $activity_remark = mysqli_real_escape_string($conn, $_POST['Remark']);
-  $activity_status_open =2 ;
-
-  if ($_POST['publicOption'] == "yes")  $activity_status_open = 1;
-  else $activity_status_open = 0;
+  $activity_status_open = 1;
 
   $username = $_SESSION["username"];
   $user_id = $_SESSION["user_id"];
-//for testing
-  $username = "John23";
-  $user_id = 5;
 
   if(empty($activity_name)||empty($date)||empty($time)){
     header("Location: ../activity_index_page.php?nonrecur_event_create=empty");
@@ -49,9 +42,6 @@ if(isset($_POST['submitNonRecur'])){
       }
 
 
-      if($successMarker==0)  {
-        header("Location: ../activity_index_page.php?nonrecur_event_create=failure");
-      }
 
       if($successMarker!=0){
 
@@ -68,13 +58,13 @@ if(isset($_POST['submitNonRecur'])){
         }
         //insert username into the users list table
         $sqlInsert = "INSERT INTO `activity_users_list` ( `user_id`, `activity_id`) VALUES ( '$user_id', '$activityID');";
-        echo "$sqlInsert";
-        mysqli_query($conn,$sqlInsert);
+          mysqli_query($conn,$sqlInsert);
 
 
-        header("Location: ../activity_index_page.php?nonrecur_event_create=done&id=$activityID");
+        header("Location: ../activity_view_mine.php?nonrecur_event_create=done&id=$activityID");}
+      
+      if($successMarker==0)  {header("Location: ../activity_index_page.php?nonrecur_event_create=failure");}
+}
+}
 
-      }
-
-    }
-  }
+?>
