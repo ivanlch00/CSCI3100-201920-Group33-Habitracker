@@ -1,3 +1,7 @@
+<?php
+    session_start();
+    ?>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -129,7 +133,6 @@
 </div>
 
 <?php
-session_start();
 if (!isset($_SESSION['user_id'])){
     echo '<a href="login.php">Please click here to log in if you have registered an account!</a></br>';
 } else {
@@ -139,45 +142,3 @@ if (!isset($_SESSION['user_id'])){
 }
 
 ?>
-    
-<?php
-/*<div class="loginbox">
-        <img src="img/login_avatar1.png" class="avatar">
-            <h1>Login Here</h1> */?>
-            <?php /*
-                session_start();
-                if (!isset($_SESSION['user_id'])){
-                    echo '<form action="includes/login.inc.php" method="post">
-                    <p>Username</p> 
-                    <input type="text" name ="mailuid" placeholder="Enter Username/E-mail">
-                    <p>Password</p>
-                    <input type="password" name ="pwd" placeholder="Enter Password">
-                    <button type="submit" name="login-submit">Login</button>
-                    <a href="signup.php">Signup</a></br>
-                    <a href="reset-password.php">Forgot your password?</a>
-                    </form>';
-                } else {
-                    echo '<form action="includes/logout.inc.php" method="post">
-                    <button type="submit" name="logout-submit">Logout</button></br></br>
-                    </form>';
-                }     
-    </div>*/?>
-
-
-
-<?php
-    /*session_start();
-    if (isset($_SESSION['user_id'])){
-        echo '<form action="includes/logout.inc.php" method="post">
-        <button type="submit" name="logout-submit">Logout</button></br></br>
-        </form>';
-    } else {
-        echo '<form action="includes/login.inc.php" method="post">
-        <input type="text" name ="mailuid" placeholder="Username/E-mail...">
-        <input type="password" name ="pwd" placeholder="Password...">
-        <button type="submit" name="login-submit">Login</button>
-        </form>
-        <a href="signup.php">Signup</a>';
-        }*/
-?>
-
