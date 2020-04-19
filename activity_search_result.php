@@ -66,9 +66,9 @@
             $cnt++;
         }
         if($cnt==0){
-            return FALSE;
+            echo '<td><a href = "activity_join.php?id='.$activityID.'">Click Here</a> </td>';
         }else{
-            return TRUE;
+            echo '<td>Joined</td>';
         }
     }
     
@@ -79,13 +79,25 @@
     
     require 'db_key.php';
     $conn = connect_db();
-    $sql = "Select * from activity_table";
+    $activity_keyword = $_POST['activity_keyword'];
+    $sql = "Select * from activity_table Where activity_name Like '%$activity_keyword%' and activity_status_open = '1'";
     $search_result = $conn->query($sql);
     
     ?>
 
 
-<div><h1 align=center>Activities I Joined</h1></div>
+<div><h1 align=center>Existing Activities</h1></div>
+<h3>Search by keyword</h3>
+<form action = 'activity_search_result.php' method = 'POST'>
+<label>Keyword: </label>
+<input class = 'form-control w-50' type="text" name="activity_keyword"><br><br>
+
+<div class ='text-center mt-3 w-50'>
+<button class = 'btn btn-outline-info' type = 'submit' value = 'submit' name= 'search_activity'>Search</button></br></br>
+</form>
+
+<div><h3>Search results</h3></div>
+<div><h4>Keyword: <?php echo "$activity_keyword"; ?></h4></div>
 
 <?php
     if ($search_result->num_rows >0) {
@@ -106,15 +118,13 @@
             <th>Time3</th>
             <th>Creator</th>
             <th>Details</th>
-            <th>Quit</th>
+            <th>Join</th>
+            <th>Report inappropriate</th>
         </tr>
     </thead>
 
     <tbody>
-<?php
-    while($row = $search_result->fetch_assoc()) {
-        if (checkJoined($row['activity_id'],$user_id)==TRUE) {
-    ?>
+<?php while($row = $search_result->fetch_assoc()) { ?>
 
 <tr>
 <td><?php echo $row['activity_id']; ?></td>
@@ -137,10 +147,18 @@
 
 <td><?php echo '<a href = "activity_display_details.php?id='.$row['activity_id'].'">Click Here</a>'; ?></td>
 
-<td><?php echo '<a href = "activity_quit_joined.php?id='.$row['activity_id'].'">Click Here</a>'; ?></td>
-
+<?php checkJoined($row['activity_id'],$user_id); ?>
+    
+<?php 
+    if ($row['username'] == $_SESSION['username']) {
+        echo '<td>-</td>';
+    }
+    else {
+        echo '<td><a href = "report_activity.php?id='.$row['activity_id'].'">Click Here</a></td>';
+    }
+?>
 </tr>
-<?php } } ?>
+<?php } ?>
 
 </tbody>
 </table>

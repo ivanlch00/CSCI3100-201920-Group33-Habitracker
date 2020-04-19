@@ -27,20 +27,10 @@ function deleteActivity($conn, $activity_id){
       mysqli_stmt_bind_param($stmt2, "i", $activity_id);
       mysqli_stmt_execute($stmt2);
 
-      header('Location:index.php?delete=success');
+      header('Location: activity_view_mine.php?delete=success');
 
     }
-
-
-
-
-
-
-
-
   }
-  header('Location:index.php?delete=fail');
-
 }
 
 if(isset($_GET['id'])){

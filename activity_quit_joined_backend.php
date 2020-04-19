@@ -1,7 +1,8 @@
 <?php
 
 //Contributed by Ivan
-
+    session_start();
+    $conn = mysqli_connect("localhost","root","","Habitracker");
 
 $username = $_SESSION["username"];
 $user_id = $_SESSION["user_id"];
@@ -9,7 +10,7 @@ $user_id = $_SESSION["user_id"];
 
 
 function quitActivity($conn, $activity_id,$user_id){
-  $sql1 = "delete from activity_table where activity_id = ? AND user_id = ?; ";
+  $sql1 = "delete from activity_users_list where activity_id = ? AND user_id = ?; ";
 
 
   $stmt1 = mysqli_prepare($conn,$sql1);
@@ -20,16 +21,15 @@ function quitActivity($conn, $activity_id,$user_id){
     exit();
   }
   else {
-    mysqli_stmt_bind_param($stmt1, "i", $activity_id);
+    mysqli_stmt_bind_param($stmt1, "ii", $activity_id, $user_id);
     mysqli_stmt_execute($stmt1);
 
 
-    header('Location:index.php?quit=success');
+    header('Location:activity_view_mine_joined.php?quit=success');
 
 
 
   }
-  header('Location:index.php?quit=fail');
 
 }
 
@@ -37,7 +37,7 @@ if(isset($_GET['id'])){
 
   $conn = mysqli_connect("localhost","root","","Habitracker");
 
-  deleteActivity($conn,$_GET['id'],$user_id);
+  quitActivity($conn,$_GET['id'],$user_id);
 
 
 }

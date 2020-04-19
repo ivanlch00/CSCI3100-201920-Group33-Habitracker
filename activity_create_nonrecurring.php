@@ -35,17 +35,15 @@ require 'header.php';
 </head>
 
 <body>
-  <p>You can also try an event for once and see if it suits your interest or whether you enjoy your new hobby-buddy</p>
+<div><h1>Create non-recurring activity</h1></div>
+<div><p>You can create an one-off activity now and see if the activity mode and your new hobby-buddies suit you!</p></div>
   <form action="includes/nonrecurring_created.php" method="POST">
-    <h1>Creating a single event</h1>
-    <p>Name:<input type="text" name="activityName" placeholder="Name of the activity"></p>
+    <p>Name: <input type="text" name="activityName" placeholder="Name of the activity"></p>
     <p>Select Date: <input type="text" id="datepicker" name="date" placeholder="2020-01-01"></p>
     <p>Select Time: <input type="text" id="timepicker" name="time" placeholder="00:00:00"></p>
-    <p>Date Description:<input type="text" name="timeRemark" placeholder="Time remark of the activity"></p>
-    <p>General Remark:<input type="text" name="Remark" placeholder="General remark of the activity"> </p>
 
-    <p>Select a location
-      <select name="Locationnumber" id="Locationnumber">
+    <p>Location: 
+    <select name="Locationnumber" id="Locationnumber">
         <option>Islands</option>
         <option>Kwai Tsing</option>
         <option>North</option>
@@ -65,14 +63,11 @@ require 'header.php';
         <option>Southern</option>
         <option>Wan Chai</option>
         <option>Online</option>
-        <option selected="selected">Others</option>
-      </select></p>
+    <option selected="selected">Others</option>
+    </select></p>
 
-      <p>Show to public or not?<select name="publicOption" id="publicOption">
-        <option>no</option>
-        <option selected="selected">yes</option>
-      </select></p>
-
+    <p>Remark on the date and time (Optional): <input type="text" name="timeRemark" placeholder="Time remark of the activity"></p>
+    <p>General Remark (Optional): <input type="text" name="Remark" placeholder="General remark of the activity"> </p>
 
       <button type="submit" name="submitNonRecur">Create!</button>
 

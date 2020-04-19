@@ -9,7 +9,8 @@
 <body>
 <div class = 'container'>
 <div>
-<div><h1>Welcome to the goal creation page, <?php echo $_SESSION['username'] ?>!</h1></div>
+<div><h1>Create goal</h1></div>
+<div><h3>- <?php echo $_SESSION['username']?>, keep going and create a goal now!(ง •̀_•́)ง</h3></div>
 </div>
 <form action = 'goal_backend.php' method = 'POST'>
 <div class = 'p-5 m-5'>

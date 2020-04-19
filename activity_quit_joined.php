@@ -3,11 +3,8 @@
 
 require 'header.php';
 
-
-
 $username = $_SESSION["username"];
 $user_id = $_SESSION["user_id"];
-
 
 function checkIfTheMemberIsTheCreator($activityID,$user_id){
   $cnt=0;
@@ -16,19 +13,19 @@ function checkIfTheMemberIsTheCreator($activityID,$user_id){
   if($user_id==NULL){
     header("Location: index.php?query=failed");
   }else{
-    $sql = "SELECT * FROM activity_users_list WHERE  user_id = '".$user_id." '";
+      $username = $_SESSION["username"];
+      $sql = "SELECT * FROM activity_table WHERE  username = '$username' and activity_id = '$activityID'";
   }
 
   $result = mysqli_query($conn,$sql);
-  while($row = mysqli_fetch_assoc($result)){
-    $cnt++;
-  }
-
+    while($row = mysqli_fetch_assoc($result)){
+        $cnt++;
+    }
   if($cnt==0){
     echo '<br><form action = "activity_quit_joined_backend.php" method="GET">
     <button type="submit" name="id" value='.$activityID.'>Confirm Quit </button> </form>';
   }else{
-    echo '<br>You are the creator of this event, you cannot quit this event.<br>If you plan to delete this event, please first make the event private<br>';
+    echo '<br>You are the creator of this event, you cannot quit this event.<br>If you plan to delete this event, please first make the event closed under edit activity.<br>';
   }
 
 }
@@ -107,8 +104,8 @@ if(isset($_GET['id'])){
   }
   checkIfTheMemberIsTheCreator($activityID,$user_id);
 
-  echo '<form action = "index.php">
-  <button type="submit">Go back to home page </button> </form>';
+  echo '<form action = "activity_view_mine_joined.php">
+  <br><button type="submit">Back</button> </form>';
   echo"</div>";
 
 }

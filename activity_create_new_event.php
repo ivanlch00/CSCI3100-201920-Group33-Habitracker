@@ -35,15 +35,18 @@
 </head>
 
 <body>
-  <p>Recurring is an event that happens once, twice or even more times per week. This can make you stick to an activity and form a new habit</p>
+<div><h1>Create recurring activity</h1></div>
+<div><h3>- <?php echo $_SESSION['username']?>, create a recurring activity now and meet some new hobby-buddies!(ง •̀_•́)ง</h3></div>
+  <p>A recurring activity happens once, twice or even more times per week. This can make you stick to an activity and form a new habit</p>
   <form action="includes/recurring_created.php" method="POST">
-    <h1>Choose a name for this event</h1>
-    <p>Name:<input type="text" name="activityName" placeholder="Name of the activity"></p>
+    <h3>Basic information of the activity</h3>
+    <p>Name: <input type="text" name="activityName" placeholder="Name of the activity"></p>
     <div class="widget">
 
 
-      <h1>Which weekday do you want to host this event?</h1>
-      <p>An event can only occur three times per week at max, if you want to do something on a daily basis, choose "GOAL"<p>
+      <h3>On which day(s) of the week do you want to host this activity?</h3>
+      <p>Choose the time of the activity under each day of the week that you want to host it.</p>
+      <p>An activity can only occur three times per week at max, if you want to do something on a daily basis, <a href="create_goal.php">start a goal</a>.</p>
         <ul>
           <li>Monday</li>
           <p>Select Time: <input type="text" placeholder="time not selected" name="timepicker1" id="timepicker1"></p>
@@ -66,42 +69,36 @@
           <li>Sunday</li>
           <p>Select Time: <input type="text" placeholder="time not selected" name="timepicker7" id="timepicker7"></p>
         </ul>
-        <br>
       </div>
-      <h1>Other details of this activity?</h1>
-      <p>Date Description:<input type="text" name="timeRemark" placeholder="Time remark of the activity"></p>
-      <p>General Remark:<input type="text" name="Remark" placeholder="General remark of the activity"> </p>
-
-      <p>Select a location
+      <h3>Supplementary details of this activity</h3>
+        <p>Location:
         <select name="Locationnumber" id="Locationnumber">
-          <option>Islands</option>
-          <option>Kwai Tsing</option>
-          <option>Kwai Tsing</option>
-          <option>North</option>
-          <option>Sai Kung</option>
-          <option>Sha Tin</option>
-          <option>Tai Po</option>
-          <option>Tsuen Wan</option>
-          <option>Tuen Mun</option>
-          <option>Yuen Long</option>
-          <option>Kowloon City</option>
-          <option>Kwun Tong</option>
-          <option>Sham Shui Po</option>
-          <option>Wong Tai Sin</option>
-          <option>Yau Tsim Mong</option>
-          <option>Central & Western</option>
-          <option>Eastern</option>
-          <option>Southern</option>
-          <option>Wan Chai</option>
-          <option>Online</option>
-          <option selected="selected">Others</option>
+            <option>Islands</option>
+            <option>Kwai Tsing</option>
+            <option>Kwai Tsing</option>
+            <option>North</option>
+            <option>Sai Kung</option>
+            <option>Sha Tin</option>
+            <option>Tai Po</option>
+            <option>Tsuen Wan</option>
+            <option>Tuen Mun</option>
+            <option>Yuen Long</option>
+            <option>Kowloon City</option>
+            <option>Kwun Tong</option>
+            <option>Sham Shui Po</option>
+            <option>Wong Tai Sin</option>
+            <option>Yau Tsim Mong</option>
+            <option>Central & Western</option>
+            <option>Eastern</option>
+            <option>Southern</option>
+            <option>Wan Chai</option>
+            <option>Online</option>
+        <option selected="selected">Others</option>
         </select></p>
 
-        <p>Show to public or not?<select name="publicOption" id="publicOption">
-          <option>no</option>
-          <option selected="selected">yes</option>
-        </select></p>
+      <p>Remark on the date and time (Optional): <input type="text" name="timeRemark" placeholder="Time remark of the activity"></p>
 
+      <p>General Remark (Optional): <input type="text" name="Remark" placeholder="General remark of the activity"> </p>
 
         <button type="submit" name="submitRecur">Create!</button>
 
