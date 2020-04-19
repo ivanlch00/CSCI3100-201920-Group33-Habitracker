@@ -1,11 +1,20 @@
 <?php
+
+//Contributed by Ivan
+
 require 'header.php';
-$username = $_SESSION['username'];
+
+
+$username = $_SESSION["username"];
+$user_id = $_SESSION["user_id"];
+
 function displayOneOff($data,$username){
   $conn = mysqli_connect("localhost","root","","Habitracker");
 
   if($username==NULL){
     $sql = "SELECT * FROM activity_table WHERE activity_repetition = ".$data." ";
+
+
   }else{
     $sql = "SELECT * FROM activity_table WHERE activity_repetition = ".$data." AND username = '".$username." '";
   }
@@ -118,8 +127,6 @@ function displayRecurring($data,$username){
         echo '<th><a href = "report_activity.php?id='.$id.'">Click Here</a></th>';
       }
 
-      // echo '<form action = "activity_display_joined_users.php" method="GET">
-      //         <button type="submit" name="id" value='.$id.'> Member Lists </button> </form></th>';
     }
     echo"</tr>";
   }

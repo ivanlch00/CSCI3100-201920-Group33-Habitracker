@@ -101,11 +101,13 @@
             <i class="fa fa-caret-down"></i>
         </button>
         <div class="dropdown-content">
+            <a href="activity_view_mine_joined.php">Joined activities list</a>
             <a href="activity_show_all_public_activities.php">Join exisitng activities</a>
-<a href="activity_create_nonrecurring.php">Create a new non-recurring activity</a>
-<a href="activity_create_new_event.php">Create a new recurring activity</a>
-<a href="activity_view_mine.php">View my activities</a>
-<a href="search_goal.php">Search goals</a>
+            <a href="activity_create_nonrecurring.php">Create a new non-recurring activity</a>
+            <a href="activity_create_new_event.php">Create a new recurring activity</a>
+            <a href="activity_view_mine.php">View my created activities</a>
+            <a href="activity_search.php">Search activities</a>
+            <a href="search_goal.php">Search goals</a>
         </div>
     </div>
 

@@ -1,4 +1,7 @@
 <?php
+
+//Contributed by Ivan
+
 require 'header.php';
 function getActivityNameFromActivityID($data){
   $conn = mysqli_connect("localhost","root","","Habitracker");
@@ -13,11 +16,7 @@ function getActivityNameFromActivityID($data){
 
 if(isset($_GET['id'])){
 
-  //$userName = $_SESSION['username'];
-
-  $userName = "PikachuMasterHello";
-  /* for testing purpose we use user PIKACHU id = 6*/
-
+  $userName = $_SESSION['username'];
   $activityID = $_GET['id'];
 
 

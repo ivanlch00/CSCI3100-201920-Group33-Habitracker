@@ -1,8 +1,37 @@
 <?php
 //Contributed by Ivan
 
-
 require 'header.php';
+
+
+
+$username = $_SESSION["username"];
+$user_id = $_SESSION["user_id"];
+
+
+function checkIfTheMemberIsTheCreator($activityID,$user_id){
+  $cnt=0;
+
+  $conn = mysqli_connect("localhost","root","","Habitracker");
+  if($user_id==NULL){
+    header("Location: index.php?query=failed");
+  }else{
+    $sql = "SELECT * FROM activity_users_list WHERE  user_id = '".$user_id." '";
+  }
+
+  $result = mysqli_query($conn,$sql);
+  while($row = mysqli_fetch_assoc($result)){
+    $cnt++;
+  }
+
+  if($cnt==0){
+    echo '<br><form action = "activity_quit_joined_backend.php" method="GET">
+    <button type="submit" name="id" value='.$activityID.'>Confirm Quit </button> </form>';
+  }else{
+    echo '<br>You are the creator of this event, you cannot quit this event.<br>If you plan to delete this event, please first make the event private<br>';
+  }
+
+}
 
 function getActivityNameFromActivityID($data){
   $conn = mysqli_connect("localhost","root","","Habitracker");
@@ -11,8 +40,6 @@ function getActivityNameFromActivityID($data){
   while($row = mysqli_fetch_assoc($result)){
     echo "<span>".$row['activity_name']."</span><br>";
   }
-
-
 }
 
 function getProperWeekDay($capWeekDay){
@@ -77,23 +104,12 @@ if(isset($_GET['id'])){
       echo "<div><br>Special remark about the time:  <br> ".$row['activity_time_remark'].". </div>";
 
     }
-
-
-    //echo "<span>".$row['date']."</span><br>";
-    //printing all users in this event
   }
-
-  echo '<br><form action = "activity_display_joined_users.php" method="GET">
-  <button type="submit" name="id" value='.$activityID.'>Members of this event </button> </form>';
-
-  echo '<form action = "activity_join.php" method="GET">
-  <button type="submit" name="id" value='.$activityID.'>Join this event </button> </form>';
+  checkIfTheMemberIsTheCreator($activityID,$user_id);
 
   echo '<form action = "index.php">
   <button type="submit">Go back to home page </button> </form>';
-
   echo"</div>";
-
 
 }
 ?>
