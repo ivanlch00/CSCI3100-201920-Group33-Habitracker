@@ -1,5 +1,4 @@
 <?php
-
 require 'header.php';
 function getActivityNameFromActivityID($data){
   $conn = mysqli_connect("localhost","root","","Habitracker");
@@ -9,24 +8,6 @@ function getActivityNameFromActivityID($data){
     echo "<span>".$row['activity_name']."</span><br>";
   }
 
-//Contributed by Ivan
-
-
-require 'header.php';
-function getActivityNameFromActivityID($data){
-  $conn = mysqli_connect("localhost","root","","Habitracker");
-  $sql = "SELECT * FROM activity_table WHERE activity_id = ".$data." ";
-  $result = mysqli_query($conn,$sql);
-  while($row = mysqli_fetch_assoc($result)){
-    echo "<span>".$row['activity_name']."</span><br>";
-  }
-
-
-}
-
-if(isset($_GET['id'])){
-
-  $userName = $_SESSION['username'];
 
 }
 
@@ -36,7 +17,6 @@ if(isset($_GET['id'])){
 
   $userName = "PikachuMasterHello";
   /* for testing purpose we use user PIKACHU id = 6*/
-
 
   $activityID = $_GET['id'];
 
