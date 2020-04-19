@@ -1,7 +1,12 @@
 <?php
+
 //Contributed by Ivan
 
 session_start();
+
+
+//session_start();
+
 if(isset($_POST['submitEdit'])){
 
   $conn = mysqli_connect("localhost","root","","Habitracker");
@@ -14,6 +19,12 @@ if(isset($_POST['submitEdit'])){
   if ($_POST['publicOption'] == "yes")  $activity_status_open = 1;
   else $activity_status_open = 0;
   $activityID = mysqli_real_escape_string($conn, $_POST['activityID']);
+
+  // echo "<div>The ".$activityID."</div>";
+  // echo "<div>The ".$activity_name."</div>";
+  // echo "<div>The ".$activity_time_remark."</div>";
+  // echo "<div>The ".$activity_status_open."</div>";
+
 
 
 

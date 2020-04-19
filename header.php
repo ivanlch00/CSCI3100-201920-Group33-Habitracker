@@ -116,6 +116,7 @@ body {
     <a href="groupchat_index.php">Group chat</a>
 
     <div class="dropdown">
+
       <button class="dropbtn">My account
         <i class="fa fa-caret-down"></i>
       </button>
@@ -124,6 +125,16 @@ body {
         <a href="user_setting.php">Settings</a>
         <a href="change-password.php">Change password</a>
       </div>
+
+        <button class="dropbtn">My account
+            <i class="fa fa-caret-down"></i>
+        </button>
+        <div class="dropdown-content">
+            <a href="profile_display.php">My profile</a>
+            <a href="user_setting.php">Settings</a>
+            <a href="change-password.php">Change password</a>
+        </div>
+
     </div>
 
   </div>

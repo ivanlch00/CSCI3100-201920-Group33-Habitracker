@@ -1,5 +1,7 @@
 <?php
+
 //Contributed by Ivan
+
 
 require 'header.php';
 
@@ -135,8 +137,13 @@ if(isset($_GET['id'])){
   echo'
 
 
+
   <br><form action = "activity_delete.php" method="GET">
   <button type="submit" name="id" value='.$activityID.'>Delete this event</button> </form>';
+
+        <br><form action = "activity_delete.php" method="GET">
+        <button type="submit" name="id" value='.$activityID.'>Delete this event</button> </form>';
+
 
 
 
