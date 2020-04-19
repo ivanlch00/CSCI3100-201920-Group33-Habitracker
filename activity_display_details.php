@@ -1,4 +1,6 @@
 <?php
+//Contributed by Ivan
+
 
 require 'header.php';
 
@@ -87,8 +89,8 @@ if(isset($_GET['id'])){
   echo '<form action = "activity_join.php" method="GET">
   <button type="submit" name="id" value='.$activityID.'>Join this event </button> </form>';
 
-  echo '<form action = "activity_index_page.php">
-  <button type="submit">Go back to activity page </button> </form>';
+  echo '<form action = "index.php">
+  <button type="submit">Go back to home page </button> </form>';
 
   echo"</div>";
 

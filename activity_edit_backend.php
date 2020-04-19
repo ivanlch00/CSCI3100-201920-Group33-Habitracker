@@ -1,6 +1,12 @@
 <?php
 
+//Contributed by Ivan
+
+session_start();
+
+
 //session_start();
+
 if(isset($_POST['submitEdit'])){
 
   $conn = mysqli_connect("localhost","root","","Habitracker");
