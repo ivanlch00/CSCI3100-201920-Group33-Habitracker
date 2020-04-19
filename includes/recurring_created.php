@@ -1,6 +1,7 @@
 <?php
-    $successMarker = 0;
-    session_start();
+//please delete line 74 75 later
+$successMarker = 0;
+session_start();
 $conn = mysqli_connect("localhost","root","","Habitracker");
 
 
@@ -54,10 +55,6 @@ if(isset($_POST['submitRecur'])){
   }
 
 
-
-
-
-
   $activity_name = mysqli_real_escape_string($conn, $_POST['activityName']);
   $activity_time_remark = mysqli_real_escape_string($conn, $_POST['timeRemark']);
   $activity_location = mysqli_real_escape_string($conn, $_POST['Locationnumber']);
@@ -69,7 +66,10 @@ if(isset($_POST['submitRecur'])){
 
   $username = $_SESSION["username"];
   $user_id = $_SESSION["user_id"];
-    
+  //for testing
+  $username = "John23";
+  $user_id = 5;
+
   if(empty($activity_name)){
     header("Location: ../activity_index_page.php?recur_event_create=emptyname");
   }else{
@@ -111,36 +111,23 @@ if(isset($_POST['submitRecur'])){
           while($row = mysqli_fetch_assoc($result))  {
 
             if( $row['activity_name'] == $activity_name && $row['username'] == $username)
-                $activityID= $row['activity_id'];
-            }
-      //insert username into the users list table
-          $sqlInsert = "INSERT INTO `activity_users_list` ( `username`, `activity_id`) VALUES ( '".$username."', '".$activityID."');";
+            $activityID= $row['activity_id'];
+          }
+          //insert username into the users list table
+          $sqlInsert = "INSERT INTO `activity_users_list` ( `user_id`, `activity_id`) VALUES ( '$user_id', '$activityID');";
+          echo "$sqlInsert";
           mysqli_query($conn,$sqlInsert);
 
 
           header("Location: ../activity_index_page.php?recur_event_create=done&id=$activityID");
         }
-      if($successMarker==0)  {header("Location: ../activity_index_page.php?recur_event_create=failure");}
+        if($successMarker==0)  {header("Location: ../activity_index_page.php?recur_event_create=failure");}
 
 
       }
 
 
+    }
+
+
   }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-}
