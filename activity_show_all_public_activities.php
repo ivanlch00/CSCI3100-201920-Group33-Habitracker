@@ -1,8 +1,10 @@
 <?php
-    require 'header.php';
-    $user_id = $_SESSION['user_id'];
-    $username = $_SESSION['username'];
+    require "header.php";
 ?>
+
+<html>
+    <head>
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 
 <style>
     .content-table {
@@ -45,9 +47,84 @@
         border-bottom: 3px solid #006f98;
     }
 
+    .search_box
+{
+    position: relative;
+    top: 30%;
+    left: 18%;
+    transform: translate(-50%, -70%);
+    background-color: white;
+    height: 15px;
+    border-radius: 40px;
+    border: 2px solid #668cff;
+    border-width: 2px;
+    padding: 10px;
+    width: 150px;
+}
+
+.input_box
+{
+    border: none;
+    outline: none;
+    background: none;
+    float: left;
+    padding: 0;
+    color: #2f3640;
+    font-size: 16px;
+    line-height: 20px;
+    width: 240px;
+}
+
+.btn
+{
+    position: relative;
+    color: #1abc9c;
+    text-decoration: none;
+    width: 40px;
+    height: 40px;
+    line-height: 20px;
+    text-align: center;
+    border-radius: 50%;
+    top: 0%;
+    left: 86%;
+    transform: translate(-15%, -125%);
+}
+
+.search_box button[type="submit"]{
+    border: none;
+    outline: none;
+    height: 38px;
+    width: 38px;
+    background: #668cff;
+    color: #fff;
+    font-size: 14px;
+    border-radius: 20px;
+ 
+}
+
+.search_box button[type="submit"]:hover{
+    cursor:pointer;
+    background: white;
+    color: #000;
+    border: 2px solid #668cff;
+}
+
+.search-word  
+{
+    position: relative;
+    left: 7%;
+}
+
 </style>
+</head>
+
 
 <body>
+
+<?php
+    $user_id = $_SESSION['user_id'];
+    $username = $_SESSION['username'];
+?>
 
 <?php
     
@@ -86,13 +163,18 @@
 
 
 <div><h1 align=center>Existing Activities</h1></div>
-<h3>Search by keyword</h3>
-<form action = 'activity_search_result.php' method = 'POST'>
-<label>Keyword: </label>
-<input class = 'form-control w-50' type="text" name="activity_keyword"><br><br>
+<div class="search-word">
+    <h3>Search by keyword</h3>
+    <form action = 'activity_search_result.php' method = 'POST'>
+    <label>Keyword: </label>
+</div>
 
-<div class ='text-center mt-3 w-50'>
-<button class = 'btn btn-outline-info' type = 'submit' value = 'submit' name= 'search_activity'>Search</button></br></br>
+<div class="search_box">
+    <input class = "input_box" type="text" name="activity_keyword"><br><br>
+    <button class = "btn" type = 'submit' value = 'submit' name= 'search_activity'><i class="fa fa-search"></i>
+    </button></br></br>
+</div>
+
 </form>
 
 <?php

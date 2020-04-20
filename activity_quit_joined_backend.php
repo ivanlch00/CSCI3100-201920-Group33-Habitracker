@@ -25,7 +25,7 @@ function quitActivity($conn, $activity_id,$user_id){
     mysqli_stmt_execute($stmt1);
 
 
-    header('Location:activity_view_mine_joined.php?quit=success');
+    header('Location:activity_view_mine.php?quit=success');
 
 
 

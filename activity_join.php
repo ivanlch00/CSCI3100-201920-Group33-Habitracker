@@ -39,10 +39,10 @@ if(isset($_GET['id'])){
   if($alreadyJoined==0){//when equals to zero, the user HAS NOT joined the event
     $sqlInsert = "INSERT INTO `activity_users_list` ( `user_id`, `activity_id`) VALUES ( '$user_id', '$activityID');";
     $result = mysqli_query($conn,$sqlInsert);
-    header("Location:activity_view_mine_joined.php?join=success");
+    header("Location:activity_view_mine.php?join=success");
   }else{
     echo "You have already joined this event";
-    header("Location:activity_view_mine_joined.php?join=fail");
+    header("Location:activity_view_mine.php?join=fail");
 
 
   }

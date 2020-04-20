@@ -14,6 +14,20 @@
 </head>
 
 <body>
+
+<div class="bubbles">
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+    </div>
+    
 <img src="img/logo.png" alt="Habitracker" height="50">
 <div class="loginbox">
 <h1>Create your new password</h1>

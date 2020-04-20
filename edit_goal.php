@@ -1,5 +1,16 @@
 <?php
     require 'header.php';
+?>
+<html>
+<head>
+    <title>Edit goal</title>
+    <link rel="stylesheet" href="edit_goal.css">
+
+</head>
+
+<body>
+
+<?php
     if( !isset( $_SESSION['username']) ){
         echo "You are not authorized to view this page. Go back <a href= '/'>home</a>";
         exit();
@@ -14,11 +25,11 @@
         $_SESSION['goal_id'] = $goal_id;
         ?>
 
-<body>
+<div class="loginbox">
+
 <div><h1>Edit goal</h1></div>
 <form action = 'goal_backend.php' method = 'POST'>
-<div class = 'p-5 m-5'>
-<div class="form-group">
+
 <label>Goal name:</label>
 <input class = 'form-control w-50' type="text" value="<?php echo $row['goal_name']; ?>" name="goal_name" required><br><br>
 
@@ -30,9 +41,9 @@
 
 <label>Number of days left:</label>
 <input type="number" name="duration" min="0" value="<?php echo ceil((strtotime($row['goal_enddate'])-time())/60/60/24)?>">
-<label>day(s) (Current end date: <?php echo $row['goal_enddate']; ?>, <?php echo ceil((strtotime($row['goal_enddate'])-time())/60/60/24)?> days from today)<br><br>
+<label>day(s) <br /> (Current end date: <?php echo $row['goal_enddate']; ?>, <?php echo ceil((strtotime($row['goal_enddate'])-time())/60/60/24)?> days from today)<br><br>
 
-<label>Time (Optional) (Please input the time in the form of hh:mm):</label>
+<label>Time (Optional) (Please input the time in the form of hh:mm):<br /></label>
 <input type="number" <?php if ($row['goal_starttime'] != NULL) {?> value= <?php echo date("H", strtotime($row['goal_starttime'])); }?> name="goal_starttime_hh" min="0" max="23">
 <label>:</label>
 <input type="number" <?php if ($row['goal_starttime'] != NULL) {?> value= <?php echo date("i", strtotime($row['goal_starttime'])); }?> name="goal_starttime_mm" min="0" max="59">
@@ -44,12 +55,9 @@
 <input type="checkbox" name="goal_public" <? echo ($row['goal_public']? "checked":""); ?>>
 <label for="goal_public">Allow other users to view this goal</label><br><br>
 
-<div class ='text-center mt-3 w-50'>
+
 <button class = 'btn btn-outline-info' type = 'submit' value = 'submit' name= 'edit_goal'>Submit</button>
 
-</div>
-</div>
-</div>
 </form>
 </div>
 </body>

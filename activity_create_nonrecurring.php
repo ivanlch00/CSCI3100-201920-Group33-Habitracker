@@ -14,7 +14,7 @@ require 'header.php';
   <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.css">
   <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-
+  <link rel="stylesheet" href="activity_create_nonrecurring.css">
 
 
 
@@ -35,12 +35,14 @@ require 'header.php';
 </head>
 
 <body>
+<div class="loginbox">
+
 <div><h1>Create non-recurring activity</h1></div>
-<div><p>You can create an one-off activity now and see if the activity mode and your new hobby-buddies suit you!</p></div>
+<div><p>You can create an one-off activity now and see if the activity mode and your new hobby-buddies suit you!</p><br /></div>
   <form action="includes/nonrecurring_created.php" method="POST">
     <p>Name: <input type="text" name="activityName" placeholder="Name of the activity"></p>
     <p>Select Date: <input type="text" id="datepicker" name="date" placeholder="2020-01-01"></p>
-    <p>Select Time: <input type="text" id="timepicker" name="time" placeholder="00:00:00"></p>
+    <div class="time"><p>Select Time: <input type="text" id="timepicker" name="time" placeholder="00:00:00"></p></div>
 
     <p>Location: 
     <select name="Locationnumber" id="Locationnumber">
@@ -66,12 +68,13 @@ require 'header.php';
     <option selected="selected">Others</option>
     </select></p>
 
-    <p>Remark on the date and time (Optional): <input type="text" name="timeRemark" placeholder="Time remark of the activity"></p>
+    <p><br/>Remark on the date and time (Optional): <input type="text" name="timeRemark" placeholder="Time remark of the activity"></p>
     <p>General Remark (Optional): <input type="text" name="Remark" placeholder="General remark of the activity"> </p>
 
       <button type="submit" name="submitNonRecur">Create!</button>
 
     </form>
+    </div>
 
     <script src="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
 

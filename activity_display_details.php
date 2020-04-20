@@ -1,99 +1,126 @@
 <?php
-//Contributed by Ivan
+    //Contributed by Ivan
+    require 'header.php';
+    $username = $_SESSION['username'];
+    $user_id = $_SESSION['user_id'];
+    ?>
 
+<html>
+<head>
+<title>edit activity</title>
+<link rel="stylesheet" href="activity_display_details.css">
 
-require 'header.php';
+</head>
 
-function getActivityNameFromActivityID($data){
-  $conn = mysqli_connect("localhost","root","","Habitracker");
-  $sql = "SELECT * FROM activity_table WHERE activity_id = ".$data." ";
-  $result = mysqli_query($conn,$sql);
-  while($row = mysqli_fetch_assoc($result)){
-    echo "<span>".$row['activity_name']."</span><br>";
-  }
+<body>
 
+<div class="loginbox">
 
-}
+<?php
+    function getProperWeekDay($capWeekDay){
+        if ($capWeekDay=="MON")return "Monday";
+        elseif ($capWeekDay=="TUE")return "Tuesday";
+        elseif ($capWeekDay=="WED")return "Wednesday";
+        elseif ($capWeekDay=="THU")return "Thursday";
+        elseif ($capWeekDay=="FRI")return "Friday";
+        elseif ($capWeekDay=="SAT")return "Saturday";
+        elseif ($capWeekDay=="SUN")return "Sunday";
+    }
+    
+    $publicMarker  = -1;
+    $activityID = -1;
+    
+    
+    if(isset($_GET['id'])){
+        
+        echo '<div><h1>Activity details</h1></div>';
+        
+        $activityID = $_GET['id'];
+        
+        $conn = mysqli_connect("localhost","root","","Habitracker");
+        $sql = "SELECT * FROM activity_table WHERE activity_id = ".$activityID." ";
+        $result = mysqli_query($conn,$sql);
+        
+        while($row = mysqli_fetch_assoc($result)){
+            
+    ?>
 
-function getProperWeekDay($capWeekDay){
-  if ($capWeekDay=="MON")return "Monday";
-  elseif ($capWeekDay=="TUE")return "Tuesday";
-  elseif ($capWeekDay=="WED")return "Wednesday";
-  elseif ($capWeekDay=="THU")return "Thursday";
-  elseif ($capWeekDay=="FRI")return "Friday";
-  elseif ($capWeekDay=="SAT")return "Saturday";
-  elseif ($capWeekDay=="SUN")return "Sunday";
-}
+<p>Activity ID: <?php echo $row['activity_id'];?></p>
 
-if(isset($_GET['id'])){
+<br><p>Name: <?php echo $row['activity_name'];?></p>
 
-  $activityID = $_GET['id'];
-  getActivityNameFromActivityID($activityID);
-  echo "<br><div>Details: </div>";
-  $conn = mysqli_connect("localhost","root","","Habitracker");
-  $sql = "SELECT * FROM activity_table WHERE activity_id = ".$activityID." ";
-  $result = mysqli_query($conn,$sql);
-
-  while($row = mysqli_fetch_assoc($result)){
+<?php
     if(!empty($row['activity_one_off_datetime'])){
-      $date= $row['activity_one_off_datetime'];
-      echo "<div>The activity will be held on ".$date.". </div>";
+        $date= $row['activity_one_off_datetime'];
+        echo "<div></br>Date and time: ".$date."</div>";
+        //echo "<div><label for='date'>Activity Date:</label> <input type='text' id='date' value='.$date.'> </div>";
     }
     if($row['activity_repetition']==1){
-
-      echo "<div>The activity will be held once a week on ".
-      getProperWeekDay($row['activity_recurring_date_0']).
-      " at ".$row['activity_recurring_time_0'].". </div>";
+        
+        echo "<div><br>The activity will be held once a week on ".
+        getProperWeekDay($row['activity_recurring_date_0']).
+        " at ".$row['activity_recurring_time_0'].". </div>";
     }
     if($row['activity_repetition']==2){
-
-      echo "<div>The activity will be held twice a week on ".
-      getProperWeekDay($row['activity_recurring_date_0']).
-      " at ".$row['activity_recurring_time_0']." and ".
-      getProperWeekDay($row['activity_recurring_date_1']).
-      " at ".$row['activity_recurring_time_1'].". ".
-
-      " </div>";
+        
+        echo "<div><br>The activity will be held twice a week on ".
+        getProperWeekDay($row['activity_recurring_date_0']).
+        " at ".$row['activity_recurring_time_0']." and ".
+        getProperWeekDay($row['activity_recurring_date_1']).
+        " at ".$row['activity_recurring_time_1'].". ".
+        
+        " </div>";
     }
     if($row['activity_repetition']==3){
-
-      echo "<div>The activity will be held three times a week on ".
-      getProperWeekDay($row['activity_recurring_date_0']).
-      " at ".$row['activity_recurring_time_0']." , ".
-      getProperWeekDay($row['activity_recurring_date_1']).
-      " at ".$row['activity_recurring_time_1']." and ".
-      getProperWeekDay($row['activity_recurring_date_2']).
-      " at ".$row['activity_recurring_time_2'].". ".
-      " </div>";
+        
+        echo "<div><br>The activity will be held three times a week on ".
+        getProperWeekDay($row['activity_recurring_date_0']).
+        " at ".$row['activity_recurring_time_0']." , ".
+        getProperWeekDay($row['activity_recurring_date_1']).
+        " at ".$row['activity_recurring_time_1']." and ".
+        getProperWeekDay($row['activity_recurring_date_2']).
+        " at ".$row['activity_recurring_time_2'].". ".
+        " </div>";
     }
-    echo "<div>The location of this event is '".$row['activity_location']."'. </div>";
+    echo "<div></br>Location: ".$row['activity_location']."</div>";
+    ?>
 
-    if(!empty($row['activity_remark'])){
-      echo "<div><br>The description of this event is as follow: <br> ".$row['activity_remark'].". </div>";
+<br><p>Remark on the date and time: <?php echo ($row['activity_time_remark']==''? "-" : $row['activity_time_remark']); ?></p>
 
+<br><p>General remark: <?php echo ($row['activity_remark']==''? "-" : $row['activity_remark']); ?></p>
+
+<br><p>Created by: <?php echo ($row['username']==$username? $row['username'] : '<a href="profile_view_others.php?username='.$row['username'].'">'.$row['username'].'</a>');?></p>
+
+<br><p>List of users in the activity: </p>
+
+<?php
+    $sql_2 = "SELECT * FROM activity_users_list WHERE activity_id = ".$row['activity_id']." ";
+    $result_2 = mysqli_query($conn,$sql_2);
+    if ($result_2->num_rows > 0) {
+        echo '<ul>';
+        while($row_2 = mysqli_fetch_assoc($result_2)){
+            if ($row_2['user_id'] != $_SESSION['user_id']) {
+                $sql_3 = "SELECT * FROM login WHERE user_id = ".$row_2['user_id']." ";
+                $result_3 = mysqli_query($conn,$sql_3);
+                $row_3 = mysqli_fetch_assoc($result_3);
+                echo '<li><a href="profile_view_others.php?username='.$row_3['username'].'">'.$row_3['username'].'</a>';
+            } else { echo '<li><p>'.$username.'</p>';}
+        }
+        echo '</ul>';
+    } else {echo '<p>-</p>';};
+    ?>
+
+<br><form action = "activity_show_all_public_activities.php">
+<button type="submit">View all activities</button> </form>
+
+<form action = "activity_view_mine.php">
+<button type="submit">View my activities</button> </form>
+
+</div>
+
+<?php
+    echo"</div>";
+    
     }
-
-    if(!empty($row['activity_time_remark'])){
-      echo "<div><br>Special remark about the time:  <br> ".$row['activity_time_remark'].". </div>";
-
     }
-
-
-    //echo "<span>".$row['date']."</span><br>";
-    //printing all users in this event
-  }
-
-  echo '<br><form action = "activity_display_joined_users.php" method="GET">
-  <button type="submit" name="id" value='.$activityID.'>Members of this event </button> </form>';
-
-  echo '<form action = "activity_join.php" method="GET">
-  <button type="submit" name="id" value='.$activityID.'>Join this event </button> </form>';
-
-  echo '<form action = "index.php">
-  <button type="submit">Go back to home page </button> </form>';
-
-  echo"</div>";
-
-
-}
-?>
+    ?>

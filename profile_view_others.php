@@ -11,7 +11,7 @@
 <body>
 
 <?php
-    $username = $_SESSION['username'];
+    $username = $_GET['username'];
    
     if( !isset( $_SESSION['username']) ){
 
@@ -41,7 +41,6 @@
         </div>
         <div class="main-container">
             <h3><?php echo "Username: ".$row['username']; ?></h3>
-            <p><i class="fa fa-envelope info"></i><?php echo "Email: ".$row['email'];?></p>
 
             <p><i class="fa fa-star info"></i><?php
                 if (isset($row['first_name'])){
@@ -64,10 +63,7 @@
                 }
                     else 
                         echo "Welcoming message: ";?></p>
-            <hr>
-            <form action="profile_edit.php" method="post"> 
-            <button class="edit_profile" type="submit" name="edit-profile-submit">Edit your profile</button>
-            </form>
+
             <?php
 
             if (isset($_GET['profile'])){    //use $_GET to check the url

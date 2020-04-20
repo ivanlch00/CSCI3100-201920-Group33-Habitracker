@@ -1,21 +1,52 @@
 <style>
+        ul {
+            display:inline-block;
+            vertical-align: top;
+        }
+
         body {
             background-image: url('img/background.jpg');
             font-family: Arial, Helvetica, sans-serif;
         }
     </style>
 
-    <body>
-    <img src="img/logo.png" alt="Habitracker" height="50">
+<body>
+<img src="img/logo.png" alt="Habitracker" height="50">
 
-    <ul>
-    <li><a href="index.php">Home</a></li>
-    <li><a href="search_goal.php">Search goals</a></li>
-    <li><a href="create_goal.php">Create goal</a></li>
-    <li><a href="mygoals.php">View my goals</a></li>
-    <li><a href="chatindex.php">Chat</a></li>
-    <li><a href="change-password.php">Change password</a></li>
-    </ul>
+<br>
+
+<ul>
+<li><a href="index.php">Home</a></li>
+</ul>
+
+<ul>
+<li><a href="user_leaderboard.php">Leaderboard</a></li>
+<li><a href="search_goal.php">Search goals</a></li>
+<li><a href="create_goal.php">Create goal</a></li>
+<li><a href="mygoals.php">View my goals</a></li>
+<li><a href="goal_progress_today.php">My progress today</a></li>
+</ul>
+
+<ul>
+<li><a href="activity_show_all_public_activities.php">Search activities</a>
+<li><a href="activity_create_nonrecurring.php">Create non-recurring activity</a>
+<li><a href="activity_create_new_event.php">Create recurring activity</a>
+<li><a href="activity_view_mine.php">View my activities</a></li>
+</ul>
+
+<ul>
+<li><a href="chatindex.php">Chat</a></li>
+</ul>
+
+<ul>
+<li><a href="groupchat_index.php">Group chat</a></li>
+</ul>
+
+<ul>
+<li><a href="profile_display.php">My profile</a></li>
+<li><a href="user_setting.php">Settings</a></li>
+<li><a href="change-password.php">Change password</a></li>
+</ul>
 
 <?php
     session_start();

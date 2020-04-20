@@ -10,9 +10,13 @@
     if ($search_result->num_rows >0) {
         while($row = $search_result->fetch_assoc()) {
             $streak = $row['streak'];
+            $goal_id = $row['goal_id'];
             if ($row['goal_completed'] == 1) {
-                $goal_id = $row['goal_id'];
                 $streak = $streak + 1;
+                $sql = "Update goals set streak = '$streak' where goal_id = '$goal_id'";
+                $sql = $conn->query($sql);
+            } else if ($row['goal_completed'] == 0) {
+                $streak = 0;
                 $sql = "Update goals set streak = '$streak' where goal_id = '$goal_id'";
                 $sql = $conn->query($sql);
             }

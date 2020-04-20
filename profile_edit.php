@@ -1,11 +1,11 @@
 <?php
     require 'header.php';
-    ?>
+?>
 
 <html>
 <head>
-<title>Profile Card design</title>
-<link rel="stylesheet" href="profile_display.css">
+<title>Edit your profile</title>
+<link rel="stylesheet" href="profile_edit.css">
 <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 </head>
 <body>
@@ -32,7 +32,10 @@
 ?>
 
 
-    <div class="profile-card">
+    
+
+        <div class="loginbox">
+
         <div class="image-container">
 
     <?php
@@ -46,17 +49,18 @@
     
     echo "<form action='profile_upload_img.php' method='POST' enctype='multipart/form-data'>
     <input type='file' name='file'>
-    <button type='submit' name='submit'>UPLOAD</button>
+    <button type='submit1' name='submit'>UPLOAD</button>
     </form>";
 
     ?>
-        </div>
-        <div class="main-container">
+    </div>
+     
             <form action="includes/profile_edit.inc.php" method="post"> 
             <div class="edit-display">
             <tr>
-                <td><?php echo "Username: ".$row['username']; ?></br></td> <!-- change to username -->
-                <td><?php echo "Email: ".$row['email']; ?></br></td>  <!-- change to email -->             
+                </br>
+                <td><?php echo "Username: ".$row['username']; ?></br></br></td> <!-- change to username -->
+                <td><?php echo "Email: ".$row['email']; ?></br></br></td>  <!-- change to email -->             
             </tr>
             
             <label>First name:</label>
@@ -82,8 +86,6 @@
             </div>
             </form>
         </div>
-    </div>
-
 <?php
 }
     /*else {
@@ -93,4 +95,3 @@
     */
 ?>
 </body>
-    

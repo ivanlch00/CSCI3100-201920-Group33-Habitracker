@@ -18,6 +18,20 @@
     </head>
 
     <body>
+
+        <div class="bubbles">
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+        </div>
+
         <img src="img/logo.png" alt="Habitracker" height="50">
         <div class="loginbox">
             <img src="img/login_avatar1.png" class="avatar">

@@ -2,6 +2,32 @@
     require 'header.php';
     $user_id = $_SESSION['user_id'];
     $username = $_SESSION['username'];
+    
+    if (isset($_GET['nonrecur_event_create'])){
+        echo '<p>Non-recurring activity created.</p>';
+    };
+    
+    if (isset($_GET['recur_event_create'])){
+        echo '<p>Recurring activity created.</p>';
+    };
+    
+    if (isset($_GET['edit'])){
+        echo '<p>Activity updated.</p>';
+    };
+    
+    if (isset($_GET['delete'])){
+        echo '<p>Activity deleted.</p>';
+    };
+    
+    if (isset($_GET['join'])){
+        if ($_GET['join']=='success') {
+            echo '<p>Activity joined.</p>';}
+    };
+    
+    if (isset($_GET['quit'])){
+        if ($_GET['quit']=='success') {
+            echo '<p>Activity quited.</p>';}
+    };
 ?>
 
 <style>
@@ -66,9 +92,9 @@
             $cnt++;
         }
         if($cnt==0){
-            echo '<td><a href = "activity_join.php?id='.$activityID.'">Click Here</a> </td>';
+            return FALSE;
         }else{
-            echo '<td>Joined</td>';
+            return TRUE;
         }
     }
     
@@ -79,13 +105,13 @@
     
     require 'db_key.php';
     $conn = connect_db();
-    $sql = "Select * from activity_table Where username = '$username'";
+    $sql = "Select * from activity_table";
     $search_result = $conn->query($sql);
     
     ?>
 
 
-<div><h1 align=center>Activities I Created</h1></div>
+<div><h1 align=center>My Activities List</h1></div>
 
 <?php
     if ($search_result->num_rows >0) {
@@ -104,13 +130,18 @@
             <th>Time2</th>
             <th>Day3</th>
             <th>Time3</th>
+            <th>Creator</th>
             <th>Details</th>
             <th>Edit</th>
+            <th>Quit</th>
         </tr>
     </thead>
 
     <tbody>
-<?php while($row = $search_result->fetch_assoc()) { ?>
+<?php
+    while($row = $search_result->fetch_assoc()) {
+        if (checkJoined($row['activity_id'],$user_id)==TRUE) {
+    ?>
 
 <tr>
 <td><?php echo $row['activity_id']; ?></td>
@@ -129,12 +160,16 @@
 <td><?php echo ($row['activity_repetition']==0? "-" : ($row['activity_repetition']<3? "-" : $row['activity_recurring_date_2'])); ?></td>
 <td><?php echo ($row['activity_repetition']==0? "-" : ($row['activity_repetition']<3? "-" : date('H:i', strtotime($row['activity_recurring_time_2'])))); ?></td>
 
+<td><?php echo ($row['username']==$username? $row['username'] : '<a href="profile_view_others.php?username='.$row['username'].'">'.$row['username'].'</a>'); ?></td>
+
 <td><?php echo '<a href = "activity_display_details.php?id='.$row['activity_id'].'">Click Here</a>'; ?></td>
 
-<td><?php echo '<a href = "activity_edit.php?id='.$row['activity_id'].'">Click Here </a>'; ?></td>
+<td><?php echo ($row['username']!=$username? "-" : '<a href = "activity_edit.php?id='.$row['activity_id'].'">Click Here </a>'); ?></td>
+
+<td><?php echo ($row['username']==$username? "-" : '<a href = "activity_quit_joined.php?id='.$row['activity_id'].'">Click Here</a>'); ?></td>
 
 </tr>
-<?php } ?>
+<?php } } ?>
 
 </tbody>
 </table>
