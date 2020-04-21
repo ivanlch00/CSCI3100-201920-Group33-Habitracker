@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Apr 21, 2020 at 04:40 PM
+-- Generation Time: Apr 21, 2020 at 04:42 PM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.3
 
@@ -151,41 +151,6 @@ INSERT INTO `chat_message` (`chat_message_id`, `to_user_id`, `from_user_id`, `ch
 (10, 7, 2, 'Good I need someone to motivate me', '2020-04-13 08:27:46', 0),
 (11, 2, 7, 'I will be on Zoom!', '2020-04-13 08:27:46', 0),
 (12, 2, 1, 'hello', '2020-04-19 16:40:02', 1);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `employee`
---
-
-CREATE TABLE `employee` (
-  `id` int(11) NOT NULL COMMENT 'primary key',
-  `employee_name` varchar(255) NOT NULL COMMENT 'employee name',
-  `employee_salary` double NOT NULL COMMENT 'employee salary',
-  `employee_age` int(11) NOT NULL COMMENT 'employee age'
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COMMENT='datatable demo table';
-
---
--- Dumping data for table `employee`
---
-
-INSERT INTO `employee` (`id`, `employee_name`, `employee_salary`, `employee_age`) VALUES
-(1, 'Tiger Nixon', 320800, 61),
-(2, 'Garrett Winters', 170750, 63),
-(3, 'Ashton Cox', 86000, 66),
-(4, 'Cedric Kelly', 433060, 22),
-(5, 'Airi Satou', 162700, 33),
-(6, 'Brielle Williamson', 372000, 61),
-(7, 'Herrod Chandler', 137500, 59),
-(8, 'Rhona Davidson', 327900, 55),
-(9, 'Colleen Hurst', 205500, 39),
-(10, 'Sonya Frost', 103600, 23),
-(11, 'Jena Gaines', 90560, 30),
-(12, 'Quinn Flynn', 342000, 22),
-(13, 'Charde Marshall', 470600, 36),
-(14, 'Haley Kennedy', 313500, 43),
-(15, 'Tatyana Fitzpatrick', 385750, 19),
-(16, 'Michael Silva', 198500, 66);
 
 -- --------------------------------------------------------
 
@@ -394,12 +359,6 @@ ALTER TABLE `chat_message`
   ADD PRIMARY KEY (`chat_message_id`);
 
 --
--- Indexes for table `employee`
---
-ALTER TABLE `employee`
-  ADD PRIMARY KEY (`id`);
-
---
 -- Indexes for table `goals`
 --
 ALTER TABLE `goals`
@@ -456,12 +415,6 @@ ALTER TABLE `activity_users_list`
 --
 ALTER TABLE `chat_message`
   MODIFY `chat_message_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
-
---
--- AUTO_INCREMENT for table `employee`
---
-ALTER TABLE `employee`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'primary key', AUTO_INCREMENT=64;
 
 --
 -- AUTO_INCREMENT for table `goals`
