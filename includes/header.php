@@ -1,3 +1,7 @@
+<?php
+    session_start();
+    ?>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -48,10 +52,6 @@
             margin: 0;
         }
 
-        .navbar a: hover, .dropdown: hover .dropbtn {
-            background-color: blue;
-        }
-
         .dropdown-content {
             display: none;
             position: absolute;
@@ -70,7 +70,7 @@
             text-align: left;
         }
 
-        .dropdown-content a: hover {
+        .dropdown-content a:hover {
             background-color: #ddd;
         }
 
@@ -89,10 +89,12 @@
             <i class="fa fa-caret-down"></i>
         </button>
         <div class="dropdown-content">
+            <a href="user_leaderboard.php">Leaderboard</a>
             <a href="search_goal.php">Search goals</a>
             <a href="create_goal.php">Create goal</a>
             <a href="mygoals.php">View my goals</a>
             <a href="goal_progress_today.php">My progress today</a>
+            <a href="user_weekly_report.php">My weekly report</a>
         </div>
     </div>
 
@@ -101,15 +103,16 @@
             <i class="fa fa-caret-down"></i>
         </button>
         <div class="dropdown-content">
-            <a href="activity_show_all_public_activities.php">Join exisitng activities</a>
-<a href="activity_create_nonrecurring.php">Create a new non-recurring activity</a>
-<a href="activity_create_new_event.php">Create a new recurring activity</a>
-<a href="activity_view_mine.php">View my activities</a>
-<a href="search_goal.php">Search goals</a>
+            <a href="activity_show_all_public_activities.php">Search activities</a>
+            <a href="activity_create_nonrecurring.php">Create non-recurring activity</a>
+            <a href="activity_create_new_event.php">Create recurring activity</a>
+            <a href="activity_view_mine.php">View my activities</a>
         </div>
     </div>
 
     <a href="chatindex.php">Chat</a>
+
+    <a href="groupchat_index.php">Group chat</a>
 
     <div class="dropdown">
         <button class="dropbtn">My account
@@ -117,62 +120,21 @@
         </button>
         <div class="dropdown-content">
             <a href="profile_display.php">My profile</a>
+            <a href="user_setting.php">Settings</a>
             <a href="change-password.php">Change password</a>
+<?php
+    if (isset($_SESSION['user_id'])){
+        echo '<a href="includes/logout.inc.php">Logout</a>';
+    }
+    ?>
+
         </div>
     </div>
 
 </div>
 
 <?php
-session_start();
 if (!isset($_SESSION['user_id'])){
     echo '<a href="login.php">Please click here to log in if you have registered an account!</a></br>';
-} else {
- echo '<form action="includes/logout.inc.php" method="post">
- <button type="submit" name="logout-submit">Logout</button></br></br>
- </form>';
 }
-
 ?>
-    
-<?php
-/*<div class="loginbox">
-        <img src="img/login_avatar1.png" class="avatar">
-            <h1>Login Here</h1> */?>
-            <?php /*
-                session_start();
-                if (!isset($_SESSION['user_id'])){
-                    echo '<form action="includes/login.inc.php" method="post">
-                    <p>Username</p> 
-                    <input type="text" name ="mailuid" placeholder="Enter Username/E-mail">
-                    <p>Password</p>
-                    <input type="password" name ="pwd" placeholder="Enter Password">
-                    <button type="submit" name="login-submit">Login</button>
-                    <a href="signup.php">Signup</a></br>
-                    <a href="reset-password.php">Forgot your password?</a>
-                    </form>';
-                } else {
-                    echo '<form action="includes/logout.inc.php" method="post">
-                    <button type="submit" name="logout-submit">Logout</button></br></br>
-                    </form>';
-                }     
-    </div>*/?>
-
-
-
-<?php
-    /*session_start();
-    if (isset($_SESSION['user_id'])){
-        echo '<form action="includes/logout.inc.php" method="post">
-        <button type="submit" name="logout-submit">Logout</button></br></br>
-        </form>';
-    } else {
-        echo '<form action="includes/login.inc.php" method="post">
-        <input type="text" name ="mailuid" placeholder="Username/E-mail...">
-        <input type="password" name ="pwd" placeholder="Password...">
-        <button type="submit" name="login-submit">Login</button>
-        </form>
-        <a href="signup.php">Signup</a>';
-        }*/
-?>
-
