@@ -1,3 +1,8 @@
+<?php
+    session_start();
+    include('chatdatabase_connection.php');
+    ?>
+
 <style>
         ul {
             display:inline-block;
@@ -25,6 +30,7 @@
 <li><a href="create_goal.php">Create goal</a></li>
 <li><a href="mygoals.php">View my goals</a></li>
 <li><a href="goal_progress_today.php">My progress today</a></li>
+<li><a href="user_weekly_report.php">My weekly report</a></li>
 </ul>
 
 <ul>
@@ -46,26 +52,14 @@
 <li><a href="profile_display.php">My profile</a></li>
 <li><a href="user_setting.php">Settings</a></li>
 <li><a href="change-password.php">Change password</a></li>
+<?php
+    if (isset($_SESSION['user_id'])){
+        echo '<li><a href="includes/logout.inc.php">Logout</a></li>';
+    }
+    ?>
 </ul>
 
 <?php
-    session_start();
-    if (isset($_SESSION['user_id'])){
-        echo '<form action="includes/logout.inc.php" method="post">
-        <button type="submit" name="logout-submit">Logout</button></br></br>
-        </form>';
-    } else {
-        echo '<form action="includes/login.inc.php" method="post">
-        <input type="text" name ="mailuid" placeholder="Username/E-mail...">
-        <input type="password" name ="pwd" placeholder="Password...">
-        <button type="submit" name="login-submit">Login</button>
-        </form>
-        <a href="signup.php">Signup</a>';
-    }
-
-    if (!isset($_SESSION['user_id'])) session_start();
-    include('chatdatabase_connection.php');
-    
     if(!isset($_SESSION['user_id'])) {
         header("location:index.php");
     }
@@ -100,17 +94,6 @@
 </body>
 </html>  
 
-<div id="group_chat_dialog" title="Group Chat Window">
-    <div id="group_chat_history" style="height:400px; border:1px solid #ccc; overflow-y: scroll; margin-bottom:24px; padding:16px;">
-
-    </div>
-    <div class="form-group">
-        <textarea name="group_chat_message" id="group_chat_message" class="form-control"></textarea>
-    </div>
-    <div class="form-group" align="right">
-        <button type="button" name="send_group_chat" id="send_group_chat" class="btn btn-info">Send</button>
-    </div>
-</div>
 
 <script>  
 $(document).ready(function(){
@@ -210,83 +193,7 @@ function fetch_activity_chat_history(activity_id) //fetch particular user chat h
   $('.user_dialog').dialog('destroy').remove();
  });
 
-/*
-$(document).on('focus', '.chat_message', function(){  //execute code if cursor come into text area field
-    var is_type = 'yes';
-    $.ajax({
-        url:"chatupdate_is_type_status.php",
-        method:"POST",
-        data:{is_type:is_type},
-        success:function()
-        {
 
-        }
-    })
-});
-*/
-
-/*
-$(document).on('blur', '.chat_message', function(){  //execute code if cursor come into text area field
-    var is_type = 'no';
-    $.ajax({
-        url:"chatupdate_is_type_status.php",
-        method:"POST",
-        data:{is_type:is_type},
-        success:function()
-        {
-
-        }
-    })
-});
-*/
-
-/*
-$('#group_chat_dialog').dialog({
-    autoOpen:false,
-    width:400
-});
-
-$('#group_chat').click(function(){  //this depnds on the id of the button above 
-    $('#group_chat_dialog').dialog('open');
-    $('#is_active_group_chat_window').val('yes');
-    fetch_group_chat_history();
-});
-
-$('#send_group_chat').click(function(){
-    var chat_message = $('#group_chat_message').val();
-    var action = 'insert_data';
-    if(chat_message != '')
-    {
-        $.ajax({
-        url:"chatgroup_chat.php",
-        method:"POST",
-        data:{chat_message:chat_message, action:action},
-        success:function(data){
-            $('#group_chat_message').val('');
-            $('#group_chat_history').html(data);
-        }
-        })
-    }
-});
-
-function fetch_group_chat_history()
-{
-    var group_chat_dialog_active = $('#is_active_group_chat_window').val();
-    var action = "fetch_data";
-    if(group_chat_dialog_active == 'yes')
-    {
-        $.ajax({
-        url:"chatgroup_chat.php",
-        method:"POST",
-        data:{action:action},
-        success:function(data)
-        {
-            $('#group_chat_history').html(data);
-        }
-        })
-    }
-}
-*/
 
 });  
 </script>
