@@ -67,3 +67,14 @@ body
     color: #000;
     border: 2px solid #668cff;
 }
+
+p.wrong{
+    color: red;
+}
+
+p.success{
+    color: green;
+}
+
+
+
