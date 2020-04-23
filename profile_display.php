@@ -31,9 +31,9 @@
         <?php 
         echo "<div>";
         if ($row['image_status'] == 0){
-            echo "<img src='upload_image/profile".$id.".jpg' width ='200'>";
+            echo "<img src='upload_image/profile".$id.".jpg' height ='150'>";
         } else if ($row['image_status'] == 1){
-            echo "<img src='upload_image/profiledefault.jpg' width ='200'>";
+            echo "<img src='upload_image/profiledefault.jpg' height ='150'>";
         }
         echo "</div>";
         ?>
@@ -72,8 +72,24 @@
 
             if (isset($_GET['profile'])){    //use $_GET to check the url
                 if ($_GET['profile'] == "profileupdated") {
-                echo '<p> Your profile is updated!</p>';
+                echo '<p class="success"> Your profile is updated!</p>';
             }
+            }
+            if (isset($_GET['error'])){  
+                if ($_GET['error'] == "wrongtype") {
+                    echo '<p class="wrong">You cannot upload files of this type!</p>';
+                }
+                else if ($_GET['error'] == "filetoobig") {
+                    echo '<p class="wrong"> Your file is too big!</p>';
+                }
+                else if ($_GET['error'] == "error") {
+                    echo '<p class="wrong">There was an error uploading your file!</p>';
+                }
+            }
+            if (isset($_GET['upload'])){ 
+                if ($_GET['upload'] == "success"){
+                    echo '<p class="success">Your profile picture is uploaded!</p>';
+                }
             }
          ?>
         </div>
