@@ -41,9 +41,9 @@
     <?php
     echo "<div>";
     if ($row['image_status'] == 0){
-        echo "<img src='upload_image/profile".$id.".jpg' width ='200'>";
+        echo "<img src='upload_image/profile".$id.".jpg' height ='150'>";
     } else if ($row['image_status'] == 1){
-        echo "<img src='upload_image/profiledefault.jpg' width ='200'>";
+        echo "<img src='upload_image/profiledefault.jpg' height ='150'>";
     }
     echo "</div>";
     
@@ -88,10 +88,5 @@
         </div>
 <?php
 }
-    /*else {
-        header("Location: ../user_profile.php");
-        exit();
-    }
-    */
 ?>
 </body>
