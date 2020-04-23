@@ -26,20 +26,19 @@ if(isset($_POST['submit'])){
                 move_uploaded_file($fileTmpName, $fileDestination);
                 $sql = "UPDATE login SEt image_status=0 WHERE user_id = '$id';";
                 $search_result = $conn->query($sql);
-                echo "Your profile picture is uploaded";
-                header("Location: profile_display.php?uploadsuccess");
+                //echo "Your profile picture is uploaded";
+                header("Location: ../habitracker/profile_display.php?upload=success");
 
             } else {
-                echo "Your file is too big!";
+                header("Location: ../habitracker/profile_display.php?error=filetoobig");
             }
 
         } else {
-            echo "There was an error uploading your file!";
+            header("Location: ../habitracker/profile_display.php?error=error");
         }
 
     } else {
-        echo 
-        "You cannot upload files of this type!";
+        header("Location: ../habitracker/profile_display.php?error=wrongtype");
     }
 }
 
