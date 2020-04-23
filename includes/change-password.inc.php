@@ -40,7 +40,8 @@ if (isset($_POST["change-password-submit"])) {
                 $passwordCheck = password_verify($existPassword, $row["password"]);
                 //$passwordCheck = password_verify($existPassword, $row["pwdUsers"]);
                 if ($passwordCheck === false){
-                    echo "You input the wrong current password";
+                    
+                    header("Location: ../change-password.php?changepwd=wrongpwd");
                     exit();
                 } else if ($passwordCheck === true){
 
