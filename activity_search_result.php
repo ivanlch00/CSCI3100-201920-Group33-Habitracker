@@ -157,9 +157,18 @@
     require 'db_key.php';
     $conn = connect_db();
     $activity_keyword = $_POST['activity_keyword'];
-    $sql = "Select * from activity_table Where activity_name Like '%$activity_keyword%' and activity_status_open = '1'";
+    $sortby = $_POST['sortby'];
+    if ($sortby=="Activity ID") $sortby = "activity_id";
+    elseif ($sortby=="Name") $sortby = "activity_name";
+    elseif ($sortby=="Recurrence") $sortby = "activity_repetition";
+    $order = $_POST['order'];
+    if ($order=="Ascending") $order = "ASC";
+    elseif ($order=="Descending") $order = "DESC";
+    $sql = "Select * from activity_table Where activity_name Like '%$activity_keyword%' and activity_status_open = '1' Order by $sortby $order";
     $search_result = $conn->query($sql);
     
+    $sortby = $_POST['sortby'];
+    $order = $_POST['order'];
     ?>
 
 
@@ -172,12 +181,27 @@
 <div class="search_box">
     <input class = 'input_box' type="text" name="activity_keyword"><br><br>
     <button class = 'btn' type = 'submit' value = 'submit' name= 'search_activity'><i class="fa fa-search"></i></button>
-</br></br>
 </div>
+
+<p>Sort by:
+<select name="sortby" id="sortby">
+<option selected="selected">Activity ID</option>
+<option>Name</option>
+<option>Recurrence</option>
+
+</select>
+<p>Order:
+<select name="order" id="order">
+<option selected="selected">Ascending</option>
+<option>Descending</option>
+</select></p></br>
+
 </form>
 
 <div><h3>Search results</h3></div>
-<div><label>Keyword: <?php echo "$activity_keyword"; ?></label></div>
+<div><p>Keyword: <?php echo "$activity_keyword"; ?></p></div>
+<div><p>Sort by: <?php echo $sortby; ?></p></div>
+<div><p>Order: <?php echo $order; ?></p></div>
 </div>
 
 <?php

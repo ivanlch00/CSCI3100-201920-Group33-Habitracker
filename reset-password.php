@@ -38,7 +38,7 @@
         <?php
             if (isset($_GET["reset"])){
                 If ($_GET["reset"] == "success"){
-                    echo '<p>Check your e-mail</p>';
+                    echo '<p>Please check your e-mail.</p>';
                 }
             }
         ?>

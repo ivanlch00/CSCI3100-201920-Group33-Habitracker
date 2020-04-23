@@ -44,7 +44,8 @@ foreach($result as $row)
     $message .= '</ul>';
     
     $message .= '<p>It is never too late to start a habit! Want to equip yourself with a new skill or pick up a new interest?';
-    $message .= '<p>Do not hesitate and create your new habit in Habitracker!';
+    $message .= '<p>Do not hesitate and create your new habit in ';
+    $message .= '<a href="' . $url . '"> Habitracker</a>!</p>';
 
     $message .= '<p>Please send an email to noreply-habitracker@gmail.com if you have any queries.';
     $message .= '<p> ';
@@ -64,7 +65,7 @@ foreach($result as $row)
     $mail->Username = 'noreply.habitracker@gmail.com';//your own email address
     $mail->Password = 'csci3100';
     //$mail->SetFrom('no-reply@howcode.org');
-    $mail->Subject = $subject;;
+    $mail->Subject = $subject;
     $mail->Body = $message;
     $mail->AddAddress($to);
     $mail->AddEmbeddedImage('img/logo.png','logo');

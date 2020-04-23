@@ -175,6 +175,18 @@
     </button></br></br>
 </div>
 
+<p><br><br><br>Sort by:
+<select name="sortby" id="sortby">
+<option selected="selected">Activity ID</option>
+<option>Name</option>
+<option>Recurrence</option>
+
+</select>
+<p>Order:
+<select name="order" id="order">
+<option selected="selected">Ascending</option>
+<option>Descending</option>
+</select></p>
 </form>
 
 <?php

@@ -30,10 +30,27 @@
     <label>Keyword: <br></label>
     <div class="search_box">
         <input class = "input_box" type="text" name="goal_keyword">
+
         <button class = "btn" type = 'submit' value = 'submit' name= 'search_goal'>
             <i class="fa fa-search"></i>
         </button>
     </div>
+
+<p><br><br><br>Sort by:
+<select name="sortby" id="sortby">
+<option selected="selected">Goal ID</option>
+<option>Goal name</option>
+<option>End date</option>
+<option>Start time</option>
+<option>End time</option>
+
+</select>
+<p>Order:
+<select name="order" id="order">
+<option selected="selected">Ascending</option>
+<option>Descending</option>
+</select></p>
+
     
 </form>
 </div>
