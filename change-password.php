@@ -42,10 +42,15 @@
                 echo '</br>';
                 echo '<p class="wrong">Your new password and your confirmation password do not match</p>';
             }
+            else if ($_GET['changepwd'] == "wrongpwd") {
+                echo '</br>';
+                echo '<p class="wrong">You input the wrong current password</p>';
+            }
             else if ($_GET['changepwd'] == "passwordupdated") {
                 echo '</br>';
                 echo '<p class="success">Your password is updated</p>';
             }
+            
         }
     }
 ?>
