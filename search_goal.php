@@ -1,5 +1,8 @@
 <?php
     require "header.php";
+    if (isset($_GET['goal_reported'])){
+        echo '<p>Goal reported.</p>';
+    };
 ?>
 
 <html>

@@ -25,7 +25,8 @@
             else {
                 mysqli_stmt_bind_param($stmt, "sissss", $report_type, $goal_id, $reason, $goal_name, $reporter, $owner);
                 mysqli_stmt_execute($stmt);
-                echo "The report is submitted!. You may go back to <a href='search_goal.php'>search goals</a>";
+                //echo "The report is submitted!. You may go back to <a href='search_goal.php'>search goals</a>";
+                header("Location: ../Habitracker/search_goal.php?goal_reported=true");
                 exit();
             }
         } 
@@ -46,7 +47,8 @@
             else {
                 mysqli_stmt_bind_param($stmt, "sissss", $report_type, $activity_id, $reason, $activity_name, $reporter, $owner);
                 mysqli_stmt_execute($stmt);
-                echo "The report is submitted!. You may go back to <a href=activity_show_all_public_activities.php>view the activities</a> now";
+                //echo "The report is submitted!. You may go back to <a href=activity_show_all_public_activities.php>view the activities</a> now";
+                header("Location: ../Habitracker/activity_show_all_public_activities.php?activity_reported=true");
                 exit();
             }
         }

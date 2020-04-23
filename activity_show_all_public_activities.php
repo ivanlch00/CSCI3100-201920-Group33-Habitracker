@@ -159,6 +159,10 @@
     $sql = "Select * from activity_table Where activity_status_open = '1'";
     $search_result = $conn->query($sql);
     
+    if (isset($_GET['activity_reported'])){
+        echo '<p>Activity reported.</p>';
+    };
+    
     ?>
 
 
@@ -167,15 +171,15 @@
     <h3>Search by keyword</h3>
     <form action = 'activity_search_result.php' method = 'POST'>
     <label>Keyword: </label>
-</div>
+
 
 <div class="search_box">
     <input class = "input_box" type="text" name="activity_keyword"><br><br>
     <button class = "btn" type = 'submit' value = 'submit' name= 'search_activity'><i class="fa fa-search"></i>
-    </button></br></br>
+    </button>
 </div>
 
-<p><br><br><br>Sort by:
+<p>Sort by:
 <select name="sortby" id="sortby">
 <option selected="selected">Activity ID</option>
 <option>Name</option>
@@ -188,6 +192,7 @@
 <option>Descending</option>
 </select></p>
 </form>
+</div>
 
 <?php
     if ($search_result->num_rows >0) {
