@@ -48,7 +48,7 @@
                         </a>
                     </div>
                     <div class="tengah">
-                        <h2>ACTIVITES</h2>
+                        <h2>ACTIVITIES</h2>
                     </div>
                     <div class="bawah">
                         <p>Start an activity and find some hobby-buddies - meet new friends and be one another's support in this exploration!</p></div>

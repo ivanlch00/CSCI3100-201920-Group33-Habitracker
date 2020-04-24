@@ -52,7 +52,7 @@
     position: relative;
     top: 30%;
     left: 18%;
-    transform: translate(-50%, -70%);
+    transform: translate(-106%, -70%);
     background-color: white;
     height: 15px;
     border-radius: 40px;

@@ -93,6 +93,7 @@
         if (($rank+$same < 10)||($found==0)) {
             if (($score != $row['score']) || ($rank==0)) {
                 $rank = $rank + $same + 1;
+                $same = 0;
             } else {
                 $same = $same + 1;
             }

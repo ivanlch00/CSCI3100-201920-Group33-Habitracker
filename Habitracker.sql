@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Apr 21, 2020 at 04:42 PM
+-- Generation Time: Apr 24, 2020 at 11:48 AM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.3
 
@@ -37,18 +37,6 @@ CREATE TABLE `activity_chat_message` (
   `status` int(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `activity_chat_message`
---
-
-INSERT INTO `activity_chat_message` (`chat_message_id`, `activity_id`, `from_user_id`, `chat_message`, `timestamp`, `status`) VALUES
-(1, 9, 1, 'hi', '2020-04-17 10:09:23', 0),
-(2, 9, 1, 'hi', '2020-04-17 10:09:28', 0),
-(3, 9, 1, 'hi', '2020-04-17 10:09:47', 0),
-(4, 9, 1, 'hi', '2020-04-17 10:12:08', 0),
-(5, 9, 1, 'hi sinyi', '2020-04-17 10:30:13', 0),
-(6, 15, 1, 'Hellooo', '2020-04-19 16:38:41', 0);
-
 -- --------------------------------------------------------
 
 --
@@ -78,16 +66,20 @@ CREATE TABLE `activity_table` (
 --
 
 INSERT INTO `activity_table` (`activity_name`, `activity_repetition`, `activity_one_off_datetime`, `activity_recurring_date_0`, `activity_recurring_time_0`, `activity_recurring_date_1`, `activity_recurring_time_1`, `activity_recurring_date_2`, `activity_recurring_time_2`, `activity_time_remark`, `activity_location`, `activity_remark`, `activity_status_open`, `activity_id`, `username`) VALUES
-('Golf', 0, '2020-04-15 16:37:50', NULL, NULL, NULL, NULL, NULL, NULL, 'THIS IS ONE OFF', 'Sha Tin', 'This is a free event', 1, 1, 'pikachu'),
-('Bike', 1, NULL, 'TUE', '14:25:00', NULL, NULL, NULL, NULL, 'THIS IS RECURRING OFF', 'Sha Tin', 'This is a free event', 1, 2, 'pikachu'),
-('Bike SECRET', 1, NULL, 'TUE', '14:35:00', NULL, NULL, NULL, NULL, 'THIS IS RECURRING OFF', 'Sha Tin', 'This is a free event', 0, 3, 'pikachu'),
-('sPANISHH', 2, NULL, 'MON', '14:50:00', 'FRI', '18:00:22', NULL, NULL, 'THIS IS lan', 'Online', 'This is nottt a free event', 1, 4, 'pikachu'),
-('german', 3, NULL, 'MON', '14:50:00', 'FRI', '18:00:22', 'SAT', '18:00:22', 'THIS IS boreing', 'Online', 'This is nottt a free event', 1, 5, 'pikachu'),
-('Runnn', 0, '2020-04-16 12:00:00', NULL, NULL, NULL, NULL, NULL, NULL, '', 'Others', 'Welcome everyone!', 1, 9, 'wck'),
-('Helloooo', 1, NULL, 'TUE', '06:45:00', NULL, NULL, NULL, NULL, '', 'Others', '', 1, 16, 'wck'),
-('Hellooooo', 3, NULL, 'MON', '00:15:00', 'WED', '09:15:00', 'THU', '23:15:00', '', 'Others', '', 1, 17, 'wck'),
-('Say Hello', 0, '2020-04-24 01:00:00', NULL, NULL, NULL, NULL, NULL, NULL, '', 'Others', '', 1, 18, 'wck'),
-('Helloooo', 2, NULL, 'TUE', '01:00:00', 'SAT', '03:45:00', NULL, NULL, '', 'Tuen Mun', '', 1, 19, 'wck');
+('handicraft interest group', 1, NULL, 'TUE', '18:30:00', NULL, NULL, NULL, NULL, '', 'Sham Shui Po', '', 1, 2, 'George'),
+('calligraphy class', 2, NULL, 'MON', '20:45:00', 'WED', '19:15:00', NULL, NULL, 'time can be negotiated', 'Kowloon City', '', 1, 4, 'Amy'),
+('bicycle tour', 2, NULL, 'SAT', '09:15:00', 'SUN', '08:00:00', NULL, NULL, 'whole day', 'Sha Tin', 'Please bring enough water', 1, 5, 'Henry'),
+('Weekly hike tour', 1, NULL, 'TUE', '08:00:00', NULL, NULL, NULL, NULL, '', 'North', 'will be cancelled if the weather is bad ', 1, 6, 'George'),
+('Chess gathering', 0, '2020-04-29 12:30:00', NULL, NULL, NULL, NULL, NULL, NULL, '', 'Sham Shui Po', '', 1, 7, 'Chriswong'),
+('camping and riding bicycle ', 0, '2020-05-20 08:15:00', NULL, NULL, NULL, NULL, NULL, NULL, 'whole day', 'Others', 'location differs every time', 1, 8, 'Iris'),
+('Band practise', 1, NULL, 'MON', '11:00:00', NULL, NULL, NULL, NULL, '', 'Wong Tai Sin', '', 1, 9, 'Amy'),
+('Coding gathering', 3, NULL, 'MON', '19:30:00', 'FRI', '20:00:00', 'SAT', '08:00:00', '', 'Online', 'You can leave whenever you want ', 1, 10, 'Iris'),
+('Hike', 0, '2020-07-16 07:15:00', NULL, NULL, NULL, NULL, NULL, NULL, '', 'Tuen Mun', 'Bring sun lotion', 1, 11, 'George'),
+('go to gym', 1, NULL, 'SUN', '18:30:00', NULL, NULL, NULL, NULL, '', 'Sha Tin', '', 1, 13, 'Chriswong'),
+('online computer game ', 3, NULL, 'TUE', '16:45:00', 'THU', '17:45:00', 'SAT', '18:45:00', '', 'Online', '', 1, 15, 'Amy'),
+('hike and draw the natural scenery', 1, NULL, 'SAT', '09:15:00', NULL, NULL, NULL, NULL, '', 'Tai Po', '', 1, 16, 'Fanny'),
+('ride bicycle around the island ', 2, NULL, 'MON', '10:00:00', 'SAT', '08:00:00', NULL, NULL, 'last for 1.5 hours ', 'Islands', '', 0, 17, 'Chriswong'),
+('Chinese oral practise', 0, '2020-05-08 20:15:00', NULL, NULL, NULL, NULL, NULL, NULL, 'last for 2 hours ', 'Wan Chai', '', 1, 18, 'Chriswong');
 
 -- --------------------------------------------------------
 
@@ -106,18 +98,24 @@ CREATE TABLE `activity_users_list` (
 --
 
 INSERT INTO `activity_users_list` (`entry_id`, `user_id`, `activity_id`) VALUES
-(1, 1, 9),
-(5, 1, 16),
-(6, 1, 17),
-(14, 1, 18),
-(15, 1, 19),
-(16, 4, 9),
-(17, 1, 2),
-(18, 4, 1),
-(19, 4, 2),
-(20, 4, 3),
-(21, 4, 4),
-(22, 4, 5);
+(2, 7, 2),
+(4, 2, 4),
+(5, 8, 5),
+(6, 7, 6),
+(7, 1, 7),
+(8, 9, 8),
+(10, 2, 9),
+(11, 9, 10),
+(12, 7, 11),
+(13, 7, 5),
+(16, 1, 13),
+(19, 2, 15),
+(20, 2, 5),
+(21, 6, 16),
+(23, 1, 10),
+(24, 1, 9),
+(25, 1, 17),
+(26, 1, 18);
 
 -- --------------------------------------------------------
 
@@ -133,24 +131,6 @@ CREATE TABLE `chat_message` (
   `timestamp` timestamp NOT NULL DEFAULT current_timestamp(),
   `status` int(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `chat_message`
---
-
-INSERT INTO `chat_message` (`chat_message_id`, `to_user_id`, `from_user_id`, `chat_message`, `timestamp`, `status`) VALUES
-(1, 2, 1, 'hi\n', '2020-03-25 14:20:18', 1),
-(2, 2, 1, 'hello', '2020-03-26 17:39:51', 1),
-(3, 4, 1, 'hello', '2020-03-26 17:44:10', 0),
-(4, 1, 4, 'hi', '2020-03-26 17:47:29', 0),
-(5, 4, 1, 'hey', '2020-03-26 17:58:28', 0),
-(6, 6, 1, 'Lets go to gym tgt xd!!!!', '2020-04-13 08:27:46', 0),
-(7, 1, 6, 'Go!!! Where do you live???', '2020-04-13 08:27:46', 0),
-(8, 1, 6, 'I am in MongKok let\'s go to the public gym!', '2020-04-13 08:27:46', 0),
-(9, 2, 7, 'Let\'s learn spanish tgt?!', '2020-04-13 08:27:46', 0),
-(10, 7, 2, 'Good I need someone to motivate me', '2020-04-13 08:27:46', 0),
-(11, 2, 7, 'I will be on Zoom!', '2020-04-13 08:27:46', 0),
-(12, 2, 1, 'hello', '2020-04-19 16:40:02', 1);
 
 -- --------------------------------------------------------
 
@@ -178,29 +158,25 @@ CREATE TABLE `goals` (
 --
 
 INSERT INTO `goals` (`username`, `goal_id`, `goal_name`, `goal_description`, `goal_subtask`, `goal_enddate`, `goal_starttime`, `goal_endtime`, `goal_public`, `goal_completed`, `streak`, `streak_lastSun`) VALUES
-('wck', 4, 'Make a database', '', '', '2020-04-30', NULL, NULL, 0, 0, 0, 0),
-('wck', 5, 'Make a chat box', 'goal_description', '', '0000-00-00', NULL, NULL, 0, 0, 0, 0),
-('wck', 6, 'Make a nice looking interface', '', '', '0000-00-00', NULL, NULL, 1, 0, 0, 0),
-('wck', 7, 'I guess this should be correct', 'a description that is not blank', 'a sub-task', '2020-04-29', NULL, NULL, 0, 0, 0, 0),
-('wck', 8, 'Public goal', '', '', '0000-00-00', NULL, NULL, 0, 0, 0, 0),
-('wck', 9, 'public goal', '', '', '0000-00-00', NULL, NULL, 1, 0, 0, 0),
-('wck', 13, 'breakfast', '', '', '2020-04-29', '08:00:00', '09:30:00', 0, 0, 0, 0),
-('wck', 16, '3100', '', '', '2020-04-14', '05:00:00', '06:00:00', 0, 0, 0, 0),
-('wck', 17, '3100', '', '', '2020-04-14', '10:00:00', '20:20:00', 1, 0, 0, 0),
-('PikachuMaster', 46, 'Espanolll', 'Spainish netflix everyday', '', '2020-03-06', '20:00:00', '21:00:00', 1, 0, 0, 0),
-('PikachuMaster', 47, 'Cook', 'Everyday cook breakfast', '', '2020-03-07', NULL, NULL, 0, 0, 0, 0),
-('CaptainAmerica', 48, 'DC plan', 'Everyday watch one Batman Movie', '', '2020-02-14', '00:14:07', '00:23:04', 1, 0, 0, 0),
-('CaptainAmerica', 49, 'Biceps plan', 'Everyday go to gym', 'Help girlfriend with errands', '2020-02-15', '00:00:07', '00:12:24', 1, 0, 0, 0),
-('CaptainAmerica', 50, 'Learn to use Swift', 'Watch YT tutorial', 'Write notes', '2020-02-12', '00:00:07', '00:27:24', 0, 0, 0, 0),
-('AndyTsang', 51, 'Travel plan', 'Everyday go to the Victoria Harbour', 'Find a girlfriend asap', '2020-02-14', NULL, NULL, 0, 0, 0, 0),
-('AndyTsang', 52, 'Biceps training', 'Everyday go to gym', 'Help mama with errands', '2020-01-23', NULL, NULL, 1, 0, 0, 0),
-('Ivan118', 53, 'Sleeping plan', 'Everyday sleep for 4 hours or more', 'Read Kindle before sleep', '2020-02-25', NULL, NULL, 1, 0, 0, 0),
-('Mary223', 54, 'Lose weight', 'Go to gym', 'Not eat cakes', '2020-01-15', NULL, NULL, 1, 0, 0, 0),
-('Mary223', 55, 'Get a boyfriend', 'Practise makeup', '', '2020-02-14', NULL, NULL, 0, 0, 0, 0),
-('PeterLol', 56, 'Write a novel', 'ONe week 6 pages', '', '2020-03-04', '00:00:17', '00:22:24', 1, 0, 0, 0),
-('PeterLol', 57, 'Learn spanish', 'Go to duolinguo', '', '2020-02-19', '00:00:47', '00:12:34', 1, 0, 0, 0),
-('John23', 58, 'Biceps!!!', 'Everyday go to gym', 'You need a gf next year', '2020-02-13', '00:00:01', '00:04:24', 1, 0, 0, 0),
-('wck', 72, 'Running', '', '', '2020-04-18', NULL, NULL, 1, 0, 0, 0);
+('Amy', 1, 'learn Spanish', 'have Spanish online lesson ', '', '2020-05-10', '20:00:00', '21:00:00', 1, 0, 1, 0),
+('George', 2, 'maintain regular sleeping pattern', '', 'Sleep before 11pm, wake up at 7am', '2020-06-02', NULL, NULL, 1, 0, 1, 0),
+('Emily', 3, 'eat healthily', '', '', '2020-05-14', NULL, NULL, 1, 0, 1, 0),
+('Chriswong', 4, 'practise calligraphy', '', '', '2020-08-01', '16:30:00', '17:00:00', 1, 0, 15, 10),
+('Fanny', 5, 'learn piano', 'pop songs!', '', '2020-11-09', '08:00:00', '09:00:00', 1, 0, 1, 0),
+('Emily', 6, 'improve English reading skills', 'esp. with political topics', 'read the newspaper everyday', '2020-07-17', '18:00:00', '18:30:00', 1, 0, 1, 0),
+('Chriswong', 8, 'Get good grades in the coming exam', '', 'do revision everyday', '2020-05-20', '09:00:00', '19:00:00', 1, 0, 7, 2),
+('Amy', 9, 'Practise the piano', '', '', '2020-07-05', '12:00:00', '12:45:00', 1, 0, 1, 0),
+('Dennis', 10, 'Beat my running personal best', 'now 12s for 100m, aim 11s', '', '2020-05-30', NULL, NULL, 1, 0, 1, 0),
+('Dennis', 11, 'Learn a new programming language', '', 'Take online programming courses', '2020-06-22', NULL, NULL, 1, 0, 1, 0),
+('Chriswong', 13, 'Master video editing', '', '', '2020-07-14', '22:00:00', '23:00:00', 1, 0, 0, 0),
+('Amy', 14, 'improve Chinese oral skills', '', '', '2020-05-05', '13:00:00', '13:15:00', 1, 0, 1, 0),
+('Fanny', 15, 'Learn to swim', 'freestyle', 'join swimming lessons', '2020-09-05', '17:30:00', '18:30:00', 1, 0, 1, 0),
+('Chriswong', 16, 'Join piano class ', '', '', '2020-08-01', '16:15:00', '17:15:00', 0, 0, 2, 30),
+('Amy', 17, 'Pass Japanese N2 exams', '', 'do pastpapers', '2020-07-01', '19:00:00', '21:30:00', 1, 0, 1, 0),
+('Fanny', 18, 'run in the mountains ', 'medium difficulty', '', '2020-09-07', NULL, NULL, 1, 0, 1, 0),
+('Amy', 19, 'run at the gym', '', '', '2020-07-30', '18:45:00', '19:15:00', 1, 0, 1, 0),
+('Amy', 21, 'Keep fit ', '', 'Go to the gym three times a week', '2020-05-13', '20:00:00', '20:45:00', 1, 0, 1, 0),
+('Chriswong', 22, 'Learn Japanese', '150 days till N1 exam!', 'listen to radio programmes in Japanese', '2020-09-20', '12:00:00', '13:00:00', 1, 0, 55, 50);
 
 -- --------------------------------------------------------
 
@@ -227,17 +203,15 @@ CREATE TABLE `login` (
 --
 
 INSERT INTO `login` (`user_id`, `username`, `email`, `password`, `image_status`, `first_name`, `last_name`, `welcome_message`, `receive_dailyreminder`, `receive_weeklyreport`, `score`) VALUES
-(1, 'wck', 'wongchika@ymail.com', '$2y$10$UOyrRT.86mhGtI9wqqJL.OhZeD/uFiz2Lfnv.eyRd9XuKOFIsYaw.', 0, '', '', '', 1, 1, 1500),
-(2, 'phoebe', 'phoebechan0209@gmail.com', '$2y$10$sT2rf8RkA663a6TkLnYfiOr8JLybofKP4rQ0tojMXrjNgAuJYD.la', 1, '', '', '', 0, 0, 500),
-(3, 'lkh', 'wongchika26@gmail.com', '$2y$10$FlFTxLUMIl2LtTSPMqzVbe/5nM1ynVQrqoOm/M9v2XXCMJto8Xlyq', 1, NULL, NULL, NULL, 0, 0, 0),
-(4, 'pikachu', 'phoebe@gmail.com', '$2y$10$1s/oPYE2nNcjBTtCRXGX3.r35S.ui6dymZ4L2/Oh1gAiiwnuiqIGu', 1, NULL, NULL, NULL, 0, 0, 0),
-(5, 'John23', 'john234@gmail.com', '2347893john', 1, 'John', 'Chan', 'Welcome to my page!', 0, 0, 0),
-(6, 'PeterLol', 'peterrwong@gmail.com', '2n3rfpeter', 1, 'Peter', 'Wong', 'Nice to meet you all!', 0, 0, 0),
-(7, 'Mary223', 'marychan@gmail.com', 'h3n4corona', 1, 'Mary', 'Lee', 'Let\'s reach our goals together!', 0, 0, 0),
-(8, 'Ivan118', 'ivan1144@gmail.com', '135ivan345', 1, 'Ivan', 'Lai', 'Nice to meet you!', 0, 0, 0),
-(9, 'AndyTsang', 'andy667t4@gmail.com', 'andyyts114', 1, 'Andy', 'Tsang', 'Keep going!', 0, 0, 0),
-(10, 'CaptainAmerica', 'capa2020@gmail.com', 'tonystark3000', 1, 'Captain', 'America', 'Captain Cmerica is the best!', 0, 0, 0),
-(11, 'PikachuMaster', 'ashhketchamp@gmail.com', 'iwannacatchtemall23', 1, 'Pikachu', 'Master', 'Let\'s go catch pikachu!', 0, 0, 500);
+(1, 'Chriswong', 'chriswong.cuhk.csci@gmail.com', '$2y$10$UrWcvBi7hwrM5aYYoCmA4Op8FrtFm0ZtSCsleiQsNxVTf86c0kTy6', 1, NULL, NULL, NULL, 1, 1, 157700),
+(2, 'Amy', 'amy0001@gmail.com', '$2y$10$3Av2ILXcwNjuttMHR/dBb.CXC.NGp5blUy5QNP1FHoaqh3XpVUL.y', 1, NULL, NULL, NULL, 0, 0, 172900),
+(4, 'Dennis', 'dennischan@gmail.com', '$2y$10$Dz/dFMR0n7ZLxDpbzjOfVenWcWA98omAY4PbaM2mNnIZqFrOm2Kmi', 1, NULL, NULL, NULL, 0, 0, 148900),
+(5, 'Emily', 'emily@gmail.com', '$2y$10$1OvSqF6HKIr1PSEvZyZ63usTrcG/CpWHYPmmnHE9oholegEvV29Pi', 1, NULL, NULL, NULL, 0, 0, 112000),
+(6, 'Fanny', 'fanny@gmail.com', '$2y$10$NP3Hly0d4WCQMAJ0yO.tEe.nHgY5YnmKZFi3hppBCGl9F0qWk9DZW', 1, NULL, NULL, NULL, 0, 0, 99900),
+(7, 'George', 'george@gmail.com', '$2y$10$euVkNszF9UJDG9L1XUFz9OzOkUFMq4fjYvG6eXiKiaKXVdz9TVZti', 1, NULL, NULL, NULL, 0, 0, 148900),
+(8, 'Henry', 'henry@gmail.com', '$2y$10$jODRCaa/ZW8siqnhZdNa9eKaIhVTLT.eaN6RDU9HXdxZ7J3SI.LUS', 1, NULL, NULL, NULL, 0, 0, 105500),
+(9, 'Iris', 'iris@gmail.com', '$2y$10$oSyccRx4QOo/K/Y4.AUSgeHkRJ.vdRL66Qbl/9jilApspk7fRGXgy', 1, NULL, NULL, NULL, 0, 0, 51900),
+(10, 'Jack', 'jack@gmail.com', '$2y$10$YACcHweK0Fi4pb6z0.127u8VJ5kDiJHW74.PiIseIyQfwxgUu6TUO', 1, NULL, NULL, NULL, 0, 0, 88300);
 
 -- --------------------------------------------------------
 
@@ -257,28 +231,45 @@ CREATE TABLE `login_details` (
 --
 
 INSERT INTO `login_details` (`login_details_id`, `user_id`, `last_activity`, `is_type`) VALUES
-(37, 1, '2020-04-19 09:36:26', 'no'),
-(38, 1, '2020-04-19 09:42:26', 'no'),
-(39, 1, '2020-04-19 09:49:25', 'no'),
-(40, 1, '2020-04-19 17:43:07', 'no'),
-(41, 4, '2020-04-19 17:43:34', 'no'),
-(42, 1, '2020-04-20 10:20:06', 'no'),
-(43, 4, '2020-04-20 11:13:49', 'no'),
-(44, 4, '2020-04-20 10:28:59', 'no'),
-(45, 4, '2020-04-20 10:41:51', 'no'),
-(46, 1, '2020-04-20 13:48:58', 'no'),
-(47, 1, '2020-04-20 12:23:15', 'no'),
-(48, 1, '2020-04-20 13:58:30', 'no'),
-(49, 2, '2020-04-20 13:58:36', 'no'),
-(50, 3, '2020-04-20 13:58:41', 'no'),
-(51, 4, '2020-04-20 13:58:47', 'no'),
-(52, 1, '2020-04-20 14:38:55', 'no'),
-(53, 1, '2020-04-20 14:57:59', 'no'),
-(54, 1, '2020-04-21 03:46:57', 'no'),
-(55, 1, '2020-04-21 08:38:03', 'no'),
-(56, 4, '2020-04-21 06:13:41', 'no'),
-(57, 1, '2020-04-21 08:43:20', 'no'),
-(58, 1, '2020-04-21 13:30:43', 'no');
+(1, 2, '2020-04-23 15:46:40', 'no'),
+(2, 7, '2020-04-23 15:47:26', 'no'),
+(3, 5, '2020-04-23 15:48:38', 'no'),
+(4, 1, '2020-04-23 15:49:53', 'no'),
+(5, 6, '2020-04-23 15:51:46', 'no'),
+(6, 5, '2020-04-23 15:53:26', 'no'),
+(8, 1, '2020-04-23 15:56:18', 'no'),
+(9, 2, '2020-04-23 15:57:30', 'no'),
+(10, 4, '2020-04-23 16:13:22', 'no'),
+(12, 1, '2020-04-23 16:14:48', 'no'),
+(13, 2, '2020-04-23 16:15:36', 'no'),
+(14, 6, '2020-04-23 16:16:28', 'no'),
+(15, 1, '2020-04-23 16:17:56', 'no'),
+(16, 2, '2020-04-23 16:20:11', 'no'),
+(17, 6, '2020-04-23 16:21:46', 'no'),
+(18, 2, '2020-04-23 16:22:26', 'no'),
+(20, 2, '2020-04-23 16:26:34', 'no'),
+(21, 1, '2020-04-23 16:29:21', 'no'),
+(22, 7, '2020-04-23 16:30:04', 'no'),
+(24, 2, '2020-04-23 16:34:58', 'no'),
+(25, 8, '2020-04-23 16:35:57', 'no'),
+(26, 7, '2020-04-23 16:36:55', 'no'),
+(27, 1, '2020-04-23 16:37:40', 'no'),
+(28, 9, '2020-04-23 16:39:38', 'no'),
+(29, 2, '2020-04-23 16:40:29', 'no'),
+(30, 9, '2020-04-23 16:41:25', 'no'),
+(31, 7, '2020-04-23 16:42:29', 'no'),
+(33, 1, '2020-04-23 16:44:39', 'no'),
+(35, 2, '2020-04-23 16:46:58', 'no'),
+(36, 6, '2020-04-23 16:48:56', 'no'),
+(37, 1, '2020-04-23 16:50:05', 'no'),
+(38, 1, '2020-04-23 17:43:17', 'no'),
+(39, 2, '2020-04-23 17:44:40', 'no'),
+(40, 1, '2020-04-23 17:44:50', 'no'),
+(41, 1, '2020-04-23 20:45:54', 'no'),
+(42, 1, '2020-04-23 20:47:09', 'no'),
+(43, 1, '2020-04-23 22:18:27', 'no'),
+(44, 6, '2020-04-23 22:18:45', 'no'),
+(45, 6, '2020-04-23 22:22:17', 'no');
 
 -- --------------------------------------------------------
 
@@ -321,14 +312,14 @@ CREATE TABLE `reports` (
 --
 
 INSERT INTO `reports` (`report_id`, `report_type`, `goal_id`, `activity_id`, `reason`, `report_time`, `resolved`, `goal_name`, `activity_name`, `deleted`, `dismissed`, `reporter`, `owner`) VALUES
-(1, 'goal', 14, NULL, 'IDK', '2020-04-14 12:35:25', 1, '3100', NULL, 1, 0, 'phoebe', 'wck'),
-(2, 'goal', 17, NULL, 'I just want to delete this goal.', '2020-04-14 14:38:01', 0, '3100', '', 0, 0, 'phoebe', 'wck'),
-(3, 'activity', NULL, 4, 'xxx', '2020-04-14 15:03:42', 1, '', 'sPANISHH', 0, 1, 'wck', 'pikachu'),
-(4, 'activity', NULL, 1, 'test', '2020-04-14 15:04:48', 0, NULL, 'Golf', 0, 0, 'wck', 'pikachu'),
-(5, 'goal', 17, NULL, 'this goal is boring', '2020-04-14 12:35:25', 1, '3100', '', 0, 1, 'cst', 'wck'),
-(7, 'activity', NULL, 5, 'This activity is boring.', '2020-04-15 21:14:51', 0, NULL, 'german', 0, 0, 'lkh', 'pikachu'),
-(8, 'activity', NULL, 6, 'I don\'t like it', '2020-04-15 21:16:07', 0, NULL, 'Hiking', 1, 0, 'lkh', 'wck'),
-(9, 'goal', 48, NULL, 'I like Marvel', '2020-04-15 21:19:21', 0, 'DC plan', NULL, 0, 0, 'lkh', 'CaptainAmerica');
+(1, 'activity', NULL, 3, 'Meaningless', '2020-04-23 17:43:05', 1, NULL, 'I have no idea ', 1, 0, 'Chriswong', 'Ben'),
+(2, 'activity', NULL, 14, 'Random', '2020-04-23 17:43:43', 0, NULL, 'i feel so bored', 1, 0, 'Amy', 'Ben'),
+(3, 'goal', 7, NULL, 'Not a goal.', '2020-04-23 17:44:36', 0, 'I lost my pencil', NULL, 1, 0, 'Amy', 'Ben'),
+(4, 'goal', 12, NULL, 'This goal is inappropriate.', '2020-04-23 17:45:38', 0, 'Eat nothing for a week', NULL, 1, 0, 'Chriswong', 'Ben'),
+(5, 'activity', NULL, 12, 'not related.', '2020-04-23 22:16:04', 0, NULL, 'i am so happy', 1, 0, 'Chriswong', 'Ben'),
+(6, 'goal', 20, NULL, 'This is weird', '2020-04-23 22:16:31', 1, 'breathe everyday', NULL, 1, 0, 'Chriswong', 'Ben'),
+(7, 'goal', 8, NULL, 'i don\'t like this', '2020-04-23 22:19:08', 1, 'Get good grades in the coming exam', NULL, 0, 1, 'Fanny', 'Chriswong'),
+(8, 'activity', NULL, 11, 'zzz......', '2020-04-23 22:19:57', 1, NULL, 'Hike', 0, 1, 'Fanny', 'George');
 
 --
 -- Indexes for dumped tables
@@ -396,43 +387,43 @@ ALTER TABLE `reports`
 -- AUTO_INCREMENT for table `activity_chat_message`
 --
 ALTER TABLE `activity_chat_message`
-  MODIFY `chat_message_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `chat_message_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `activity_table`
 --
 ALTER TABLE `activity_table`
-  MODIFY `activity_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `activity_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `activity_users_list`
 --
 ALTER TABLE `activity_users_list`
-  MODIFY `entry_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `entry_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- AUTO_INCREMENT for table `chat_message`
 --
 ALTER TABLE `chat_message`
-  MODIFY `chat_message_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `chat_message_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `goals`
 --
 ALTER TABLE `goals`
-  MODIFY `goal_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=73;
+  MODIFY `goal_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT for table `login`
 --
 ALTER TABLE `login`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `login_details`
 --
 ALTER TABLE `login_details`
-  MODIFY `login_details_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=59;
+  MODIFY `login_details_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
 
 --
 -- AUTO_INCREMENT for table `pwdreset`
@@ -444,7 +435,7 @@ ALTER TABLE `pwdreset`
 -- AUTO_INCREMENT for table `reports`
 --
 ALTER TABLE `reports`
-  MODIFY `report_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `report_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

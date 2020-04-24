@@ -133,7 +133,7 @@ padding: 12px 15px;
     elseif ($sortby=="Goal name") $sortby = "goal_name";
     elseif ($sortby=="End date") $sortby = "goal_enddate";
     elseif ($sortby=="Start time") $sortby = "goal_starttime";
-    elseif ($sortby=="Start time") $sortby = "goal_endtime";
+    elseif ($sortby=="End time") $sortby = "goal_endtime";
     $order = $_POST['order'];
     if ($order=="Ascending") $order = "ASC";
     elseif ($order=="Descending") $order = "DESC";
