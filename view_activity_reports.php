@@ -36,7 +36,7 @@
                     </tr>
                 </thead>
             <tbody>';
-        if ($unresolved_result->num_rows > 0) {
+        if ($unresolved_result->num_rows > 0) { // listing unresolved activity reports
             while($report = $unresolved_result->fetch_assoc()) { 
                 $table .= '<tr class="table-success text-center">';
                 $table .= '<td class="align-middle">'.$report['report_time'].'</td>';
@@ -99,7 +99,7 @@
                 $table .= '</tr>';
             }
         } 
-        if ($resolved_result->num_rows > 0) {
+        if ($resolved_result->num_rows > 0) { // listing resolved activity reports
             while($report = $resolved_result->fetch_assoc()) { 
                 $table .= '<tr class="table-primary text-center">';
                 $table .= '<td class="align-middle">'.$report['report_time'].'</td>';
