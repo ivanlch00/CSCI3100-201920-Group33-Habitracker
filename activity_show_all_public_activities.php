@@ -1,188 +1,264 @@
 <?php
-require 'header.php';
-$username = $_SESSION['username'];
-function displayOneOff($data,$username){
-  $conn = mysqli_connect("localhost","root","","Habitracker");
-
-  if($username==NULL){
-    $sql = "SELECT * FROM activity_table WHERE activity_repetition = ".$data." ";
-  }else{
-    $sql = "SELECT * FROM activity_table WHERE activity_repetition = ".$data." AND username = '".$username." '";
-  }
-  $result = mysqli_query($conn,$sql);
-
-  while($row = mysqli_fetch_assoc($result)){
-
-    echo" <tr>";
-
-    if($row['activity_status_open'] == 1 ){
-
-      if($data == 0){
-        echo "<td>&nbsp;</td><th>".$row['activity_name']."  </th>";
-        $date = date('yy:m:d-h:i', strtotime($row['activity_one_off_datetime']));
-        echo "<th>".$date."  </span>";
-      }
-
-
-      echo "<th>".$row['activity_location']."  </th>";
-
-
-      echo "<th>".$row['username']."</th>";
-
-
-
-      $id = $row['activity_id'];
-
-      echo '<th> <a href = "activity_display_details.php?id='.$id.'">Click Here </a> </th>';
-
-      echo '<th> <a href = "activity_display_joined_users.php?id='.$id.'">Click Here</a> </th>';
-
-
-      echo '<th><a href = "activity_join.php?id='.$id.'">Click Here</a> </th>';
-
-
-
-      if ($row['username'] == $_SESSION['username']) {
-        echo '<th>-</th>';
-      }
-      else {
-        echo '<th><a href = "report_activity.php?id='.$id.'">Click Here</a></th>';
-      }
-
-      // echo '<form action = "activity_display_joined_users.php" method="GET">
-      //         <button type="submit" name="id" value='.$id.'> Member Lists </button> </form></th>';
-    }
-    echo"</tr>";
-  }
-}
-function displayRecurring($data,$username){
-
-
-
-  $conn = mysqli_connect("localhost","root","","Habitracker");
-
-  if($username==NULL){
-    $sql = "SELECT * FROM activity_table WHERE activity_repetition = ".$data." ";
-  }else{
-    $sql = "SELECT * FROM activity_table WHERE activity_repetition = ".$data." AND username = '".$username." '";
-  }
-
-
-  $result = mysqli_query($conn,$sql);
-
-  while($row = mysqli_fetch_assoc($result)){
-
-    echo" <tr>";
-
-    if($row['activity_status_open'] == 1 ){
-
-      if($data >= 1){
-        echo "<td>&nbsp;</td><th>".$row['activity_name']."  </th>";
-        echo "<th>".$row['activity_recurring_date_0']."  </th>";
-        $date = date('h:i', strtotime($row['activity_recurring_time_0']));
-        echo "<th>".$date."  </span>";
-      }
-
-      if($data >= 2){
-        echo "<th>".$row['activity_recurring_date_1']."  </th>";
-        $date = date('h:i', strtotime($row['activity_recurring_time_1']));
-        echo "<th>".$date."  </span>";
-      }
-
-      if($data >= 3){
-        echo "<th>".$row['activity_recurring_date_2']."  </th>";
-        $date = date('h:i', strtotime($row['activity_recurring_time_2']));
-        echo "<th>".$date."  </span>";
-      }
-
-
-      echo "<th>".$row['activity_location']."  </th>";
-
-
-      echo "<th>".$row['username']."</th>";
-
-
-
-      $id = $row['activity_id'];
-
-      echo '<th> <a href = "activity_display_details.php?id='.$id.'">Click Here </a> </th>';
-
-      echo '<th> <a href = "activity_display_joined_users.php?id='.$id.'">Click Here</a> </th>';
-
-
-      echo '<th><a href = "activity_join.php?id='.$id.'">Click Here</a> </th>';
-      if ($row['username'] == $_SESSION['username']) {
-        echo '<th>-</th>';
-      }
-      else {
-        echo '<th><a href = "report_activity.php?id='.$id.'">Click Here</a></th>';
-      }
-
-      // echo '<form action = "activity_display_joined_users.php" method="GET">
-      //         <button type="submit" name="id" value='.$id.'> Member Lists </button> </form></th>';
-    }
-    echo"</tr>";
-  }
-}
+    require "header.php";
 ?>
 
-<style type="text/css">
-table.tableizer-table {
-  font-size: 12px;
-  border: 1px solid #CCC;
-  font-family: Arial, Helvetica, sans-serif;
+<html>
+    <head>
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+<style>
+    .content-table {
+        border-collapse: collapse;
+        margin: 25px 0;
+        font-size: 0.9em;
+        min-width: 400px;
+        border-radius: 5px 5px 0 0;
+        overflow: hidden;
+        box-shadow: 0 0 20px rgba(0,0,0,0.15);
+        margin-left:auto;
+        margin-right:auto;
+    }
+
+    .content-table thead tr {
+        background-color: #006f98;
+        color: #ffffff;
+        text-align: left;
+        font-weight: bold;
+    }
+
+    .content-table th,
+    .content-table td {
+        padding: 12px 15px;
+    }
+
+    .content-table tbody tr {
+        border-bottom: 1px solid #dddddd;
+    }
+
+    .content-table tbody tr:nth-of-type(odd) {
+        background-color: #ffffff;
+    }
+
+    .content-table tbody tr:nth-of-type(even) {
+        background-color: #f3f3f3;
+    }
+
+    .content-table tbody tr:last-of-type {
+        border-bottom: 3px solid #006f98;
+    }
+
+    .search_box
+{
+    position: relative;
+    top: 30%;
+    left: 18%;
+    transform: translate(-106%, -70%);
+    background-color: white;
+    height: 15px;
+    border-radius: 40px;
+    border: 2px solid #668cff;
+    border-width: 2px;
+    padding: 10px;
+    width: 150px;
 }
-.tableizer-table td {
-  padding: 4px;
-  margin: 3px;
-  border: 1px solid #CCC;
+
+.input_box
+{
+    border: none;
+    outline: none;
+    background: none;
+    float: left;
+    padding: 0;
+    color: #2f3640;
+    font-size: 16px;
+    line-height: 20px;
+    width: 240px;
 }
-.tableizer-table th {
-  background-color: #B8D5BF;
-  color: #FFF;
-  font-weight: bold;
+
+.btn
+{
+    position: relative;
+    color: #1abc9c;
+    text-decoration: none;
+    width: 40px;
+    height: 40px;
+    line-height: 20px;
+    text-align: center;
+    border-radius: 50%;
+    top: 0%;
+    left: 86%;
+    transform: translate(-15%, -125%);
 }
+
+.search_box button[type="submit"]{
+    border: none;
+    outline: none;
+    height: 38px;
+    width: 38px;
+    background: #668cff;
+    color: #fff;
+    font-size: 14px;
+    border-radius: 20px;
+ 
+}
+
+.search_box button[type="submit"]:hover{
+    cursor:pointer;
+    background: white;
+    color: #000;
+    border: 2px solid #668cff;
+}
+
+.search-word  
+{
+    position: relative;
+    left: 7%;
+}
+
 </style>
+</head>
+
 
 <body>
 
-  <br>Recurring<br>
-  <table class="tableizer-table">
-    <thead><tr class="tableizer-firstrow"><th></th><th>Name of activity</th><th>Date and Time</th><th>Location</th><th>Creator</th><th>Details</th><th>Memberlist</th><th>Join</th><th>Report this activity to admin</th></tr></thead><tbody>
+<?php
+    $user_id = $_SESSION['user_id'];
+    $username = $_SESSION['username'];
+?>
 
-      <?php
-      displayOneOff(0,NULL);
-      ?>
-    </tbody></table>
-    <br>
+<?php
+    
+    function checkJoined($activityID,$user_id){
+        $cnt=0;
+        
+        $conn = mysqli_connect("localhost","root","","Habitracker");
+        if($user_id==NULL){
+            header("Location: index.php?query=failed");
+        }else{
+            $sql = "SELECT * FROM activity_users_list WHERE  user_id = '$user_id' and activity_id = '$activityID'";
+        }
+        
+        $result = mysqli_query($conn,$sql);
+        while($row = mysqli_fetch_assoc($result)){
+            $cnt++;
+        }
+        if($cnt==0){
+            echo '<td><a href = "activity_join.php?id='.$activityID.'">Click Here</a> </td>';
+        }else{
+            echo '<td>Joined</td>';
+        }
+    }
+    
+    if( !isset( $_SESSION['username']) ){
+        echo "You are not authorized to view this page. Go back <a href= '/'>home</a>";
+        exit();
+    }
+    
+    require 'db_key.php';
+    $conn = connect_db();
+    $sql = "Select * from activity_table Where activity_status_open = '1'";
+    $search_result = $conn->query($sql);
+    
+    if (isset($_GET['activity_reported'])){
+        echo '<p>Activity reported.</p>';
+    };
+    
+    ?>
 
 
-    <br>Once per week<br>
-    <table class="tableizer-table">
-      <thead><tr class="tableizer-firstrow"><th></th><th>Name of activity</th><th>Date</th><th>Time</th><th>Location</th><th>Creator</th><th>Details</th><th>Memberlist</th><th>Join</th><th>Report this activity to admin</th></tr></thead><tbody>
-
-        <?php displayRecurring(1,NULL); ?>
-      </tbody></table>
-      <br>
+<div><h1 align=center>Existing Activities</h1></div>
+<div class="search-word">
+    <h3>Search by keyword</h3>
+    <form action = 'activity_search_result.php' method = 'POST'>
+    <label>Keyword: </label>
 
 
-      <br>Twice per week<br>
-      <table class="tableizer-table">
-        <thead><tr class="tableizer-firstrow"><th></th><th>Name of activity</th><th>Date1</th><th>Time1</th><th>Date2</th><th>Time2</th><th>Location</th><th>Creator</th><th>Details</th><th>Memberlist</th><th>Join</th><th>Report this activity to admin</th></tr></thead><tbody>
+<div class="search_box">
+    <input class = "input_box" type="text" name="activity_keyword"><br><br>
+    <button class = "btn" type = 'submit' value = 'submit' name= 'search_activity'><i class="fa fa-search"></i>
+    </button>
+</div>
 
-          <?php displayRecurring(2,NULL); ?>
-        </tbody></table>
-        <br>
+<p>Sort by:
+<select name="sortby" id="sortby">
+<option selected="selected">Activity ID</option>
+<option>Name</option>
+<option>Recurrence</option>
 
-        <br>Three times per week<br>
-        <table class="tableizer-table">
-          <thead><tr class="tableizer-firstrow"><th></th><th>Name of activity</th><th>Date1</th><th>Time1</th><th>Date2</th><th>Time2</th><th>Date3</th><th>Time3</th><th>Location</th><th>Creator</th><th>Details</th><th>Memberlist</th><th>Join</th><th>Report this activity to admin</th></tr></thead><tbody>
+</select>
+<p>Order:
+<select name="order" id="order">
+<option selected="selected">Ascending</option>
+<option>Descending</option>
+</select></p>
+</form>
+</div>
 
-            <?php displayRecurring(3,NULL); ?>
+<?php
+    if ($search_result->num_rows >0) {
+        ?>
+<table class="content-table">
+    <thead>
+        <tr>
+            <th>Activity ID</th>
+            <th>Name</th>
+            <th>Recurrence</th>
+            <th>Date and time</th>
+            <th>No. of days</th>
+            <th>Day1</th>
+            <th>Time1</th>
+            <th>Day2</th>
+            <th>Time2</th>
+            <th>Day3</th>
+            <th>Time3</th>
+            <th>Creator</th>
+            <th>Details</th>
+            <th>Join</th>
+            <th>Report inappropriate</th>
+        </tr>
+    </thead>
 
-          </tbody></table>
-          <br>
+    <tbody>
+<?php while($row = $search_result->fetch_assoc()) { ?>
 
-          <?php
-          require "footer.php";
-          ?>
+<tr>
+<td><?php echo $row['activity_id']; ?></td>
+<td><?php echo $row['activity_name']; ?></td>
+<td><?php echo ($row['activity_repetition']==0? "One-off" : "Recurring"); ?></td>
+<td><?php echo ($row['activity_repetition']==0? date('yy-m-d H:i', strtotime($row['activity_one_off_datetime'])) : "-"); ?></td>
+
+<td><?php echo ($row['activity_repetition']==0? "-" : $row['activity_repetition']); ?></td>
+
+<td><?php echo ($row['activity_repetition']==0? "-" : $row['activity_recurring_date_0']); ?></td>
+<td><?php echo ($row['activity_repetition']==0? "-" : date('H:i', strtotime($row['activity_recurring_time_0']))); ?></td>
+
+<td><?php echo ($row['activity_repetition']==0? "-" : ($row['activity_repetition']<2? "-" : $row['activity_recurring_date_1'])); ?></td>
+<td><?php echo ($row['activity_repetition']==0? "-" : ($row['activity_repetition']<2? "-" : date('H:i', strtotime($row['activity_recurring_time_1'])))); ?></td>
+
+<td><?php echo ($row['activity_repetition']==0? "-" : ($row['activity_repetition']<3? "-" : $row['activity_recurring_date_2'])); ?></td>
+<td><?php echo ($row['activity_repetition']==0? "-" : ($row['activity_repetition']<3? "-" : date('H:i', strtotime($row['activity_recurring_time_2'])))); ?></td>
+
+<td><?php echo ($row['username']==$username? $row['username'] : '<a href="profile_view_others.php?username='.$row['username'].'">'.$row['username'].'</a>'); ?></td>
+
+<td><?php echo '<a href = "activity_display_details.php?id='.$row['activity_id'].'">Click Here</a>'; ?></td>
+
+<?php checkJoined($row['activity_id'],$user_id); ?>
+    
+<?php 
+    if ($row['username'] == $_SESSION['username']) {
+        echo '<td>-</td>';
+    }
+    else {
+        echo '<td><a href = "report_activity.php?id='.$row['activity_id'].'">Click Here</a></td>';
+    }
+?>
+</tr>
+<?php } ?>
+
+</tbody>
+</table>
+<?php
+    } else
+    echo "No results";
+    ?>
+</body>

@@ -1,5 +1,12 @@
 <?php
-require 'header.php';
+
+//Contributed by Ivan
+
+session_start();
+$conn = mysqli_connect("localhost","root","","Habitracker");
+$username = $_SESSION["username"];
+$user_id = $_SESSION["user_id"];
+    
 function getActivityNameFromActivityID($data){
   $conn = mysqli_connect("localhost","root","","Habitracker");
   $sql = "SELECT * FROM activity_table WHERE activity_id = ".$data." ";
@@ -13,11 +20,7 @@ function getActivityNameFromActivityID($data){
 
 if(isset($_GET['id'])){
 
-  //$userName = $_SESSION['username'];
-
-  $userName = "PikachuMasterHello";
-  /* for testing purpose we use user PIKACHU id = 6*/
-
+  $userName = $_SESSION['username'];
   $activityID = $_GET['id'];
 
 
@@ -34,12 +37,12 @@ if(isset($_GET['id'])){
   }
 
   if($alreadyJoined==0){//when equals to zero, the user HAS NOT joined the event
-    $sql = "INSERT INTO `activity_users_list` ( `username`, `activity_id`) VALUES ( '".$userName."', '".$activityID."');";
-    $result = mysqli_query($conn,$sql);
-    header("Location:index.php?join=success");
+    $sqlInsert = "INSERT INTO `activity_users_list` ( `user_id`, `activity_id`) VALUES ( '$user_id', '$activityID');";
+    $result = mysqli_query($conn,$sqlInsert);
+    header("Location:activity_view_mine.php?join=success");
   }else{
     echo "You have already joined this event";
-    header("Location:index.php?join=fail");
+    header("Location:activity_view_mine.php?join=fail");
 
 
   }

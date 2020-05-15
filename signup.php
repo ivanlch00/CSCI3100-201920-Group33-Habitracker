@@ -14,12 +14,20 @@
 </head>
 
 <body>
+    <div class="bubbles">
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+    </div>
 
-
-    <main>
-        
-        
-
+<main>
 <img src="img/logo.png" alt="Habitracker" height="50">
 <div class="loginbox">
     <h1>Signup Here</h1>

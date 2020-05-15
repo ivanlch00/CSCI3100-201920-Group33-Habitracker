@@ -62,10 +62,8 @@ if(isset($_POST['submitRecur'])){
   $activity_time_remark = mysqli_real_escape_string($conn, $_POST['timeRemark']);
   $activity_location = mysqli_real_escape_string($conn, $_POST['Locationnumber']);
   $activity_remark = mysqli_real_escape_string($conn, $_POST['Remark']);
-  $activity_status_open =-1 ;
+  $activity_status_open = 1 ;
 
-  if ($_POST['publicOption'] == "yes")  $activity_status_open = 1;
-  else $activity_status_open = 0;
 
   $username = $_SESSION["username"];
   $user_id = $_SESSION["user_id"];
@@ -114,11 +112,11 @@ if(isset($_POST['submitRecur'])){
                 $activityID= $row['activity_id'];
             }
       //insert username into the users list table
-          $sqlInsert = "INSERT INTO `activity_users_list` ( `username`, `activity_id`) VALUES ( '".$username."', '".$activityID."');";
-          mysqli_query($conn,$sqlInsert);
+            $sqlInsert = "INSERT INTO `activity_users_list` ( `user_id`, `activity_id`) VALUES ( '$user_id', '$activityID');";
+            mysqli_query($conn,$sqlInsert);
 
 
-          header("Location: ../activity_index_page.php?recur_event_create=done&id=$activityID");
+          header("Location: ../activity_view_mine.php?recur_event_create=done&id=$activityID");
         }
       if($successMarker==0)  {header("Location: ../activity_index_page.php?recur_event_create=failure");}
 
@@ -127,20 +125,5 @@ if(isset($_POST['submitRecur'])){
 
 
   }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 }

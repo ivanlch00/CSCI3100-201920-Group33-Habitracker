@@ -14,6 +14,19 @@
 </head>
 
 <body>
+    <div class="bubbles">
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+    </div>
+    
     <img src="img/logo.png" alt="Habitracker" height="50">
     <div class="loginbox">
         <img src="img/login_avatar1.png" class="avatar">
@@ -36,15 +49,30 @@
                     <button type="submit" name="logout-submit">Logout</button></br></br>
                     </form>';
                 }  
+
+                if (isset($_GET['error'])){  
+                    if ($_GET['error'] == "wrongpwd") {
+                        echo '<p class="wrong"> Wrong username or password!</p>';
+                    }
+                    else if ($_GET['error'] == "emptyfields") {
+                        echo '<p class="wrong"> Fill in all fields!</p>';
+                    }
+                    else if ($_GET['error'] == "nouser") {
+                        echo '<p class="wrong"> Wrong username or password!</p>';
+                    }
+                }
+
+                if (isset($_GET["newpwd"])) {
+                    if ($_GET["newpwd"] == "passwordupdated") {
+                        echo '<p>Your password has been reset!</p>';
+                    }
+                }
             ?>   
     </div>
 
     <?php
-        if (isset($_GET["newpwd"])) {
-            if ($_GET["newpwd"] == "passwordupdated") {
-                echo '<p>Your password has been reset!</p>';
-            }
-        }
+        
+
     ?>
 
     </body>

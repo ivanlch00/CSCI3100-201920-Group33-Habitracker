@@ -14,6 +14,19 @@
 </head>
 
 <body>
+    <div class="bubbles">
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+    </div>
+
 <img src="img/logo.png" alt="Habitracker" height="50">
 <div class="loginbox">
         <h1>Reset your password</h1>
@@ -25,7 +38,7 @@
         <?php
             if (isset($_GET["reset"])){
                 If ($_GET["reset"] == "success"){
-                    echo '<p>Check your e-mail</p>';
+                    echo '<p>Please check your e-mail.</p>';
                 }
             }
         ?>

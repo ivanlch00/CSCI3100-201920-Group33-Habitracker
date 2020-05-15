@@ -13,7 +13,7 @@
     $conn = connect_db();
     
     $goal = null;
-    $sql = "select goal_id, goal_name, username from goals where goal_id = ?";
+    $sql = "select goal_id, goal_name, username, goal_description, goal_subtask, goal_enddate, goal_starttime, goal_endtime from goals where goal_id = ?";
     $stmt = mysqli_stmt_init($conn);
     if (!mysqli_stmt_prepare($stmt, $sql)){
         header("Location: admin_index.php?error=sqlerror");
@@ -26,30 +26,34 @@
         $goal = mysqli_fetch_assoc($result);
     }
 ?>
+<link rel="stylesheet" href="report_form.css">
 
-<div class="container mx-3">
-    <h1>Please fill in the form</h1>
+<div class="loginbox">
+    <h1>Report Inappropriate</h1>
     
     <form action="report_backend.php" method="POST">
         <!-- this field is hidden -->
         <div class="form-group">
             <input type="hidden" name="goal_id" value="<?php echo $goal['goal_id'] ?>">
+            <input type="hidden" name="goal_name" value="<?php echo $goal['goal_name'] ?>" readonly>
+            <input type="hidden" name="goal_creator" value="<?php echo $goal['username'] ?>" readonly>
         </div>
-        
+
         <div class="form-group">
-            <label for="goal_name">Goal name:</label>
-            <input class="form-control w-50" type="text" name="goal_name" value="<?php echo $goal['goal_name'] ?>" readonly>
-        </div>
-        <div class="form-group">
-            <label for="goal_creator">Goal creator:</label>
-            <input class="form-control w-50" type="text" name="goal_creator" value="<?php echo $goal['username'] ?>" readonly>
-        </div>
-        <div class="form-group">
-            <label for="reason">Reason:</label>
+            <p>User: <?php echo $goal['username'];?></p></br>
+            <p>Goal ID: <?php echo $goal['goal_id'];?></p></br>
+            <p>Goal name: <?php echo $goal['goal_name'];?></p></br>
+            <p>Description: <?php echo ($goal['goal_description']==''? "-" : $goal['goal_description']);?></p></br>
+            <p>Subtask: <?php echo ($goal['goal_subtask']==''? "-" : $goal['goal_subtask']);?></p></br>
+            <p>End date: <?php echo $goal['goal_enddate'];?></p></br>
+            <p>Start time: <?php echo (($goal['goal_starttime'] != NULL)? date("H:i", strtotime($goal['goal_starttime'])) : '-'); ?></p></br>
+            <p>End time: <?php echo (($goal['goal_endtime'] != NULL)? date("H:i", strtotime($goal['goal_endtime'])) : '-'); ?></p></br>
+                        <label for="reason">Reason:</label>
+
             <textarea class="form-control" name="reason" required></textarea>
         </div>
 
-        <button type="submit" class="btn btn-success" name="report_goal">Submit</button>
+        <br><button type="submit" class="btn btn-success" name="report_goal">Submit</button>
     </form>
 </div>
 

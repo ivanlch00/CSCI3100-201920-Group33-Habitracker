@@ -2,8 +2,10 @@
 <html lang="en">
 
 <?php
-    require 'header.php';
-    ?>
+//Contributed by Ivan
+
+require 'header.php';
+?>
 
 <head>
 
@@ -12,7 +14,7 @@
   <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.css">
   <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-
+  <link rel="stylesheet" href="activity_create_nonrecurring.css">
 
 
 
@@ -33,50 +35,48 @@
 </head>
 
 <body>
-  <p>You can also try an event for once and see if it suits your interest or whether you enjoy your new hobby-buddy</p>
+<div class="loginbox">
+
+<div><h1>Create non-recurring activity</h1></div>
+<div><p>You can create an one-off activity now and see if the activity mode and your new hobby-buddies suit you!</p><br /></div>
   <form action="includes/nonrecurring_created.php" method="POST">
-  <h1>Creating a single event</h1>
-  <p>Name:<input type="text" name="activityName" placeholder="Name of the activity"></p>
-  <p>Select Date: <input type="text" id="datepicker" name="date" placeholder="2020-01-01"></p>
-  <p>Select Time: <input type="text" id="timepicker" name="time" placeholder="00:00:00"></p>
-  <p>Date Description:<input type="text" name="timeRemark" placeholder="Time remark of the activity"></p>
-  <p>General Remark:<input type="text" name="Remark" placeholder="General remark of the activity"> </p>
+    <p>Name: <input type="text" name="activityName" placeholder="Name of the activity"></p>
+    <p>Select Date: <input type="text" id="datepicker" name="date" placeholder="2020-01-01"></p>
+    <div class="time"><p>Select Time: <input type="text" id="timepicker" name="time" placeholder="00:00:00"></p></div>
 
-  <p>Select a location
-  <select name="Locationnumber" id="Locationnumber">
-    <option>Islands</option>
-    <option>Kwai Tsing</option>
-    <option>North</option>
-    <option>Sai Kung</option>
-    <option>Sha Tin</option>
-    <option>Tai Po</option>
-    <option>Tsuen Wan</option>
-    <option>Tuen Mun</option>
-    <option>Yuen Long</option>
-    <option>Kowloon City</option>
-    <option>Kwun Tong</option>
-    <option>Sham Shui Po</option>
-    <option>Wong Tai Sin</option>
-    <option>Yau Tsim Mong</option>
-    <option>Central & Western</option>
-    <option>Eastern</option>
-    <option>Southern</option>
-    <option>Wan Chai</option>
-    <option>Online</option>
+    <p>Location: 
+    <select name="Locationnumber" id="Locationnumber">
+        <option>Islands</option>
+        <option>Kwai Tsing</option>
+        <option>North</option>
+        <option>Sai Kung</option>
+        <option>Sha Tin</option>
+        <option>Tai Po</option>
+        <option>Tsuen Wan</option>
+        <option>Tuen Mun</option>
+        <option>Yuen Long</option>
+        <option>Kowloon City</option>
+        <option>Kwun Tong</option>
+        <option>Sham Shui Po</option>
+        <option>Wong Tai Sin</option>
+        <option>Yau Tsim Mong</option>
+        <option>Central & Western</option>
+        <option>Eastern</option>
+        <option>Southern</option>
+        <option>Wan Chai</option>
+        <option>Online</option>
     <option selected="selected">Others</option>
-  </select></p>
+    </select></p>
 
-    <p>Show to public or not?<select name="publicOption" id="publicOption">
-    <option>no</option>
-    <option selected="selected">yes</option>
-  </select></p>
+    <p><br/>Remark on the date and time (Optional): <input type="text" name="timeRemark" placeholder="Time remark of the activity"></p>
+    <p>General Remark (Optional): <input type="text" name="Remark" placeholder="General remark of the activity"> </p>
 
+      <button type="submit" name="submitNonRecur">Create!</button>
 
-  <button type="submit" name="submitNonRecur">Create!</button>
+    </form>
+    </div>
 
-	</form>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
 
-  <script src="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
-
-</body>
-</html>
+  </body>
+  </html>

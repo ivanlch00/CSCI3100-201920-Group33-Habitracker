@@ -1,0 +1,173 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+        <link href="https://fonts.googleapis.com/css2?family=Baloo+2&family=Raleway&display=swap" rel="stylesheet">
+
+        <link rel="stylesheet" href="home.css">
+        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+        <script>
+            $('#myModal').on('shown.bs.modal', function () {
+                $('#myInput').trigger('focus')
+            })
+        </script>
+
+        <title> HabitTracker </title>
+    </head>
+
+
+    <body>
+        <header>
+            <div class="container">
+                <nav class="navbar navbar-expand-lg navbar-light">
+                    <a class="navbar-brand" href="#"></a>
+                        <img src="img/logo.png">
+                    <!--button in mobile only-->
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                    </button>
+                
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="homepage.html">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="about.html">About</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="functions.html">Functions</a>
+                        </li>
+                    </ul>
+                    <button type="button" id='joinBtn' onclick="window.location.href='signup.php';">Register</button>
+                    <button type="button" id='signIn' onclick="window.location.href='login.php';"> Login</button>
+                </nav>
+            </div>
+        </header>
+
+        <!-- Modal -->
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <form action="includes/login.inc.php" method="post">
+                            <div class="form-group">
+                                <p>Username/E-mail</p> 
+                                <input type="text" name ="mailuid" placeholder="Enter Username/E-mail" required>
+                                <p>Password</p>
+                                <input type="password" name ="pwd" placeholder="Enter Password" required>
+                                <button type="submit" name="login-submit">Login</button>
+                                <br>
+                                <a href="signup.php">Signup</a><br>
+                                <a href="reset-password.php">Forgot your password?</a><br>
+                                <a href="admin_login.php">Login as administrator</a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        
+        <section id="mainContent">
+            <div class="container">
+                <div class="row">
+                    <div class='col-md-10 offset-md-1 text-left'>
+                        <h2 style="text-align:center">Objective</h2>
+                        
+                        <ul class=style_font>
+                            <li>Enhancing users’ productivity and quality of life and to keep track of their daily habits</li>
+                            <li>Keep users motivated in pursuing their goals, achieving efficient task management</li>
+                            <li>Allowing users to compete and share results with other people</li>
+                            <li>Compels users’ habit reinforcement</li>
+                        </ul>
+                    
+                    </div>
+                </div>
+                <div class="row">
+                    <div class='col-md-10 offset-md-1 text-left'>
+                        <span class="border"></span>
+                        <h2 style="text-align:center">Background</h2>
+                        <p class="about_font"> Task management software is ubiquitous since many individuals aim to enhance productivity
+                            in their daily life. A typical personal task manager has the following basic functions - task
+                            creation and visualisation, configuring task management environments, notification, resource
+                            assigning, compatibility and reporting. A typical task over its lifestyle can be described by a
+                            finite state machine (IBM Knowledge Centre, n.d.). A personal task manager’s major goal is
+                            to ensure the user can implement a task successfully - running the task over its lifecycle
+                            repeatedly and preventing termination.
+                        </p>
+                        <p class="about_font">
+                            Psychologists define habits as “fixed ways of thinking or willining acquired through
+                            repetition” (Andrews, 1903). Habits are effectively formed when the automaticity of
+                            executing a task or a certain behaviour reaches a certain level. Researchers have shown that
+                            around 70-84 days are required to acquire such a level of automaticity (Lally, Jaarsveld,
+                            Potts, & Wardle, 2009). In habit formation (Wood & Neal, 2016), which is rendering novel
+                            behaviours automatic, there are three indispensable components - the context cue, the
+                            repetition of behaviour and the positive reinforcement via rewards. To support habit
+                            formation, users need to establish a positive mental experience between the context cue with
+                            the implementation of a task. After that, users are aided in reinforcing the association between the cue and the task via repetition. Rewards are provided to strengthen the
+                            reinforcement.
+                        </p>
+                        <p class="about_font">
+                            Based on the theories listed above, a competent task management tool should be able to
+                            satisfy 4 requirements:<br>
+                            <ol>
+                                <div class="style_font">
+                                    <li>Implement the basic functions (task creation and visualisation etc.);<br></li>
+                                    
+                                    <li>Evolvability - extending the basic functions of a task manager;<br></li>
+                                    
+                                    <li>Reliable - successfully aid the user to run over a task over its complete life-cycle without termination;<br></li>
+                                    
+                                    <li>Aid successful habit formation, which relies on the following 3 aspects:</li>
+                                </div>
+                                <ul class="about_font">
+                                
+                                    <div class='col-md-10 offset-md-1 text-left'>
+                                        <li>Provide the user with appropriate and effective context cue</li>
+                                
+                                <li>Help the user to repeatedly implement a task to the extent of automaticity</li>
+                                
+                                <li>Provide suitable rewards in order to positively reinforce a behaviour</li>
+                                    </div>
+                                </ul>
+                            </ol>
+                            <br>
+                            It has been observed that current task management tools available focus on only the first
+                            requirement, and are weak in the other aspects. In view of this, Habitracker is developed to
+                            bridge this gap and serve as a comprehensive task management tool.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+
+        
+           
+
+        <footer>
+            <div class="container">
+                <div class="row">
+                    <div class='col-md-4 text-center'>
+                        <img src="img/logo.png">
+                    </div>
+                    <div class='col-md-4 text-center'>
+                        <h2>About us</h2>
+                        <p>We are students from CUHK CSCI3100</p>
+                    </div>
+                    <div class='col-md-4 text-center'>
+                        <h2>Contact us</h2>
+                        <p>E-mail: <a href="mailto:noreply-habitracker@gmail.com">noreply-habitracker@gmail.com</a></p>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </body>
+</html>

@@ -1,6 +1,18 @@
 <?php
-require 'header.php';
-if (isset($_POST['edit-profile-submit'])){
+    require 'header.php';
+?>
+
+<html>
+<head>
+<title>Edit your profile</title>
+<link rel="stylesheet" href="profile_edit.css">
+<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+</head>
+<body>
+
+
+<?php
+    if (isset($_POST['edit-profile-submit'])){
 
     $username = $_SESSION['username'];
     //$username = $_SESSION['username'];
@@ -17,28 +29,38 @@ if (isset($_POST['edit-profile-submit'])){
     $search_result = $conn->query($sql);
     $row = $search_result->fetch_assoc();
     $id = $row['user_id'];
+?>
 
-    echo "<div>";
-    if ($row['image_status'] == 0){
-        echo "<img src='upload_image/profile".$id.".jpg'height='150' width ='150'>";
-    } else if ($row['image_status'] == 1){
-        echo "<img src='upload_image/profiledefault.jpg'height='150' width ='150'>";
-    }
-    echo "</div>";
-
-
-
-    echo "<form action='profile_upload_img.php' method='POST' enctype='multipart/form-data'>
-    <input type='file' name='file'>
-    <button type='submit' name='submit'>UPLOAD</button>
-    </form>";
 
     
-        ?>
+
+        <div class="loginbox">
+
+        <div class="image-container">
+
+    <?php
+    echo "<div>";
+    if ($row['image_status'] == 0){
+        echo "<img src='upload_image/profile".$id.".jpg' height ='150'>";
+    } else if ($row['image_status'] == 1){
+        echo "<img src='upload_image/profiledefault.jpg' height ='150'>";
+    }
+    echo "</div>";
+    
+    echo "<form action='profile_upload_img.php' method='POST' enctype='multipart/form-data'>
+    <input type='file' name='file'>
+    <button type='submit1' name='submit'>UPLOAD</button>
+    </form>";
+
+    ?>
+    </div>
+     
             <form action="includes/profile_edit.inc.php" method="post"> 
+            <div class="edit-display">
             <tr>
-                <td><?php echo "Username: ".$row['username']; ?></br></td> <!-- change to username -->
-                <td><?php echo "Email: ".$row['email']; ?></br></td>  <!-- change to email -->             
+                </br>
+                <td><?php echo "Username: ".$row['username']; ?></br></br></td> <!-- change to username -->
+                <td><?php echo "Email: ".$row['email']; ?></br></br></td>  <!-- change to email -->             
             </tr>
             
             <label>First name:</label>
@@ -47,7 +69,7 @@ if (isset($_POST['edit-profile-submit'])){
             ?> placeholder="Enter your first name" <?php } 
                 ?> name="first_name"></br>
 
-            <label>Last name:</label>
+            <label>Last name: </label>
             <input class = 'form-control w-50' type="text" <?php if ($row['last_name'] != NULL) 
             {?> value= "<?php echo $row['last_name']; ?>" <?php } else {
             ?> placeholder="Enter your last name" <?php } 
@@ -60,20 +82,11 @@ if (isset($_POST['edit-profile-submit'])){
                 ?> name="welcome_message"></br>
 
             
-            <button type="submit" name="finish-edit-profile-submit">Finish editing</button>
+            <button class="finish_edit_profile" type="submit" name="finish-edit-profile-submit">Finish editing</button>
+            </div>
             </form>
-
+        </div>
 <?php
-                
-            }
-        
-    
-
-    /*else {
-        header("Location: ../user_profile.php");
-        exit();
-    }
-    */
+}
 ?>
-
-
+</body>
