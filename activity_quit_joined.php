@@ -1,5 +1,10 @@
 <?php
-    //Contributed by Ivan
+      //this is the code to quit event they have joined
+  //Contributed by Ivan Lai (1155143433)
+  //this php fits in the quit activity of the "Activities" section
+  //this is written on 23 April 2020
+  //this program allows users to quit specific event
+  //the program reads the activity_id and query it in mysql, then delete the specific entry from activity_user_table
     require 'header.php';
     $username = $_SESSION['username'];
     $user_id = $_SESSION['user_id'];
