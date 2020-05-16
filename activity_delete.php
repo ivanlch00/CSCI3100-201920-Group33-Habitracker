@@ -1,5 +1,10 @@
 <?php
-//Contributed by Ivan
+  //this is the code to delete event
+  //Contributed by Ivan Lai (1155143433)
+  //this php fits in the delete activity of the "Activities" section
+  //this is written on 22 April 2020
+  //this program allows users to delete specific event
+  //the program reads the activity_id and query it in mysql to perform deletion
 
 function deleteActivity($conn, $activity_id){
   $sql1 = "delete from activity_table where activity_id = ? ; ";
