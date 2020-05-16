@@ -1,5 +1,10 @@
 <?php
-    //Contributed by Ivan
+  //this is the code to edit details event
+  //Contributed by Ivan Lai (1155143433)
+  //this php fits in the edit activity of the "Activities" section
+  //this is written on 23 April 2020
+  //this program allows users to edit specific event
+  //the program reads the activity_id and query it in mysql to perform data modification (including change the string name or the datetime date or the string type remarks of the event
     
     require 'header.php';
     ?>
