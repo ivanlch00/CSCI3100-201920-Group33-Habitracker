@@ -1,5 +1,10 @@
 <?php
-    //Contributed by Ivan
+   //this is the code to display details of an event
+  //Contributed by Ivan Lai (1155143433)
+  //this php fits in the view activity of the "Activities" section
+  //this is written on 21 April 2020
+  //this program allows users to view specific event
+  //the program reads the activity_id and query it in mysql to display the string name, the datetime time and general remarks stored in string format
     require 'header.php';
     $username = $_SESSION['username'];
     $user_id = $_SESSION['user_id'];
