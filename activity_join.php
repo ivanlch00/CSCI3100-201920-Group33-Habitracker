@@ -1,6 +1,12 @@
 <?php
 
-//Contributed by Ivan
+  //this is the code to join event
+  //Contributed by Ivan Lai (1155143433)
+  //this php fits in the join activity of the "Activities" section
+  //this is written on 23 April 2020
+  //this program allows users to join specific event
+  //the program reads the activity_id and query it in mysql, then add the user id to the  acitivty_user_table in the database with the corresponding activity_id
+
 
 session_start();
 $conn = mysqli_connect("localhost","root","","Habitracker");
